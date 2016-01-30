@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\libs\Parse-1.13.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="aeb59f6d2e1abe79bb4d1342eb14bb628c2c5f03">
+        <dex dex="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\pre-dexed\debug\Parse-1.13.0_7b75dfb8909f3c742d79a54a9a853cd1792444e4.jar" />
+    </item>
+    <item
+        jar="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_f208357f590672db6b7d485b7794394abc9f5c7b.jar" />
+    </item>
+    <item
+        jar="D:\Software\AndroidSDK\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_5ae4b9f96ce34ffbd16eab385b0527f68912c360.jar" />
+    </item>
+    <item
+        jar="C:\Users\eric__000\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-applinks\1.4.0\8ad21bf21784dacce5f2043afb97218cc377e835\bolts-applinks-1.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\pre-dexed\debug\bolts-applinks-1.4.0_b669fda361dd93df2e9a962403081d32bb0b4824.jar" />
+    </item>
+    <item
+        jar="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_71edb184e541def669553f2750ed903eaae673ac.jar" />
+    </item>
+    <item
+        jar="C:\Users\eric__000\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0_32c874e692f5f7d8d14fe0f982fe955abedda55c.jar" />
+    </item>
+    <item
+        jar="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.1.1_bb463850144f2a8e61f8450a05046b09c27f5406.jar" />
+    </item>
+    <item
+        jar="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.1.1_913a79b14b14c8a1f531ab19e2562f30e9e17cb0.jar" />
+    </item>
+    <item
+        jar="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.1.1_48d587fea632dd40cbaaa60f87e9d5ce2d2b242d.jar" />
+    </item>
+    <item
+        jar="C:\Users\eric__000\.gradle\caches\modules-2\files-2.1\com.parse\parse-android\1.13.0\58a7d54b6a4f28be11f0cecec93097eddf473e6f\parse-android-1.13.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="58a7d54b6a4f28be11f0cecec93097eddf473e6f">
+        <dex dex="C:\Users\eric__000\Desktop\CSE110M240T13\TritonProfessorRater\app\build\intermediates\pre-dexed\debug\parse-android-1.13.0_3c559080cf206b52b63efef179127c3c084d09e2.jar" />
+    </item>
+
+</items>
