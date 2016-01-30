@@ -29,8 +29,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".myActivity"
-            android:label="@string/title_activity_my"
+            android:name=".LogIn"
+            android:label="@string/title_activity_log_in"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Register"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ForgotPassword"
+            android:label="@string/title_activity_forgot_password"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
