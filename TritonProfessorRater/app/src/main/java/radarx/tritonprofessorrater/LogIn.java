@@ -23,10 +23,10 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        bLogin = (Button) findViewById(R.id.bLogin);
-        bRegister = (Button) findViewById(R.id.bRegister);
-        etEmail = (EditText) findViewById(etEmail);
-        etPassword = (EditText) findViewById(etPassword);
+        bLogin = (Button)findViewById(R.id.bLogin);
+        bRegister = (Button)findViewById(R.id.bRegister);
+        etEmail = (EditText)findViewById(R.id.username);
+        etPassword = (EditText)findViewById(R.id.etPassword);
     }
 
     @Override
