@@ -35,6 +35,10 @@
         <activity
             android:name=".SearchPage"
             android:label="@string/title_activity_search_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddComment"
+            android:label="@string/title_activity_add_comment"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
