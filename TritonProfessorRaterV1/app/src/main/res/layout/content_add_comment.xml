@@ -12,17 +12,17 @@
     tools:context="cse110mt13.tritonprofessorraterv1.AddComment"
     tools:showIn="@layout/activity_add_comment">
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="AddComment"
         android:id="@+id/addComment"
         android:background="@drawable/rectangle_drawable_back"
-        android:layout_centerVertical="true"
+        android:inputType="text"
+        android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:inputType="text" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="match_parent"
@@ -92,7 +92,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -127,5 +127,15 @@
         android:layout_alignTop="@+id/acHelp"
         android:layout_alignLeft="@+id/acHelp"
         android:layout_alignStart="@+id/acAddCourse" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Put Your Comment Here:"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/acHelp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
