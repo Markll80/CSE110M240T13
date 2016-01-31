@@ -132,7 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Put Your Comment Here:"
+        android:text="Comment:"
         android:id="@+id/textView5"
         android:layout_below="@+id/acHelp"
         android:layout_alignParentLeft="true"
