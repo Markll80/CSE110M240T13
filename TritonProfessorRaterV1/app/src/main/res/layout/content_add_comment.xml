@@ -19,7 +19,7 @@
         android:text="AddComment"
         android:id="@+id/addComment"
         android:background="@drawable/rectangle_drawable_back"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
