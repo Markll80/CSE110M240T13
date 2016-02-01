@@ -22,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
         ParseACL.setDefaultACL(defaultACL, true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /*
         ParseObject testObject = new ParseObject("TestObject");
         testObject.put("foo", "bar");
-        testObject.saveInBackground();
+        testObject.saveInBackground();*/
     }
 }
