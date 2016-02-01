@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="ProfName"
+        android:text="Professor Name"
         android:id="@+id/acProfName"
         android:gravity="center_horizontal"
         android:layout_marginTop="10dp"
