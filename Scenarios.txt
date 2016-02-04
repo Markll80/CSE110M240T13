@@ -1,0 +1,92 @@
+﻿Scenarios
+
+
+Scenario 1:
+Given the intro Login page
+Then I login the app with my ucsd amcs account
+Given I am logged in
+When I click the search button
+Then a search box pops us
+When I type the professor’s name in the box
+And I click search
+Then the relative ratings and comments about that searched professor are shown on the screen
+
+
+
+
+Scenario 2:
+Given I am logged in
+And there are comments on a professor
+I can see comments sorted by number of likes
+
+
+
+
+
+
+Scenario 3:
+Given I am logged in
+And there are comments on a professor
+I can see comments sorted by number of likes
+For a particular comment 
+Then I click the like button
+The like number will be increased
+
+
+
+
+
+
+Scenario 4:
+Given I am logged in
+And there are comments on a professor
+I can see comments sorted by number of likes
+For a particular comment 
+Then I click the like button
+I can see the like number has been increased
+Then I click the like button again
+The like number is decreased
+And my like has been cancelled.
+
+
+
+
+
+
+
+
+Scenario 5:
+Given I am logged on
+Then I searched a professor,
+And the professor is not on the list,
+Then I click on the “Add Professor” button
+Then a text box should appear to input the professor name
+When I input the professor name and press ok, then send the comment
+Then others should be able to search for the professor
+
+
+
+
+Scenario 6:
+Given I am logged
+When I am on the page of a professor
+Then I click Edit(button) on a comment that I wrote
+Then the comment box becomes editable
+When I finished editing the comment and click the Save button
+Then a confirmation message will appear with the option to confirm or cancel the edit
+When I click confirm,
+Then the comment will be updated and the page will refresh
+
+
+
+
+
+
+Scenario 7:
+Given that when I am logged in as an admin
+When I click the page that contains all the reported comments/ratings
+Then I would be able to see the comments about the report
+When I click delete
+Then a message will popup confirming whether I want to delete the post or not
+When I click yes/no,
+Then the post will be deleted or not deleted base on the previous confirmation response
