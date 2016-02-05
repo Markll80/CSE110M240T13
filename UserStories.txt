@@ -1,0 +1,21 @@
+﻿User Stories
+
+As a user, I want to know the professor’s ratings by searching his/her name so that I can decide whether to take his/her class.
+Priority: 1
+
+        
+As a user, I want to like a comment and look at the commonly agreed comments first so that I can share my opinion and know others’ opinions.
+Priority: 1
+        
+
+
+As a user, I want to have the right to add new professors so that I can still fill in ratings even thought that professor is orginially not on the list.
+Priority: 2
+       
+        
+As a user, I want to edit my comment so that I can add new things to it.
+Priority: 3
+
+
+As an admin, I want to be able to delete reported posts so that unhelpful or agressive post so that the authenticity of the ratings can be preserved.
+Priority: 3

@@ -1,41 +1,42 @@
-﻿User Stories
+﻿Tasks
  
 
 As a user, I want to know the professor’s ratings by searching his/her name so that I can decide whether to take his/her class.
 Priority: 1
-Features: 
-        -able to see other students' rating on the professor 
+Tasks: 
+        -able to retrieve and see other students' ratings on the professor 
         -ratings based on easiness, helpfulness, and clarity
-
-
+        -search function
+Estimated workdays: 4
+        
 As a user, I want to like a comment and look at the commonly agreed comments first so that I can share my opinion and know others’ opinions.
 Priority: 1
-Features: 
-        -able to see other students' comments on the professor 
+Tasks: 
+        -able to retrieve and see other students' comments on the professor 
         -can add new comments
         -rank comments base on "popularity" (amount of likes)
-          
+Estimated workdays: 5          
 
 
 As a user, I want to have the right to add new professors so that I can still fill in ratings even thought that professor is orginially not on the list.
 Priority: 2
-Features: 
+Tasks: 
          -users can add professors by themself if they can't find the professor
          -add professor and rate him/her at the same page
-         
+Estimated workdays: 3         
         
 As a user, I want to edit my comment so that I can add new things to it.
 Priority: 3
-Features: 
+Tasks: 
          -track the user's comment so that the user can edit it
          -lose all existing "likes" if comment is modified
          -comments ranking refresh after edit
          -time restriction for how long since post is made can the user make the edit
-
+Estimated workdays: 4
 
 As an admin, I want to be able to delete reported posts so that unhelpful or agressive post so that the authenticity of the ratings can be preserved.
 Priority: 3
-Features: 
+Tasks: 
          -admin can see all the reported posts easily in a separate page
          -able to delete posts 
-
+Estimated workdays: 6
