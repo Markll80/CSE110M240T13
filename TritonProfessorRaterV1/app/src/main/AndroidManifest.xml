@@ -40,7 +40,8 @@
             android:name=".AddComment"
             android:label="@string/title_activity_add_comment"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SearchNotFound"></activity>
+        <activity android:name=".SearchNotFound" />
+        <activity android:name=".ProfPage"></activity>
     </application>
 
 </manifest>
