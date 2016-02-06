@@ -15,19 +15,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
-        android:id="@+id/bSearch"
-        android:layout_alignTop="@+id/etSearch"
+        android:id="@+id/search_B"
+        android:layout_alignTop="@+id/search_ET"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/etSearch"
-        android:layout_toLeftOf="@+id/bSearch"
+        android:id="@+id/search_ET"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="Class/Professor Name" />
+        android:text="Class/Professor Name"
+        android:layout_toLeftOf="@+id/search_B"
+        android:layout_toStartOf="@+id/search_B" />
 
     <TextView
         android:layout_width="match_parent"
@@ -59,8 +60,8 @@
         android:textSize="20dp"
         android:textColor="#000000"
         android:id="@+id/textView3"
-        android:layout_marginTop="12dp"
-        android:layout_below="@+id/bSearch"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/search_B"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

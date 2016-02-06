@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/addComment"
+        android:id="@+id/ac_Comment_ET"
         android:background="@drawable/rectangle_drawable_back"
         android:inputType="textMultiLine"
         android:layout_below="@+id/textView5"
@@ -41,7 +41,7 @@
         android:layout_height="50dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="ProfName"
-        android:id="@+id/acProfName"
+        android:id="@+id/ac_ProfName_TV"
         android:gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:layout_alignParentTop="true"
@@ -52,8 +52,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:id="@+id/acSubmit"
-        android:layout_below="@+id/addComment"
+        android:id="@+id/ac_Submit_B"
+        android:layout_below="@+id/ac_Comment_ET"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -61,18 +61,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
-        android:id="@+id/acCancel"
-        android:layout_below="@+id/addComment"
-        android:layout_toRightOf="@+id/acSubmit"
-        android:layout_toEndOf="@+id/acSubmit" />
+        android:id="@+id/ac_Cancel_B"
+        android:layout_below="@+id/ac_Comment_ET"
+        android:layout_toRightOf="@+id/ac_Submit_B"
+        android:layout_toEndOf="@+id/ac_Submit_B" />
 
     <TextView
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="CourseName"
+        android:text="Course Name"
         android:id="@+id/acCourseName"
-        android:layout_below="@+id/acProfName"
+        android:layout_below="@+id/ac_ProfName_TV"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -110,8 +110,8 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/acAddCourse"
-        android:layout_below="@+id/acProfName"
+        android:id="@+id/ac_AddCourse_ET"
+        android:layout_below="@+id/ac_ProfName_TV"
         android:background="@drawable/rectangle_drawable_back"
         android:layout_toRightOf="@+id/acCourseName"
         android:layout_toEndOf="@+id/acCourseName"
@@ -122,8 +122,8 @@
         android:layout_height="30dp"
         android:id="@+id/ratingC"
         android:layout_alignTop="@+id/acClarity"
-        android:layout_alignLeft="@+id/acAddCourse"
-        android:layout_alignStart="@+id/acAddCourse" />
+        android:layout_alignLeft="@+id/ac_AddCourse_ET"
+        android:layout_alignStart="@+id/ac_AddCourse_ET" />
 
     <RatingBar
         android:layout_width="match_parent"
@@ -131,7 +131,7 @@
         android:id="@+id/ratingE"
         android:layout_alignTop="@+id/acEasy"
         android:layout_alignLeft="@+id/acEasy"
-        android:layout_alignStart="@+id/acAddCourse" />
+        android:layout_alignStart="@+id/ac_AddCourse_ET" />
 
     <RatingBar
         android:layout_width="match_parent"
@@ -139,7 +139,7 @@
         android:id="@+id/ratingH"
         android:layout_alignTop="@+id/acHelp"
         android:layout_alignLeft="@+id/acHelp"
-        android:layout_alignStart="@+id/acAddCourse" />
+        android:layout_alignStart="@+id/ac_AddCourse_ET" />
 
     <TextView
         android:layout_width="match_parent"

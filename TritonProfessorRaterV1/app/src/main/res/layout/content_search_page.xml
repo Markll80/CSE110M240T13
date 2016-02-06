@@ -16,16 +16,16 @@
         android:text="Search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/bSearch"
-        android:layout_alignTop="@+id/etSearch"
+        android:id="@+id/search_B"
+        android:layout_alignTop="@+id/search_ET"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <EditText
-        android:id="@+id/etSearch"
+        android:id="@+id/search_ET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/bSearch"
+        android:layout_toLeftOf="@+id/search_B"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:text="Class/Professor Name" />
@@ -38,7 +38,7 @@
         android:textStyle="bold"
         android:textColor="#ff0000"
         android:id="@+id/bProf1"
-        android:layout_below="@+id/etSearch"
+        android:layout_below="@+id/search_ET"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
     <TextView
@@ -52,8 +52,8 @@
         android:layout_below="@+id/bProf1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/bSearch"
-        android:layout_alignEnd="@+id/bSearch" />
+        android:layout_alignRight="@+id/search_B"
+        android:layout_alignEnd="@+id/search_B" />
 
     <Button
         android:layout_width="wrap_content"
@@ -78,8 +78,8 @@
         android:layout_below="@+id/bProf2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/bSearch"
-        android:layout_alignEnd="@+id/bSearch" />
+        android:layout_alignRight="@+id/search_B"
+        android:layout_alignEnd="@+id/search_B" />
 
     <Button
         android:layout_width="wrap_content"
@@ -111,7 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Professor"
-        android:id="@+id/button"
+        android:id="@+id/sp_AddProf_B"
         android:layout_below="@+id/textView3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

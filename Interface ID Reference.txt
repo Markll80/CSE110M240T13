@@ -1,0 +1,32 @@
+Global:
+ Search EditText: search_ET
+ Search Button: search_B
+
+
+Main Page:
+ -None
+ 
+Add Comment:
+ ProfName TextView: ac_ProfName_TV
+ Course Name EditText: ac_AddCourse_ET
+// Clarity       
+// Easiness          still need implemenation of custom rating stars 
+// Helpfulness
+ Comment EditText: ac_Comment_ET
+ Submit Button: ac_Submit_B
+ Cancel Button: ac_Cancel_B
+
+ 
+Search Page:
+ Add Prof Button: addProf_B
+ 
+Search Not Found:
+ SearchString: searchString_TV
+ Add Prof Button: addProf_B
+ 
+Add Prof: 
+  Name EditText: ap_name_ET
+  Course EditText: ap_course_ET
+  Comment EditText: ap_comment_ET
+  Submit Button: ap_submit_B
+  Cancel Button: ap_cancel_B
