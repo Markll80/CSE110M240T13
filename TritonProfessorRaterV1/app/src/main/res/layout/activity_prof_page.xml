@@ -9,4 +9,121 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cse110mt13.tritonprofessorraterv1.ProfPage">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Prof Name"
+        android:textSize="32dp"
+        android:id="@+id/Prof_name"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Eassiness:"
+        android:textSize="24dp"
+        android:textColor="#000000"
+        android:id="@+id/Prof_Ess"
+        android:layout_below="@+id/Prof_name"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Helpfulness:"
+        android:textSize="24dp"
+        android:textColor="#000000"
+        android:id="@+id/Prof_Hlp"
+        android:layout_below="@+id/Prof_Ess"
+        android:layout_marginTop="6dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Clarity:"
+        android:textSize="24dp"
+        android:textColor="#000000"
+        android:id="@+id/Prof_Clt"
+        android:layout_below="@+id/Prof_Hlp"
+        android:layout_marginTop="6dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:text="Course No. &#10;Comments:"
+        android:textSize="18dp"
+        android:textColor="#000000"
+        android:id="@+id/Prof_Cmt1"
+        android:background="@drawable/rectangle_drawable_back"
+        android:layout_below="@+id/Prof_Clt"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:text="Course No. &#10;Comments:"
+        android:textSize="18dp"
+        android:textColor="#000000"
+        android:id="@+id/Prof_Cmt2"
+        android:background="@drawable/rectangle_drawable_back"
+        android:layout_below="@+id/Prof_Cmt1"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Like"
+        android:id="@+id/Cmt_Button1"
+        android:layout_alignTop="@+id/Prof_Cmt1"
+        android:layout_alignRight="@+id/Prof_Cmt1"
+        android:layout_alignEnd="@+id/Prof_Cmt1" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Like"
+        android:id="@+id/Cmt_Button2"
+        android:layout_alignTop="@+id/Prof_Cmt2"
+        android:layout_alignRight="@+id/Prof_Cmt2"
+        android:layout_alignEnd="@+id/Prof_Cmt2" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:id="@+id/imageButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="3dp"
+        android:layout_marginRight="3dp"
+        android:src="@mipmap/ic_launcher"
+        />
+
+
+
 </RelativeLayout>
