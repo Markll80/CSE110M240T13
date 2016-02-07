@@ -1,0 +1,21 @@
+Parse.enableLocalDatastore(this);
+ParseObject.registerSubclass(Professor.class);  //---------------
+Parse.initialize(this);
+ParseUser.enableAutomaticUser();
+ParseACL defaultACL = new ParseACL();
+ParseACL.setDefaultACL(defaultACL, true);
+
+Classe Name: Professor
+String name
+int numRatings
+int easiness
+int helpfullness
+int clarity
+Array - comments   
+
+
+Class Name: Comment
+String comment
+int numLikes
+Array - UsersLiked
+

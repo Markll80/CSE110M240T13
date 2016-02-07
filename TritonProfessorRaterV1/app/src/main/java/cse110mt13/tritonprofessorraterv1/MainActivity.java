@@ -17,10 +17,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //parse setup
         Parse.enableLocalDatastore(this);
+        ParseObject.registerSubclass(Professor.class);  //---------------
         Parse.initialize(this);
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         ParseACL.setDefaultACL(defaultACL, true);
+
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
