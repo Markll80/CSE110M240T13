@@ -11,11 +11,11 @@ int numRatings
 int easiness
 int helpfullness
 int clarity
-Array - comments   
+Array - comments   (each element is actually an objectID to a comment in Comment class )
 
 
 Class Name: Comment
 String comment
 int numLikes
-Array - UsersLiked
+Array - UsersLiked   (each element is also an objectID to user's objectID)
 
