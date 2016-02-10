@@ -18,4 +18,4 @@ Class Name: Comment
 String comment
 int numLikes
 Array - UsersLiked   (each element is also an objectID to user's objectID)
-
+String - ProfName (temporary as name of prof, might be changed to objectID of prof later)
