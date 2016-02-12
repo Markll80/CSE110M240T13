@@ -30,7 +30,11 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v){
         switch(v.getId()){
             case R.id.bRegister:
-                startActivity(new Intent(this, Register.class));
+                Bundle username = new Bundle();
+                username.putString("username", etEmail.getText().toString());
+                Intent registerTransition = new Intent(this, Register.class);
+                registerTransition.putExtras(username);
+                startActivity(registerTransition);
                 break;
         }
 
