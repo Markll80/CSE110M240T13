@@ -25,12 +25,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         setupSearchButton();
+
+        Professor profA = new Professor();
+        profA.putName("Prof A");
+        profA.addClarity(4);
+        profA.addEasiness(3);
+        profA.addHelpfulness(1);
+        profA.saveInBackground();
+
 
     }
 

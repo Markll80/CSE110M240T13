@@ -36,6 +36,10 @@ public class Professor extends ParseObject {
         return getInt("Clarity");
     }
 
+    public void putName(String name){
+        put("name",name);
+    }
+
     public boolean addClarity(int clarity){
         if( clarity < 0 || clarity > 5 )
             return false;
@@ -66,10 +70,9 @@ public class Professor extends ParseObject {
         return true;
     }
 
-
+    // TODO: set values for members associated for the comment
     public void addComment(String comment){
-
-
+        add("comments",comment);
 
     }
 

@@ -9,7 +9,7 @@ Classe Name: Professor
 String name
 int numRatings
 int easiness
-int helpfullness
+int helpfulness
 int clarity
 Array - comments   (each element is actually an objectID to a comment in Comment class )
 
@@ -17,5 +17,5 @@ Array - comments   (each element is actually an objectID to a comment in Comment
 Class Name: Comment
 String comment
 int numLikes
-Array - UsersLiked   (each element is also an objectID to user's objectID)
-String - ProfName (temporary as name of prof, might be changed to objectID of prof later)
+Array - UsersLiked   (each element is  an objectID to user's objectID)
+String - ProfID      (objectID of associated prof )
