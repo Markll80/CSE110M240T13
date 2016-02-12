@@ -7,13 +7,12 @@ import com.parse.ParseObject;
 public class Professor extends ParseObject {
 
 
-    public void addProfessor(String name) {
-        ParseObject testObject = new ParseObject("Professor");
-        testObject.put("Name", name);
-        testObject.put("numRatings", 0);
-        testObject.put("Easiness", 0);
-        testObject.put("Helpfulness", 0);
-        testObject.put("Clarity", 0);
+    public void setup(String name) {
+        put("name", name);
+        put("numRatings", 0);
+        put("easiness", 0);
+        put("helpfulness", 0);
+        put("clarity", 0);
     }
 
     public String getName() {
@@ -25,56 +24,72 @@ public class Professor extends ParseObject {
     }
 
     public int getEasiness() {
-        return getInt("Easiness");
+        return getInt("easiness");
     }
 
     public int getHelpfulness() {
-        return getInt("Helpfulness");
+        return getInt("helpfulness");
     }
 
     public int getClarity() {
-        return getInt("Clarity");
+        return getInt("clarity");
     }
 
     public void putName(String name){
         put("name",name);
     }
 
-    public boolean addClarity(int clarity){
+    public void addNumRating(){
+        put("numRatings",getNumRatings()+1);
+    }
+
+    public void addRating(int clarity, int easiness, int helpfulness){
+        addClarity(clarity);
+        addEasiness(easiness);
+        addHelpfulness(helpfulness);
+        addNumRating();
+    }
+
+    private boolean addClarity(int clarity){
         if( clarity < 0 || clarity > 5 )
             return false;
         int averageClarity = getClarity();
         int numCount = getNumRatings();
         int newAvg = ((averageClarity*(numCount++))+clarity)/numCount;
-        put("Clarity", newAvg);
+        put("clarity", newAvg);
         return true;
     }
 
-    public boolean addEasiness(int easiness){
+    private boolean addEasiness(int easiness){
         if( easiness < 0 || easiness > 5 )
             return false;
         int averageEasiness = getEasiness();
         int numCount = getNumRatings();
         int newAvg = ((averageEasiness*(numCount++))+easiness)/numCount;
-        put("Easiness", newAvg);
+        put("easiness", newAvg);
         return true;
     }
 
-    public boolean addHelpfulness(int helpfulness){
+    private boolean addHelpfulness(int helpfulness){
         if( helpfulness < 0 || helpfulness > 5 )
             return false;
         int averageHelpfulness = getHelpfulness();
         int numCount = getNumRatings();
         int newAvg = ((averageHelpfulness*(numCount++))+helpfulness)/numCount;
-        put("Helpfulness", newAvg);
+        put("helpfulness", newAvg);
         return true;
     }
 
-    // TODO: set values for members associated for the comment
     public void addComment(String comment){
         add("comments",comment);
-
     }
+
+    /*
+    // TODO: set values for members associated for the comment
+    public void addComment(Comment comment){
+        add("comments",comment.getObjectId());
+
+    }*/
 
     @Override
     public String toString(){

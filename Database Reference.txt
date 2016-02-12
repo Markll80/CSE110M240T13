@@ -1,5 +1,5 @@
-Parse.enableLocalDatastore(this);
-ParseObject.registerSubclass(Professor.class);  //---------------
+Parse.enableLocalDatastore(this);                  //--------------- have these in every activity page
+ParseObject.registerSubclass(Professor.class);  
 Parse.initialize(this);
 ParseUser.enableAutomaticUser();
 ParseACL defaultACL = new ParseACL();
@@ -19,3 +19,12 @@ String comment
 int numLikes
 Array - UsersLiked   (each element is  an objectID to user's objectID)
 String - ProfID      (objectID of associated prof )
+
+
+//How to add new professors
+Professor profA = new Professor();
+profA.setup("Prof B");
+profA.addRating(1, 1, 1);
+profA.addComment("Avoid this prof at ALL cost!");
+profA.addComment("I would not take his classes again");
+profA.saveInBackground();
