@@ -42,6 +42,16 @@ public class Professor extends ParseObject {
     public void addNumRating(){
         put("numRatings",getNumRatings()+1);
     }
+     /*
+     // Add number of likes on comment at some point
+     */
+    public void setProf(String name, int numRatings, int clarity, int easiness, int helpfulness){
+        put("name", name);
+        put("numRatings", numRatings);
+        put("clarity", clarity);
+        put("easiness", easiness);
+        put("helpfulness", helpfulness);
+    }
 
     public void addRating(int clarity, int easiness, int helpfulness){
         addClarity(clarity);
