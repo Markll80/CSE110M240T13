@@ -14,7 +14,7 @@ public class Comment extends ParseObject{
     }
 
     public String getComment() {
-        return getString("Comment");
+        return getString("comment");
     }
 
     public int getNumLikes() {
@@ -34,12 +34,21 @@ public class Comment extends ParseObject{
         put("numLikes", numLikes);
     }
 
-    public void addComment(String comment){
+    public void setComment(String comment){
         add("comments",comment);
+    }
+
+   /* when user clicks like, this method should be provoked.
+      this method adds user's id to the comment indicating the user liked the comment
+    Parameter: String - object id of the user
+    */
+    public void addUserLike(String userID){
+        add("UsersLiked", userID)
     }
 
     @Override
     public String toString(){
         return getComment() + "\nLikes: "+getNumLikes();
     }
+
 }
