@@ -11,7 +11,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PROF_NAME"
+        android:text="@string/profname"
         android:layout_marginTop="12dp"
         android:textStyle="bold"
         android:textColor="#ff0000"
@@ -30,7 +30,6 @@
         android:layout_below="@+id/bProf"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_weight="1.38"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

@@ -1,8 +1,24 @@
 <resources>
-    <string name="app_name">MUAHAHAHA</string>
+    <string name="app_name">TritonProfRater</string>
     <string name="parse_app_id">QiinPbhiqxWFjEF7FGMM9HuCI6WdTFCaO2MRlCQW</string>
     <string name="parse_client_key">s9BPYGtxQdePN5sOtkA3g5tqPnJnQccRKu8rO0nX</string>
     <string name="title_activity_add_prof">AddProf</string>
     <string name="title_activity_search_page">SearchPage</string>
     <string name="title_activity_add_comment">AddComment</string>
+    <string name="search">Type Prof Name or Class here</string>
+    <string name="searchText">Search</string>
+    <string name="addProf">Add Professor</string>
+    <string name="login_B">Login</string>
+    <string name="register_B">Register</string>
+    <string name="email">UCSD Email</string>
+    <string name="password">Password</string>
+    <string name="profname">Prof Name</string>
+    <string name="coursename">Course Name</string>
+    <string name="easiness">Easiness</string>
+    <string name="helpfulness">Helpfulness</string>
+    <string name="clarity">Clarity</string>
+    <string name="comment">Comment:</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="rating">Ratings:</string>
 </resources>

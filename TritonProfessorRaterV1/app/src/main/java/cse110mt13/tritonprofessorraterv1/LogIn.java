@@ -8,6 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
 
+import com.parse.Parse;
+import com.parse.ParseACL;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+
 public class LogIn extends AppCompatActivity implements View.OnClickListener{
 
     Button bLogin;
@@ -20,6 +25,14 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Parse.enableLocalDatastore(this);
+       // ParseObject.registerSubclass(Professor.class);
+        Parse.initialize(this);
+        ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
+        ParseACL.setDefaultACL(defaultACL, true);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 

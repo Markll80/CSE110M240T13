@@ -13,11 +13,11 @@
     tools:showIn="@layout/activity_search_page">
 
     <Button
-        android:text="Search"
+        android:text="@string/searchText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/search_B"
-        android:layout_alignTop="@+id/search_ET"
+        android:layout_alignBottom="@+id/search_ET"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -111,7 +111,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Professor"
+        android:text="@string/addProf"
         android:id="@+id/sp_AddProf_B"
         android:layout_below="@+id/textView3"
         android:layout_alignParentRight="true"

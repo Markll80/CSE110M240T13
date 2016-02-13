@@ -11,7 +11,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:text="UCSD Email"
+        android:text="@string/email"
         android:layout_height="wrap_content"
         android:id="@+id/textView" />
 
@@ -21,11 +21,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:inputType="text" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:text="Password"
+        android:text="@string/password"
         android:layout_height="wrap_content"
         android:layout_below="@+id/username"
         android:layout_alignParentLeft="true"
@@ -46,8 +47,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Register"
+        android:text="@string/register_B"
         android:layout_below="@+id/password"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_B"
+        android:id="@+id/login_B"
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true"
+        android:minWidth="400dp" />
 
 </RelativeLayout>
