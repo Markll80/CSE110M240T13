@@ -10,8 +10,8 @@ import java.util.List;
 /**
  * Created by Neil on 2/12/2016.
  */
-public class ProfList {
-    List<Professor> professors = new ArrayList<Professor>();
+public class ProfList{
+    public List<Professor> professors = new ArrayList<Professor>();
 
     public ProfList(){
         ParseQuery<Professor> query = new ParseQuery<Professor>("Professor");
@@ -27,4 +27,6 @@ public class ProfList {
             }
         });
     }
+
+
 }

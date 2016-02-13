@@ -4,7 +4,7 @@ import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
 @ParseClassName("Professor")
-public class Professor extends ParseObject {
+public class Professor extends ParseObject{
 
     // this method initializes prof stats
     public void setup(String name) {

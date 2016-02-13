@@ -15,6 +15,9 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener{
     EditText etEmail;
     EditText etPassword;
 
+    ProfList profs = new ProfList();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,9 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener{
         bRegister = (Button)findViewById(R.id.bRegister);
         etEmail = (EditText)findViewById(R.id.username);
         etPassword = (EditText)findViewById(R.id.etPassword);
+        for(Professor professor: profs.professors){
+            System.out.println(professor.toString());
+        }
     }
 
     @Override
