@@ -35,7 +35,7 @@ public class Comment extends ParseObject{
     }
 
     public void setComment(String comment){
-        add("comments",comment);
+        put("comment",comment);
     }
 
    /* when user clicks like, this method should be provoked.
@@ -43,7 +43,7 @@ public class Comment extends ParseObject{
     Parameter: String - object id of the user
     */
     public void addUserLike(String userID){
-        add("UsersLiked", userID)
+        add("UsersLiked", userID);
     }
 
     @Override

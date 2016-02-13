@@ -6,7 +6,7 @@ import com.parse.ParseObject;
 @ParseClassName("Professor")
 public class Professor extends ParseObject {
 
-
+    // this method initializes prof stats
     public void setup(String name) {
         put("name", name);
         put("numRatings", 0);
@@ -15,9 +15,45 @@ public class Professor extends ParseObject {
         put("clarity", 0);
     }
 
-    public String getName() {
-        return getString("Name");
+
+
+  /*
+  use this method to quickly add a rating to the prof
+  Parameter: 3 integers, each corresponding to a rating for clarity, easiness and helpfulness
+  Return: bool - whether adding the rating is successful
+   */
+    public boolean addRating(int clarity, int easiness, int helpfulness){
+        boolean s1 = addClarity(clarity);       //use helper methods to add the rating
+        boolean s2 = addEasiness(easiness);
+        boolean s3 = addHelpfulness(helpfulness);
+        if(!s1 || !s2 || !s3)
+            return false;
+        incrementNumRating();
+        return true;
     }
+
+    /*
+    create a new comment parseobject and save to database
+    *  TODO: complete comment class and add associated prof object id to it
+    * */
+    public void addComment(String comment){
+        Comment commentObj = new Comment();
+        commentObj.putComment(comment);
+        commentObj.saveInBackground();
+    }
+
+   
+
+
+    public void putName(String name){
+        put("name", name);
+    }
+
+    //increment numRatings
+    public void incrementNumRating(){
+        put("numRatings", getNumRatings() + 1);
+    }
+
 
     public int getNumRatings() {
         return getInt("numRatings");
@@ -35,29 +71,8 @@ public class Professor extends ParseObject {
         return getInt("clarity");
     }
 
-    public void putName(String name){
-        put("name",name);
-    }
-
-    public void addNumRating(){
-        put("numRatings",getNumRatings()+1);
-    }
-     /*
-     // Add number of likes on comment at some point
-     */
-    public void setProf(String name, int numRatings, int clarity, int easiness, int helpfulness){
-        put("name", name);
-        put("numRatings", numRatings);
-        put("clarity", clarity);
-        put("easiness", easiness);
-        put("helpfulness", helpfulness);
-    }
-
-    public void addRating(int clarity, int easiness, int helpfulness){
-        addClarity(clarity);
-        addEasiness(easiness);
-        addHelpfulness(helpfulness);
-        addNumRating();
+    public String getName() {
+        return getString("Name");
     }
 
     private boolean addClarity(int clarity){
@@ -90,16 +105,14 @@ public class Professor extends ParseObject {
         return true;
     }
 
-    public void addComment(String comment){
-        add("comments",comment);
+    // used for ParseQuery only, do not use this method to add new prof
+    public void setProf(String name, int numRatings, int clarity, int easiness, int helpfulness){
+        put("name", name);
+        put("numRatings", numRatings);
+        put("clarity", clarity);
+        put("easiness", easiness);
+        put("helpfulness", helpfulness);
     }
-
-    /*
-    // TODO: set values for members associated for the comment
-    public void addComment(Comment comment){
-        add("comments",comment.getObjectId());
-
-    }*/
 
     @Override
     public String toString(){
