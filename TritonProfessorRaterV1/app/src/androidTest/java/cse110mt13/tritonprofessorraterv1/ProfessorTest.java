@@ -55,7 +55,7 @@ public class ProfessorTest {
         }
         else
         {
-            fail();
+            fail("first fail");
         }
 
         addResult = profTest.addRating(5,4,3);
@@ -68,7 +68,47 @@ public class ProfessorTest {
         }
         else
         {
-            fail();
+            fail("second fail");
+        }
+    }
+
+    @Test
+    public void testWrongAdditions()
+    {
+        boolean addResult = profTest.addRating(-1,4,5);
+        if(addResult)
+        {
+            fail("clarity is <0");
+        }
+
+        addResult = profTest.addRating(6,4,5);
+        if(addResult)
+        {
+            fail("clarity is >5");
+        }
+
+        addResult = profTest.addRating(3,-1,5);
+        if(addResult)
+        {
+            fail("easiness is <0");
+        }
+
+        addResult = profTest.addRating(3,6,5);
+        if(addResult)
+        {
+            fail("easiness is >5");
+        }
+
+        addResult = profTest.addRating(3,4,-1);
+        if(addResult)
+        {
+            fail("helpfulness is <0");
+        }
+
+        addResult = profTest.addRating(3,4,6);
+        if(addResult)
+        {
+            fail("helpfulness is >5");
         }
     }
 }
