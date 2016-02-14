@@ -1,0 +1,18 @@
+Cherish:
+Fix UI bug
+
+Ellen:
+https://www.youtube.com/watch?v=UNPFWCNMJPU
+e-mail verification
+
+Eric:
+user registration
+
+Neil:
+all query related functions
+
+Ryan:
+espresso + junit - write testing cases to make sure functions are working properly
+
+Ting:
+refine/customize UI to fit app's needs
