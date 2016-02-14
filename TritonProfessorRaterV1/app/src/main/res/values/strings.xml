@@ -21,6 +21,7 @@
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
     <string name="rating">Ratings:</string>
+
     <string-array name="prof_name">
         <item>name 1</item>
         <item>name 2</item>
@@ -31,5 +32,8 @@
         <item>description 2</item>
         <item>description 3</item>
     </string-array>
+
+
+    <string name="pwdAgain">Type In Password Again</string>
 
 </resources>

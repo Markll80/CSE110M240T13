@@ -57,10 +57,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Register"
-        android:layout_alignTop="@+id/bLogin"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="55dp"
-        android:layout_marginEnd="55dp" />
+        android:layout_marginRight="52dp"
+        android:layout_marginEnd="52dp"
+        android:layout_below="@+id/etPassword"
+        android:layout_alignRight="@+id/etPassword"
+        android:layout_alignEnd="@+id/etPassword" />
 
 </RelativeLayout>
