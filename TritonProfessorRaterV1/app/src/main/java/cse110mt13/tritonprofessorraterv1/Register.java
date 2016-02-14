@@ -8,7 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Register extends AppCompatActivity  {
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
+
+public class Register extends AppCompatActivity {
 
     Button bRegister;
     Button bCancel;
@@ -58,4 +62,24 @@ public class Register extends AppCompatActivity  {
             }
         }
     };
+
+    private void createUser(String username, String password, String email) {
+        //Creating new users
+        ParseUser.logOut();  //important!!!!!!!!!!!
+        ParseUser user = new ParseUser();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Toast.makeText(getApplicationContext(), "Sign Up Sucessful! Please go to your e-mail and verify your account!", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Error: Unable to create account!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
 }
