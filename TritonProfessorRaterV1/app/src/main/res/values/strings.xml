@@ -5,9 +5,9 @@
     <string name="title_activity_add_prof">AddProf</string>
     <string name="title_activity_search_page">SearchPage</string>
     <string name="title_activity_add_comment">AddComment</string>
-    <string name="search">Type Prof Name or Class here</string>
+    <string name="search">Class/Professor Name</string>
     <string name="searchText">Search</string>
-    <string name="addProf">Add Professor</string>
+    <string name="addProf">Add New Professor</string>
     <string name="login_B">Login</string>
     <string name="register_B">Register</string>
     <string name="email">UCSD Email</string>
@@ -21,4 +21,5 @@
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
     <string name="rating">Ratings:</string>
+
 </resources>

@@ -20,19 +20,19 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener{
     EditText etEmail;
     EditText etPassword;
 
-    ProfList profs = new ProfList();
+   ProfList profs;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Parse.enableLocalDatastore(this);
-       // ParseObject.registerSubclass(Professor.class);
+        ParseObject.registerSubclass(Professor.class);
         Parse.initialize(this);
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         ParseACL.setDefaultACL(defaultACL, true);
 
-
+        profs = new ProfList();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
@@ -40,9 +40,9 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener{
         bRegister = (Button)findViewById(R.id.bRegister);
         etEmail = (EditText)findViewById(R.id.username);
         etPassword = (EditText)findViewById(R.id.etPassword);
-        for(Professor professor: profs.professors){
+     /*   for(Professor professor: profs.professors){
             System.out.println(professor.toString());
-        }
+        }*/
     }
 
     @Override

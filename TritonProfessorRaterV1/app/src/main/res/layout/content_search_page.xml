@@ -28,7 +28,17 @@
         android:layout_toLeftOf="@+id/search_B"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="Class/Professor Name" />
+        android:text="@string/search" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addProf"
+        android:id="@+id/sp_AddProf_B"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/search_B"
+        android:layout_alignEnd="@+id/search_B"
+        android:layout_marginBottom="41dp" />
 
     <!--
     <Button
