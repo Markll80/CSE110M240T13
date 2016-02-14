@@ -8,8 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
 
 public class AddComment extends AppCompatActivity {
+
+    private RatingBar ratingC;
+    private RatingBar ratingE;
+    private RatingBar ratingH;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +25,21 @@ public class AddComment extends AppCompatActivity {
 
         findViewById(R.id.ac_Submit_B).setOnClickListener(onclickListener);;
         findViewById(R.id.ac_Cancel_B).setOnClickListener(onclickListener);;
+
+        // addListenerOnRatingC();
     }
 
+    /*
+    public void addListenerOnRatingC(){
+        ratingC =(RatingBar) findViewById(R.id.ratingC);
+        ratingC.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                float ratingC = rating;
+            }
+        });
+    }
+    */
 
     private View.OnClickListener onclickListener = new View.OnClickListener() {
         @Override
