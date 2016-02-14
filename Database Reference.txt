@@ -11,14 +11,17 @@ int numRatings
 int easiness
 int helpfulness
 int clarity
-Array - comments   (each element is actually an objectID to a comment in Comment class )
+File pic
+Array  comments   (each element is actually an objectID to a comment in Comment class )
 
 
 Class Name: Comment
 String comment
 int numLikes
-Array - UsersLiked   (each element is  an objectID to user's objectID)
-String - ProfID      (objectID of associated prof )
+Array  UsersLiked   (each element is  an objectID to user's objectID)
+String  ProfID      (objectID of associated prof )
+String  UserBelongedTo    (objectID of the user)
+
 
 
 //How to add new professors
