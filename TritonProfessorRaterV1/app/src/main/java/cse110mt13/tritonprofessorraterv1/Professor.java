@@ -6,6 +6,11 @@ import com.parse.ParseObject;
 @ParseClassName("Professor")
 public class Professor extends ParseObject{
 
+    public String name;
+    public int numRatings;
+    public int easiness;
+    public int helpfulness;
+    public int clarity;
     // this method initializes prof stats
     public void setup(String name) {
         put("name", name);
@@ -72,7 +77,7 @@ public class Professor extends ParseObject{
     }
 
     public String getName() {
-        return getString("Name");
+        return getString("name");
     }
 
     private boolean addClarity(int clarity){
@@ -107,17 +112,17 @@ public class Professor extends ParseObject{
 
     // used for ParseQuery only, do not use this method to add new prof
     public void setProf(String name, int numRatings, int clarity, int easiness, int helpfulness){
-        put("name", name);
-        put("numRatings", numRatings);
-        put("clarity", clarity);
-        put("easiness", easiness);
-        put("helpfulness", helpfulness);
+        this.name = name;
+        this.numRatings = numRatings;
+        this.clarity = clarity;
+        this.easiness = easiness;
+        this.helpfulness = helpfulness;
     }
 
     @Override
     public String toString(){
-        return getName() + "\nEasiness: "+getEasiness() + "\nHelpfulness: "+getHelpfulness()
-                + "\nClarity: "+getClarity();
+        return name + "\nEasiness: "+ easiness + "\nHelpfulness: "+helpfulness
+                + "\nClarity: "+clarity;
     }
 
 }

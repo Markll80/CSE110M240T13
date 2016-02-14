@@ -3,8 +3,10 @@ package cse110mt13.tritonprofessorraterv1;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ListView list;
     String[] profNames;
     String[] descriptions;
+    ProfList profs;
     int[] images = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Parse.initialize(this);
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
+        defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
 
 
@@ -52,7 +56,16 @@ public class MainActivity extends AppCompatActivity {
         list= (ListView) findViewById(R.id.listView);
         MyAdapter adapter = new MyAdapter(this, profNames, images, descriptions );
         list.setAdapter(adapter);
-
+        profs = new ProfList();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                for(int i = 0; i < profs.professors.size(); i++){
+                    Log.d("crashing", profs.professors.get(i).toString());
+                }
+            }
+        }, 5000);
     }
 
     class MyAdapter extends ArrayAdapter<String>
