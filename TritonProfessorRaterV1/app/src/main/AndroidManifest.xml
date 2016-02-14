@@ -10,7 +10,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".SampleApplication">
         <meta-data
             android:name="com.parse.APPLICATION_ID"
             android:value="QiinPbhiqxWFjEF7FGMM9HuCI6WdTFCaO2MRlCQW" />
@@ -25,6 +26,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".DispatchActivity"
+            android:label="dispatchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".LogIn" />
         <activity android:name=".Register" />
         <activity android:name=".ForgotPassword" />
