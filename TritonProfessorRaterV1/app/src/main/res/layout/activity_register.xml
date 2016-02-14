@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cancel"
-        android:id="@+id/bCancel"
+        android:id="@+id/reg_Cancel"
         android:layout_below="@+id/bRegister"
         android:layout_alignLeft="@+id/bRegister"
         android:layout_alignStart="@+id/bRegister" />
