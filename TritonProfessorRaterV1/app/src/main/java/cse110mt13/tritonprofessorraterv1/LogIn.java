@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +18,7 @@ import com.parse.ParseUser;
 
 import java.util.regex.Pattern;
 
-public class LogIn extends AppCompatActivity implements View.OnClickListener {
+public class LogIn extends AppCompatActivity  {
 
     Button bLogin;
     Button bRegister;
@@ -35,7 +36,6 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-
         textParser = new TextParser();
         bLogin = (Button) findViewById(R.id.bLogin);
         bRegister = (Button) findViewById(R.id.bRegister);
@@ -44,45 +44,57 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
      /*   for(Professor professor: profs.professors){
             System.out.println(professor.toString());
         }*/
+
+        setupButtons();
+
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    private void setupButtons(){
+        bLogin.setOnClickListener(onclickListener);
+        bRegister.setOnClickListener(onclickListener);
 
-            case R.id.bLogin:
-                String email = etEmail.getText().toString();
-                String password = etPassword.getText().toString();
-                boolean validEmail = textParser.validEmail(email);
-                boolean validPassword = textParser.validPassword(password);
-                //display message if not valid password or email
-                if(!validEmail || !validPassword || !validUser(email, password)){
-                    etPassword.clearComposingText();
-                    Toast.makeText(getApplicationContext(), "Invalid Email or Password",
-                            Toast.LENGTH_LONG).show();
-                }
-                else{ //if is validUser, go to mainpage
+    }
 
-                    finish(); //end current activity
-                    startActivity(new Intent(LogIn.this, MainActivity.class));  //TODO: might be changed to Main class
-                }
-                break;
-            
-            case R.id.bRegister:
-                Bundle username = new Bundle();
-                username.putString("username", etEmail.getText().toString());
-                Intent registerTransition = new Intent(this, Register.class);
-                registerTransition.putExtras(username);
-                startActivity(registerTransition);
-                break;
+    private View.OnClickListener onclickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+
+                case R.id.bLogin:
+                    String email = etEmail.getText().toString();
+                    String password = etPassword.getText().toString();
+                    boolean validEmail = textParser.validEmail(email);
+                    boolean validPassword = textParser.validPassword(password);
+                    //display message if not valid password or email
+                    if(!validEmail || !validPassword || !validUser(email, password)){
+
+                        etPassword.clearComposingText();
+                        Toast.makeText(getApplicationContext(), "Invalid Email or password", Toast.LENGTH_LONG).show();
+
+                    }
+                    else{ //if is validUser, go to mainpage
+
+                        finish(); //end current activity
+                        startActivity(new Intent(LogIn.this, MainActivity.class));  //TODO: might be changed to Main class
+                    }
+                    break;
+
+                case R.id.bRegister:
+                    Bundle username = new Bundle();
+                    username.putString("username", etEmail.getText().toString());
+                    Intent registerTransition = new Intent(LogIn.this, Register.class);
+                    registerTransition.putExtras(username);
+                    startActivity(registerTransition);
+                    break;
+            }
         }
+    };
 
-    }
 
     private boolean validUser(String username, String password){
 
 
-        return false;
+        return true;
     }
 }
 

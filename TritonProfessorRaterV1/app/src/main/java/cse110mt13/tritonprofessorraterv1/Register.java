@@ -18,7 +18,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        bRegister = (Button)findViewById(R.id.register);
+        bRegister = (Button)findViewById(R.id.bRegister);
         etUsername = (EditText)findViewById(R.id.username);
         etPassword = (EditText)findViewById(R.id.password);
 
