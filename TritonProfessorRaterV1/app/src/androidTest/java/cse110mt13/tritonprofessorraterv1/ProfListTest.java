@@ -18,6 +18,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
  */
@@ -25,21 +27,35 @@ import org.junit.runner.RunWith;
 public class ProfListTest{
 
     private String username;
+    ProfList testList;
     @Rule
     public ActivityTestRule<SearchPage> mActivityRule = new ActivityTestRule<>(SearchPage.class);
 
     @Before
     public void setUp() throws Exception
     {
-        ProfList testList = new ProfList();
+        testList = new ProfList();
     }
 
     @Test
-    public void CheckProfList(){
-        
+    public void testGetComments()
+    {
+        ArrayList<Comment> comments = testList.getComments("Qtj4d8H1ZC");
+
+        //assert comments should be based on what's on the parse database
+        assertEquals("nneGzg9mNw", comments.get(0));
+        assertEquals("fb56kmvk5s",comments.get(1));
     }
 
+    @Test
+    public void testProfListConst()
+    {
+        ArrayList<Professor> profList = testList.professors;
 
+        //assert professors' information should be based on what's on the parse database
+        assertEquals("Prof B", profList.get(0).getName());
+        assertEquals("Prof A", profList.get(1).getName());
+    }
 }
 
 
