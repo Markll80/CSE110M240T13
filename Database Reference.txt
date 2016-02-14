@@ -24,7 +24,7 @@ String  UserBelongedTo    (objectID of the user)
 
 
 
-//How to add new professors
+//How to add new professors to the database
 Professor profA = new Professor();
 profA.setup("Prof B");
 profA.addRating(1, 1, 1);

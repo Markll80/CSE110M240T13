@@ -1,18 +1,18 @@
 Cherish:
-Fix UI bug
+Parse User + email verification
 
 Ellen:
-https://www.youtube.com/watch?v=UNPFWCNMJPU
-e-mail verification
+refine add comment UI page + implement custom rating bar (5 stars)
+
 
 Eric:
-user registration
+this and that, so just stuffs
 
 Neil:
-all query related functions
+all query related functions - query for comments and be able to append a comment's objectID to the prof's comments array
 
 Ryan:
 espresso + junit - write testing cases to make sure functions are working properly
 
 Ting:
-refine/customize UI to fit app's needs
+refine/customize UI to fit app's needs  - for search prof page (incorporate layout inflator)
