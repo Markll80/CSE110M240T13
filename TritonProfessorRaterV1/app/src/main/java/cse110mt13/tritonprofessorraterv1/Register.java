@@ -63,6 +63,11 @@ public class Register extends AppCompatActivity {
         }
     };
 
+    /* create a user using the given username, password and e-mail,
+       if successful, an email will be sent, a toast will also show up indicating the user to
+       go to his/her email to verify the email, else a fail message will be displayed
+       Precondition: e-mail and password is valid
+     */
     private void createUser(String username, String password, String email) {
         //Creating new users
         ParseUser.logOut();  //important!!!!!!!!!!!
