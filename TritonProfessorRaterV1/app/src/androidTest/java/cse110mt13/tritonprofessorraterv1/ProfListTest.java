@@ -15,6 +15,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 
 /**
@@ -26,6 +27,12 @@ public class ProfListTest{
     private String username;
     @Rule
     public ActivityTestRule<SearchPage> mActivityRule = new ActivityTestRule<>(SearchPage.class);
+
+    @Before
+    public void setUp() throws Exception
+    {
+        ProfList testList = new ProfList();
+    }
 
     @Test
     public void CheckProfList(){

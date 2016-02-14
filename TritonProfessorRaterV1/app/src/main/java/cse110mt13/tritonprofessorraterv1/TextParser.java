@@ -25,9 +25,9 @@ public class TextParser {
     }
 
 
-    // passwrod requirement: > 6 characters, must have at least one letter and number
+    // passwrod requirement: > 6 and < 16 characters, must have at least one letter and number
     public static boolean validPassword(String password){
-        if(password.length() <= 6 || password.isEmpty() )
+        if(password.length() <= 6 || password.length() >=16 || password.isEmpty() )
             return false;
         boolean containsLetter = false;
         boolean containsNumber = false;
