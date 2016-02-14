@@ -21,6 +21,8 @@ import com.parse.ParseACL;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     ListView list;
@@ -62,7 +64,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 for(int i = 0; i < profs.professors.size(); i++){
-                    Log.d("crashing", profs.professors.get(i).toString());
+                    Log.d("ProfListTest", profs.professors.get(i).toString());
+                    final ArrayList<Comment> testComments = profs.getComments(profs.professors.get(i).getObjectID());
+                    final Handler handler1 = new Handler();
+                    handler1.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            for (int i = 0; i < testComments.size(); i++) {
+                                Log.d("getCommentsTest", testComments.toString());
+                            }
+                        }
+                    }, 5000);
                 }
             }
         }, 5000);

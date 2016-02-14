@@ -1,12 +1,20 @@
 package cse110mt13.tritonprofessorraterv1;
 
+import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseClassName;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.List;
 
 
 @ParseClassName("Comment")
 public class Comment extends ParseObject{
 
+    public String comment;
+    public int numLikes;
 
     public void setup(String comment){
         put("comment", comment);
@@ -27,6 +35,12 @@ public class Comment extends ParseObject{
 
     public void addNumLikes(){
         put("numLikes",getNumLikes()+1);
+    }
+
+    // used for ParseQuery only, do not use this method to add new comment
+    public void makeNewComment(String comment, int numLikes){
+        this.comment = comment;
+        this.numLikes = numLikes;
     }
 
     public void setComment(String comment, int numLikes){
@@ -50,5 +64,6 @@ public class Comment extends ParseObject{
     public String toString(){
         return getComment() + "\nLikes: "+getNumLikes();
     }
+
 
 }

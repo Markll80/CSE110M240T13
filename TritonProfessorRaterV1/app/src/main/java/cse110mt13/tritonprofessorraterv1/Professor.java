@@ -3,6 +3,10 @@ package cse110mt13.tritonprofessorraterv1;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
+import org.json.JSONArray;
+
+import java.lang.reflect.Array;
+
 @ParseClassName("Professor")
 public class Professor extends ParseObject{
 
@@ -11,6 +15,8 @@ public class Professor extends ParseObject{
     public int easiness;
     public int helpfulness;
     public int clarity;
+    public String objectId;
+
     // this method initializes prof stats
     public void setup(String name) {
         put("name", name);
@@ -80,6 +86,14 @@ public class Professor extends ParseObject{
         return getString("name");
     }
 
+    public String getObjectID() {
+        return getString("objectId");
+    }
+
+    public JSONArray getComments(){
+        return getJSONArray("comments");
+    }
+
     private boolean addClarity(int clarity){
         if( clarity < 0 || clarity > 5 )
             return false;
@@ -111,12 +125,14 @@ public class Professor extends ParseObject{
     }
 
     // used for ParseQuery only, do not use this method to add new prof
-    public void setProf(String name, int numRatings, int clarity, int easiness, int helpfulness){
+    public void setProf(String name, int numRatings, int clarity, int easiness, int helpfulness,
+                        String objectId){
         this.name = name;
         this.numRatings = numRatings;
         this.clarity = clarity;
         this.easiness = easiness;
         this.helpfulness = helpfulness;
+        this.objectId = objectId;
     }
 
     @Override
