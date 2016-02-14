@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
@@ -12,6 +14,9 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
+
+    String[] data = {"professor1", "professor2", "professor3"};
+    ListView l;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setupSearchButton();
+
+        l= (ListView) findViewById(R.id.listView);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.single_row,R.id.textView8,data);
+        l.setAdapter(adapter);
 
 
 
