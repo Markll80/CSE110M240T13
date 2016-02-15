@@ -117,8 +117,8 @@
         android:inputType="text" />
 
     <RatingBar
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_width="110dp"
+        android:layout_height="22dp"
         android:id="@+id/ratingC"
         android:layout_alignTop="@+id/acClarity"
         android:layout_alignLeft="@+id/ac_AddCourse_ET"
@@ -130,8 +130,8 @@
         style="@style/newRatingBar" />
 
     <RatingBar
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_width="110dp"
+        android:layout_height="22dp"
         android:id="@+id/ratingE"
         android:layout_alignTop="@+id/acEasy"
         android:layout_alignLeft="@+id/acEasy"
@@ -139,19 +139,19 @@
         android:numStars="5"
         android:rating="0"
         android:stepSize="1"
-        style="?android:attr/ratingBarStyleIndicator"/>
+        style="@style/newRatingBar"/>
 
     <RatingBar
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_width="110dp"
+        android:layout_height="22dp"
+        style="@style/newRatingBar"
         android:id="@+id/ratingH"
         android:layout_alignTop="@+id/acHelp"
         android:layout_alignLeft="@+id/acHelp"
         android:layout_alignStart="@+id/ac_AddCourse_ET"
         android:numStars="5"
         android:rating="0"
-        android:stepSize="1"
-        style="?android:attr/ratingBarStyleIndicator"/>
+        android:stepSize="1" />
 
     <TextView
         android:layout_width="match_parent"
