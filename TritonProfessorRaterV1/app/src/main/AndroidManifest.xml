@@ -35,8 +35,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LogIn" />
-        <activity android:name=".Register" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignupActivity" />
         <activity android:name=".ForgotPassword" />
         <activity
             android:name=".AddProf"
