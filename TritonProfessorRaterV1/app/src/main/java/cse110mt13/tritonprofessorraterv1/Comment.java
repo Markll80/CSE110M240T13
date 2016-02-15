@@ -62,7 +62,7 @@ public class Comment extends ParseObject{
 
     @Override
     public String toString(){
-        return getComment() + "\nLikes: "+getNumLikes();
+        return comment + "\nLikes: "+numLikes;
     }
 
 

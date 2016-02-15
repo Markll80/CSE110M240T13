@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         //parse setup
         Parse.enableLocalDatastore(this);
         ParseObject.registerSubclass(Professor.class);
+        ParseObject.registerSubclass(Comment.class);
         Parse.initialize(this);
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
@@ -58,26 +59,16 @@ public class MainActivity extends AppCompatActivity {
         list= (ListView) findViewById(R.id.listView);
         MyAdapter adapter = new MyAdapter(this, profNames, images, descriptions );
         list.setAdapter(adapter);
+        Log.d("test", "hi");
         profs = new ProfList();
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                for(int i = 0; i < profs.professors.size(); i++){
-                    Log.d("ProfListTest", profs.professors.get(i).toString());
-                    final ArrayList<Comment> testComments = profs.getComments(profs.professors.get(i).getObjectID());
-                    final Handler handler1 = new Handler();
-                    handler1.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            for (int i = 0; i < testComments.size(); i++) {
-                                Log.d("getCommentsTest", testComments.toString());
-                            }
-                        }
-                    }, 5000);
-                }
+        profs.nameSearch("B");
+        for(int i = 0; i < profs.professors.size(); i++) {
+            Log.d("searchTest", profs.professors.get(i).toString());
+            ArrayList<Comment> testComments = profs.getComments(profs.professors.get(i).getObjectID());
+            for (int j = 0; j < testComments.size(); j++) {
+                Log.d("getCommentsTest", testComments.get(j).toString());
             }
-        }, 5000);
+        }
     }
 
     class MyAdapter extends ArrayAdapter<String>

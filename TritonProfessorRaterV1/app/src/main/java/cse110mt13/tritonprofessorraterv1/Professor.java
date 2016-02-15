@@ -1,6 +1,7 @@
 package cse110mt13.tritonprofessorraterv1;
 
 import com.parse.ParseClassName;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 
 import org.json.JSONArray;
@@ -49,8 +50,16 @@ public class Professor extends ParseObject{
     * */
     public void addComment(String comment){
         Comment commentObj = new Comment();
-        commentObj.putComment(comment);
-        commentObj.saveInBackground();
+        commentObj.setup(comment);
+        try {
+            commentObj.save();
+        }
+        catch(ParseException e){}
+        getComments().put(commentObj.getObjectId());
+        try {
+            this.save();
+        }
+        catch(ParseException e1){}
     }
 
    
@@ -86,8 +95,9 @@ public class Professor extends ParseObject{
         return getString("name");
     }
 
-    public String getObjectID() {
-        return getString("objectId");
+    //ONLY USE THIS METHOD ON LOCALLY CREATED PROFESSORS
+    public String getObjectID(){
+        return objectId;
     }
 
     public JSONArray getComments(){
@@ -134,6 +144,7 @@ public class Professor extends ParseObject{
         this.helpfulness = helpfulness;
         this.objectId = objectId;
     }
+
 
     @Override
     public String toString(){
