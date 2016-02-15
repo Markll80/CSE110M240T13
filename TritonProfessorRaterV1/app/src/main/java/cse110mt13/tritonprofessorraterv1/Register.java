@@ -13,7 +13,7 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 public class Register extends AppCompatActivity {
-
+/*
     Button bRegister;
     Button bCancel;
     EditText etUsername;
@@ -61,14 +61,14 @@ public class Register extends AppCompatActivity {
                     break;
             }
         }
-    };
+    };*/
 
     /* create a user using the given username, password and e-mail,
        if successful, an email will be sent, a toast will also show up indicating the user to
        go to his/her email to verify the email, else a fail message will be displayed
        Precondition: e-mail and password is valid
      */
-    private void createUser(String username, String password, String email) {
+  /*  private void createUser(String username, String password, String email) {
         //Creating new users
         ParseUser.logOut();  //important!!!!!!!!!!!
         ParseUser user = new ParseUser();
@@ -86,5 +86,5 @@ public class Register extends AppCompatActivity {
             }
         });
 
-    }
+    }*/
 }

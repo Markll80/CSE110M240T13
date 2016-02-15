@@ -19,7 +19,7 @@ import com.parse.ParseUser;
 import java.util.regex.Pattern;
 
 public class LogIn extends AppCompatActivity  {
-
+/*
     Button bLogin;
     Button bRegister;
     EditText etEmail;
@@ -40,12 +40,12 @@ public class LogIn extends AppCompatActivity  {
         bLogin = (Button) findViewById(R.id.bLogin);
         bRegister = (Button) findViewById(R.id.bRegister);
         etEmail = (EditText) findViewById(R.id.username);
-        etPassword = (EditText) findViewById(R.id.etPassword);
+        etPassword = (EditText) findViewById(R.id.etPassword);     */
      /*   for(Professor professor: profs.professors){
             System.out.println(professor.toString());
         }*/
 
-        setupButtons();
+    /*    setupButtons();
 
     }
 
@@ -95,6 +95,6 @@ public class LogIn extends AppCompatActivity  {
 
 
         return true;
-    }
+    }  */
 }
 
