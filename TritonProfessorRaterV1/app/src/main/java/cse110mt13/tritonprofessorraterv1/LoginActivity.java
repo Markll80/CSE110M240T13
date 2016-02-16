@@ -12,6 +12,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.Parse;
+import com.parse.ParseACL;
+import com.parse.ParseUser;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -29,6 +33,13 @@ public class LoginActivity extends AppCompatActivity{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this);
+        ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
+        ParseACL.setDefaultACL(defaultACL, true);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         ButterKnife.inject(this);
@@ -90,6 +101,7 @@ public class LoginActivity extends AppCompatActivity{
                 // TODO: Implement successful signup logic here
                 // By default we just finish the Activity and log them in automatically
                 this.finish();
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         }
     }
