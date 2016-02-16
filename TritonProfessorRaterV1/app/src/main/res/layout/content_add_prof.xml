@@ -201,7 +201,7 @@
 
         <RatingBar
             android:layout_width="110dp"
-            android:layout_height="25dp"
+            android:layout_height="22dp"
             android:id="@+id/ap_RatingH"
             android:layout_alignTop="@+id/helpfulness"
             android:layout_toRightOf="@+id/helpfulness"

@@ -140,7 +140,6 @@
         android:rating="0"
         android:stepSize="1"
         style="@style/newRatingBar"
-        android:layout_above="@+id/ac_RatingH"
         android:layout_alignRight="@+id/ac_RatingH"
         android:layout_alignEnd="@+id/ac_RatingH" />
 
