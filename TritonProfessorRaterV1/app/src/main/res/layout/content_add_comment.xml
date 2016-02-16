@@ -139,7 +139,10 @@
         android:numStars="5"
         android:rating="0"
         android:stepSize="1"
-        style="@style/newRatingBar"/>
+        style="@style/newRatingBar"
+        android:layout_above="@+id/ac_RatingH"
+        android:layout_alignRight="@+id/ac_RatingH"
+        android:layout_alignEnd="@+id/ac_RatingH" />
 
     <RatingBar
         android:layout_width="110dp"
@@ -151,7 +154,9 @@
         android:layout_alignStart="@+id/ac_AddCourse_ET"
         android:numStars="5"
         android:rating="0"
-        android:stepSize="1" />
+        android:stepSize="1"
+        android:layout_alignRight="@+id/ac_RatingC"
+        android:layout_alignEnd="@+id/ac_RatingC" />
 
     <TextView
         android:layout_width="match_parent"

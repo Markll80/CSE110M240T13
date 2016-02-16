@@ -54,7 +54,7 @@ public class AddComment extends AppCompatActivity {
                     break;
                 case R.id.ac_Cancel_B:
                     finish(); //end current activity
-                    startActivity(new Intent(AddComment.this, ProfPage.class)); //create a new activity
+                    startActivity(new Intent(AddComment.this, MainActivity.class)); //create a new activity
                     break;
             }
         }
