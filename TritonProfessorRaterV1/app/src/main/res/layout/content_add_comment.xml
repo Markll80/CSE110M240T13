@@ -119,7 +119,7 @@
     <RatingBar
         android:layout_width="110dp"
         android:layout_height="22dp"
-        android:id="@+id/ratingC"
+        android:id="@+id/ac_RatingC"
         android:layout_alignTop="@+id/acClarity"
         android:layout_alignLeft="@+id/ac_AddCourse_ET"
         android:layout_alignStart="@+id/ac_AddCourse_ET"
@@ -132,7 +132,7 @@
     <RatingBar
         android:layout_width="110dp"
         android:layout_height="22dp"
-        android:id="@+id/ratingE"
+        android:id="@+id/ac_RatingE"
         android:layout_alignTop="@+id/acEasy"
         android:layout_alignLeft="@+id/acEasy"
         android:layout_alignStart="@+id/ac_AddCourse_ET"
@@ -145,7 +145,7 @@
         android:layout_width="110dp"
         android:layout_height="22dp"
         style="@style/newRatingBar"
-        android:id="@+id/ratingH"
+        android:id="@+id/ac_RatingH"
         android:layout_alignTop="@+id/acHelp"
         android:layout_alignLeft="@+id/acHelp"
         android:layout_alignStart="@+id/ac_AddCourse_ET"

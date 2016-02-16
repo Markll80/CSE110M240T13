@@ -9,9 +9,9 @@ Main Page:
 Add Comment:
  ProfName TextView: ac_ProfName_TV
  Course Name EditText: ac_AddCourse_ET
-// Clarity       
-// Easiness          still need implemenation of custom rating stars 
-// Helpfulness
+ Clarity: ac_RatingC       
+ Easiness: ac_RatingE          
+ Helpfulness: ac_RatingH
  Comment EditText: ac_Comment_ET
  Submit Button: ac_Submit_B
  Cancel Button: ac_Cancel_B
@@ -30,3 +30,7 @@ Add Prof:
   Comment EditText: ap_comment_ET
   Submit Button: ap_submit_B
   Cancel Button: ap_cancel_B
+  Overall: Rating: ap_Rating
+  Clarity: ap_RatingC       
+  Easiness: ap_RatingE          
+  Helpfulness: ap_RatingH

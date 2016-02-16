@@ -166,11 +166,11 @@
         <RatingBar
             android:layout_width="110dp"
             android:layout_height="22dp"
-            android:id="@+id/rtbHighScore"
+            android:id="@+id/ap_Rating"
             android:numStars="5"
             android:rating="0"
             android:stepSize="1"
-            android:layout_above="@+id/AddratingE"
+            android:layout_above="@+id/ap_RatingE"
             android:layout_toRightOf="@+id/rating"
             android:layout_toEndOf="@+id/rating"
             style="@style/newRatingBar"/>
@@ -178,7 +178,7 @@
         <RatingBar
             android:layout_width="110dp"
             android:layout_height="22dp"
-            android:id="@+id/AddratingE"
+            android:id="@+id/ap_RatingE"
             android:numStars="5"
             android:rating="0"
             android:stepSize="1"
@@ -190,7 +190,7 @@
         <RatingBar
             android:layout_width="110dp"
             android:layout_height="22dp"
-            android:id="@+id/AddRatingC"
+            android:id="@+id/ap_RatingC"
             android:layout_alignTop="@+id/clarity"
             android:layout_toRightOf="@+id/clarity"
             android:layout_toEndOf="@+id/clarity"
@@ -202,7 +202,7 @@
         <RatingBar
             android:layout_width="110dp"
             android:layout_height="25dp"
-            android:id="@+id/AddRatingH"
+            android:id="@+id/ap_RatingH"
             android:layout_alignTop="@+id/helpfulness"
             android:layout_toRightOf="@+id/helpfulness"
             android:layout_toEndOf="@+id/helpfulness"
