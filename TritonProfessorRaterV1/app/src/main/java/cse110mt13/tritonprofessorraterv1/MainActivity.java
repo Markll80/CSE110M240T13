@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
     String[] profNames;
     String[] descriptions;
     ProfList profs;
-    int[] images = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
+    int[] images = {R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher};
+    //int[] images = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //parse setup
