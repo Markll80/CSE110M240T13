@@ -46,6 +46,21 @@
         <item>description 2</item>
         <item>description 3</item>
     </string-array>
+    <string-array name="className">
+        <item>course 1</item>
+        <item>course 2</item>
+        <item>course 3</item>
+    </string-array>
+    <integer-array name="numOfLikes">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+    <string-array name="comment">
+        <item>comment 1</item>
+        <item>comment 2</item>
+        <item>comment 3</item>
+    </string-array>
 
 
     <string name="pwdAgain">Type In Password Again</string>

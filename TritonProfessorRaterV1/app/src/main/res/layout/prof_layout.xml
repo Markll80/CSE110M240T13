@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:textSize="20sp"
+        android:id="@+id/className"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/commentText"
+        android:textSize="25sp"
+        android:layout_below="@+id/className"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/numOfLikes"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/commentText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="num" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Like"
+        android:id="@+id/Like"
+        android:layout_below="@+id/commentText"
+        android:layout_toRightOf="@+id/numOfLikes"
+        android:layout_toEndOf="@+id/numOfLikes" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Report"
+        android:id="@+id/Report"
+        android:layout_below="@+id/commentText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:id="@+id/Edit"
+        android:layout_below="@+id/commentText"
+        android:layout_toLeftOf="@+id/Report"
+        android:layout_toStartOf="@+id/Report" />
+
+</RelativeLayout>
