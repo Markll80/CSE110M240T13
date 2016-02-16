@@ -82,8 +82,8 @@
 
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="25dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/rating"
             android:id="@+id/rating"
@@ -92,8 +92,8 @@
             android:layout_alignParentStart="true" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="25dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/easiness"
             android:id="@+id/easiness"
@@ -103,17 +103,6 @@
             style="@style/Animation.AppCompat.DropDownUp"
             android:textColor="#f96666" />
 
-        <RatingBar
-            android:id="@+id/rtbHighScore"
-            android:layout_width="200dp"
-            android:layout_height="20dp"
-            android:numStars="5"
-            android:max="100"
-            android:rating="0.0"
-            android:stepSize="0.0"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_alignBottom="@+id/easiness"
-            android:layout_centerHorizontal="true" />
 
         <EditText
             android:layout_width="300dp"
@@ -148,37 +137,9 @@
             android:layout_toRightOf="@+id/comment"
             android:layout_toEndOf="@+id/comment" />
 
-        <RatingBar
-            android:id="@+id/ratingC"
-            android:layout_width="200dp"
-            android:layout_height="20dp"
-            android:numStars="5"
-            android:max="100"
-            android:rating="0.0"
-            android:stepSize="0.0"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_alignBottom="@+id/easiness"
-            android:layout_centerHorizontal="true" />
-
-        <RatingBar
-            android:id="@+id/ratingH"
-            android:layout_width="180dp"
-            android:layout_height="20dp"
-            android:numStars="5"
-            android:max="100"
-            android:rating="0.0"
-            android:stepSize="0.0"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_alignBottom="@+id/easiness"
-            android:layout_alignRight="@+id/ap_comment_ET"
-            android:layout_alignEnd="@+id/ap_comment_ET"
-            android:layout_alignTop="@+id/rtbHighScore"
-            android:layout_alignLeft="@+id/ap_cancel_B"
-            android:layout_alignStart="@+id/ap_cancel_B" />
-
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="25dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/clarity"
             android:id="@+id/clarity"
@@ -191,8 +152,8 @@
             android:textColorHint="#e97910" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="25dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/helpfulness"
             android:id="@+id/helpfulness"
@@ -201,6 +162,54 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="5dp"
             android:textColor="#f96666" />
+
+        <RatingBar
+            android:layout_width="110dp"
+            android:layout_height="22dp"
+            android:id="@+id/rtbHighScore"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="1"
+            android:layout_above="@+id/AddratingE"
+            android:layout_toRightOf="@+id/rating"
+            android:layout_toEndOf="@+id/rating"
+            style="@style/newRatingBar"/>
+
+        <RatingBar
+            android:layout_width="110dp"
+            android:layout_height="22dp"
+            android:id="@+id/AddratingE"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="1"
+            android:layout_alignTop="@+id/easiness"
+            android:layout_toRightOf="@+id/easiness"
+            android:layout_toEndOf="@+id/easiness"
+            style="@style/newRatingBar"/>
+
+        <RatingBar
+            android:layout_width="110dp"
+            android:layout_height="22dp"
+            android:id="@+id/AddRatingC"
+            android:layout_alignTop="@+id/clarity"
+            android:layout_toRightOf="@+id/clarity"
+            android:layout_toEndOf="@+id/clarity"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="1"
+            style="@style/newRatingBar"/>
+
+        <RatingBar
+            android:layout_width="110dp"
+            android:layout_height="25dp"
+            android:id="@+id/AddRatingH"
+            android:layout_alignTop="@+id/helpfulness"
+            android:layout_toRightOf="@+id/helpfulness"
+            android:layout_toEndOf="@+id/helpfulness"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="1"
+            style="@style/newRatingBar"/>
 
     </RelativeLayout>
 </ScrollView>
