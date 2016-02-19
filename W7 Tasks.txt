@@ -15,4 +15,4 @@ Ryan:
 BDD/espressso tests on the UI
 
 Ting:
-finalize search page (showing ratings on each professor)
+finalize main page (showing ratings on each professor)
