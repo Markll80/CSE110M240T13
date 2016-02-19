@@ -1,0 +1,18 @@
+Cherish:
+polish professor page(backgrounds, font size, looks after actual data)
+
+Ellen:
+backend activities for addProf page
+
+
+Eric:
+setup another backend class  named "Class", used for class search function
+
+Neil:
+query for retrieving and editing comments
+
+Ryan:
+BDD/espressso tests on the UI
+
+Ting:
+finalize search page (showing ratings on each professor)
