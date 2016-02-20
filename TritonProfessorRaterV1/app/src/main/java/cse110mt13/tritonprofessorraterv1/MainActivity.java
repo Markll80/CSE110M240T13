@@ -22,12 +22,16 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity {
 
     ListView list;
-    String[] profNames;
-    String[] descriptions;
+    //String[] profNames;
+    Vector<String> profNames =  new Vector<>();
+    Vector<String> easiness = new Vector<>();
+    Vector<String> helpfulness = new Vector<>();
+    Vector<String> clarity = new Vector<>();
     ProfList profs;
     int[] images = {R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher};
     //int[] images = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
@@ -37,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         Parse.enableLocalDatastore(this);
         ParseObject.registerSubclass(Professor.class);
         ParseObject.registerSubclass(Comment.class);
-        ParseObject.registerSubclass(Course.class);
         Parse.initialize(this);
         ParseUser.logOut();
         ParseUser.enableAutomaticUser();
@@ -56,37 +59,55 @@ public class MainActivity extends AppCompatActivity {
 
         //l.setAdapter(adapter);
         Resources res = getResources();
-        profNames = res.getStringArray(R.array.prof_name);
-        descriptions = res.getStringArray(R.array.descriptions);
+        ProfList nameList = new ProfList();
+        //Log.d("ratingTest", "Easiness: " + nameList.professors.g);
+        String easy = "easiness : ";
+        String help = "helpfulness : ";
+        String clear = "clarity : ";
+        for(Professor name: nameList.professors){
+            profNames.add(name.getName());
+            easy = easy + name.getEasiness();
+            Log.d("getEasinessTest", "Easiness: " + name.getEasiness());
+            Log.d("easyTest", "easy : " + easy);
+            help = help + name.getHelpfulness();
+            clear = clear + name.getClarity();
+            easiness.add(easy);
+            helpfulness.add(help);
+            clarity.add(clear);
+        }
 
         list= (ListView) findViewById(R.id.listView);
-        MyAdapter adapter = new MyAdapter(this, profNames, images, descriptions );
+        MyAdapter adapter = new MyAdapter(this, profNames, images, easiness, helpfulness, clarity);
         list.setAdapter(adapter);
         Log.d("test", "hi");
-        profs = new ProfList();
-        profs.nameSearch("CSE100");
+       /*profs = new ProfList();
+        //profs.nameSearch("B");
         for(int i = 0; i < profs.professors.size(); i++) {
             Log.d("searchTest", profs.professors.get(i).toString());
-            ArrayList<Comment> testComments = profs.getComments(profs.professors.get(i).getObjID());
+            ArrayList<Comment> testComments = profs.getComments(profs.professors.get(i).getObjectID());
             for (int j = 0; j < testComments.size(); j++) {
                 Log.d("getCommentsTest", testComments.get(j).toString());
             }
-        }
+        }*/
     }
 
     class MyAdapter extends ArrayAdapter<String>
     {
         Context context;
         int[] images;
-        String[] nameArray;
-        String[] descArray;
-        MyAdapter(Context c, String[] prof_name, int imgs[], String[] desc)
+        Vector<String> nameArray;
+        Vector<String> easyR;
+        Vector<String> helpfulR;
+        Vector<String> clarityR;
+        MyAdapter(Context c, Vector<String> prof_name, int imgs[], Vector<String> easiness, Vector<String> helpfulness, Vector<String> clarity)
         {
             super(c, R.layout.single_row, R.id.textView9, prof_name);
             this.context = c;
             this.nameArray = prof_name;
             this.images = imgs;
-            this.descArray = desc;
+            this.easyR = easiness;
+            this.helpfulR = helpfulness;
+            this.clarityR = clarity;
         }
 
         @Override
@@ -95,11 +116,14 @@ public class MainActivity extends AppCompatActivity {
             View row = inflater.inflate(R.layout.single_row, parent, false);
             ImageView myImage = (ImageView)row.findViewById(R.id.imageView);
             TextView myProfNames = (TextView) row.findViewById(R.id.textView9);
-            TextView myDescription = (TextView) row.findViewById(R.id.textView10);
-
+            TextView myEasiness = (TextView) row.findViewById(R.id.easiness);
+            TextView myHelpfulness = (TextView) row.findViewById(R.id.helpfulness);
+            TextView myClarity = (TextView) row.findViewById(R.id.clarity);
             myImage.setImageResource(images[position]);
-            myProfNames.setText(nameArray[position]);
-            myDescription.setText(descArray[position]);
+            myProfNames.setText(nameArray.get(position));
+            myEasiness.setText(easyR.get(position));
+            myHelpfulness.setText(helpfulR.get(position));
+            myClarity.setText(clarityR.get(position));
 
             return row;
         }

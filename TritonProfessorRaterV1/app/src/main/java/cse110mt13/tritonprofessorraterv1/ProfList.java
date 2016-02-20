@@ -30,8 +30,10 @@ public class ProfList{
         }
         catch(ParseException e){
         }
+        //Log.d("ProfListDebug", "Query Size:"+objects.size());
         for (Professor prof : objects) {
             Professor newProf = new Professor();
+            Log.d("ProfListDebug", "Prof Query: "+prof.getName());
             newProf.setProf(prof.getName(), prof.getNumRatings(), prof.getClarity(),
                     prof.getEasiness(), prof.getHelpfulness(), prof.getComments(), prof.getObjectId());
             professors.add(newProf);

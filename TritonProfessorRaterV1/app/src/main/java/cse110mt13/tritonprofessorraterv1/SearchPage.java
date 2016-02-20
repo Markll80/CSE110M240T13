@@ -17,11 +17,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.Vector;
+
 public class SearchPage extends AppCompatActivity {
     //UI--- search page
     int[] searcImages = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
-    String[] searchNames;
-    String[] searchDesc;
+    Vector<String> searchNames =  new Vector<>();
+    Vector<String> easiness = new Vector<>();
+    Vector<String> helpfulness = new Vector<>();
+    Vector<String> clarity = new Vector<>();
     ListView l;
 
     @Override
@@ -36,11 +40,22 @@ public class SearchPage extends AppCompatActivity {
         findViewById(R.id.sp_AddProf_B).setOnClickListener(onclickListener);
         //initialization for main page;
         Resources res = getResources();
-        searchNames = res.getStringArray(R.array.prof_name);
-        searchDesc = res.getStringArray(R.array.descriptions);
+        ProfList nameList = new ProfList();
+        String easy = "easiness : ";
+        String help = "helpfulness : ";
+        String clear = "clarity : ";
+        for(Professor name: nameList.professors){
+            searchNames.add(name.name);
+            easy = easy + name.getEasiness();
+            help = help + name.getHelpfulness();
+            clear = clear + name.getClarity();
+            easiness.add(easy);
+            helpfulness.add(help);
+            clarity.add(clear);
+        }
         //get listview for main page
         l= (ListView) findViewById(R.id.listViewSearch_page);
-        MyAdapter adapter = new MyAdapter(this, searchNames, searcImages, searchDesc);
+        MyAdapter adapter = new MyAdapter(this, searchNames, searcImages,easiness, helpfulness, clarity);
         l.setAdapter(adapter);
     }
 
@@ -48,15 +63,19 @@ public class SearchPage extends AppCompatActivity {
     {
         Context context;
         int[] images;
-        String[] nameArray;
-        String[] descArray;
-        MyAdapter(Context c, String[] prof_name, int imgs[], String[] desc)
+        Vector<String> nameArray;
+        Vector<String> easyR;
+        Vector<String> helpfulR;
+        Vector<String> clarityR;
+        MyAdapter(Context c, Vector<String> prof_name, int imgs[], Vector<String> easiness, Vector<String> helpfulness, Vector<String> clarity)
         {
             super(c, R.layout.single_row, R.id.textView9, prof_name);
             this.context = c;
             this.nameArray = prof_name;
             this.images = imgs;
-            this.descArray = desc;
+            this.easyR = easiness;
+            this.helpfulR = helpfulness;
+            this.clarityR = clarity;
         }
 
         @Override
@@ -65,11 +84,14 @@ public class SearchPage extends AppCompatActivity {
             View row = inflater.inflate(R.layout.single_row, parent, false);
             ImageView myImage = (ImageView)row.findViewById(R.id.imageView);
             TextView myProfNames = (TextView) row.findViewById(R.id.textView9);
-            TextView myDescription = (TextView) row.findViewById(R.id.textView10);
-
+            TextView myEasiness = (TextView) row.findViewById(R.id.easiness);
+            TextView myHelpfulness = (TextView) row.findViewById(R.id.helpfulness);
+            TextView myClarity = (TextView) row.findViewById(R.id.clarity);
             myImage.setImageResource(images[position]);
-            myProfNames.setText(nameArray[position]);
-            myDescription.setText(descArray[position]);
+            myProfNames.setText(nameArray.get(position));
+            myEasiness.setText(easyR.get(position));
+            myHelpfulness.setText(helpfulR.get(position));
+            myClarity.setText(clarityR.get(position));
 
             return row;
         }
