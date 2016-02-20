@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         ParseObject.registerSubclass(Professor.class);
         ParseObject.registerSubclass(Comment.class);
         Parse.initialize(this);
+        ParseUser.logOut();
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         list.setAdapter(adapter);
         Log.d("test", "hi");
         profs = new ProfList();
-        profs.nameSearch("B");
+        //profs.nameSearch("B");
         for(int i = 0; i < profs.professors.size(); i++) {
             Log.d("searchTest", profs.professors.get(i).toString());
             ArrayList<Comment> testComments = profs.getComments(profs.professors.get(i).getObjectID());

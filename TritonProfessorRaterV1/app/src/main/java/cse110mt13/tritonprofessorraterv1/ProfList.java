@@ -28,7 +28,8 @@ public class ProfList{
         try{
             objects = query.find();
         }
-        catch(ParseException e){}
+        catch(ParseException e){
+        }
         for (Professor prof : objects) {
             Professor newProf = new Professor();
             newProf.setProf(prof.getName(), prof.getNumRatings(), prof.getClarity(),
