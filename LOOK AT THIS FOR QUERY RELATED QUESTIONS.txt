@@ -1,1 +1,19 @@
 https://parse.com/docs/android/guide
+
+New User
+ParseUser.getCurrentUser().logOut();
+        ParseUser newUser = new ParseUser();
+        newUser.setUsername("opUser");
+        newUser.setEmail("yil295@ucsd.edu");
+        newUser.setPassword("123456");
+        newUser.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e==null){  //signup sucessfull
+                    Log.d("Login", "Sign Up Successful");
+                }
+                else{         //sign up fail
+                    Log.d("Login", "Sign Up Fail: "+e.getMessage());
+                }
+            }
+        });

@@ -12,9 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseACL;
+import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -37,36 +40,32 @@ public class LoginActivity extends AppCompatActivity{
         Parse.initialize(this);
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
-      //  ParseACL.setDefaultACL(defaultACL, true);
+        ParseACL.setDefaultACL(defaultACL, true);
 
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        if(currentUser != null){
-
-        }
+     /*
+        ParseUser.getCurrentUser().logOut();
+        ParseUser newUser = new ParseUser();
+        newUser.setUsername("admin");
+        newUser.setEmail("yil295@ucsd.edu");
+        newUser.setPassword("123456");
+        newUser.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e==null){  //signup sucessfull
+                    Log.d("Login", "Sign Up Successful");
+                }
+                else{         //sign up fail
+                    Log.d("Login", "Sign Up Fail: "+e.getMessage());
+                }
+            }
+        });
+*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         ButterKnife.inject(this);
         _loginButton.setOnClickListener(onclickListener);
         _signupLink.setOnClickListener(onclickListener);
-/*
-        _loginButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Log.d("LoginTest", "1");
-                login();
-            }
-        });
-
-        _signupLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the Signup activity
-                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
-            }
-        });*/
     }
 
     private View.OnClickListener onclickListener = new View.OnClickListener() {
@@ -91,16 +90,32 @@ public class LoginActivity extends AppCompatActivity{
             onLoginFailed();
             return;
         }
-        _loginButton.setEnabled(false);
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
-                R.style.AppTheme_AppBarOverlay);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Authenticating...");
-        progressDialog.show();
 
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
+        ParseUser.logOut();
+       // ParseUser.logInInBackground("opuser", "123456", new LogInCallback(){
+        ParseUser.logInInBackground(email, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if (user != null) {
+                    Log.d("Login", "Login Success, confirming e-mail verification");
+                    if (!ParseUser.getCurrentUser().getBoolean("emailVerified")) {
+                        Log.d("Login", "verification required");
+                        Toast.makeText(getBaseContext(), "Please verify your e-mail!", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Log.d("Login", "Login Sucess, now jumping to main page");
+                        onLoginSuccess();
+                    }
+                }
+                else{
+                    Log.d("Login", "Login fail, expection caught");
+                    Toast.makeText(getBaseContext(), e.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
 
@@ -111,7 +126,6 @@ public class LoginActivity extends AppCompatActivity{
                         // On complete call either onLoginSuccess or onLoginFailed
                         onLoginSuccess();
                         // onLoginFailed();
-                        Log.d("LoginTest", "5");
                         progressDialog.dismiss();
                     }
                 }, 3000);
@@ -145,7 +159,7 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Incorrect username or password", Toast.LENGTH_LONG).show();
         _loginButton.setEnabled(true);
     }
 
@@ -179,10 +193,5 @@ public class LoginActivity extends AppCompatActivity{
         return true;
     }
 
-    private boolean validUser(String username, String password){
-
-
-        return true;
-    }
 
 }

@@ -1,12 +1,12 @@
 Cherish:
 polish professor page(backgrounds, font size, looks after actual data)
-
+****try to implement a goback button on menu bar
 Ellen:
 backend activities for addProf page
 
-
 Eric:
 setup another backend class  named "Class", used for class search function
+Finish login page backend
 
 Neil:
 query for retrieving and editing comments
