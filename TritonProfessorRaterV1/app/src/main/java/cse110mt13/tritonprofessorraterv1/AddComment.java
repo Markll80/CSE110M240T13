@@ -48,6 +48,10 @@ public class AddComment extends AppCompatActivity {
                    should jump to none found page, or search-found page
                  */
 
+
+                    // TODO: Get Prof name from database and add comment to that particular prof???
+
+
                     String ac_Course, ac_Comment;
                     int ac_C, ac_E, ac_H;
 
@@ -68,8 +72,6 @@ public class AddComment extends AppCompatActivity {
             }
         }
     };
-
-
 
 
 }

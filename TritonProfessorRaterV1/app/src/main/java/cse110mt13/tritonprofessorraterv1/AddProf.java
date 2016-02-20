@@ -65,6 +65,9 @@ public class AddProf extends AppCompatActivity {
                     String ap_Prof, ap_Course, ap_Comment;
                     int ap_C, ap_E, ap_H;
 
+
+                    // TODO: Course number in database???
+
                     ap_Prof = ProfName.getText().toString();
                     ap_Course = apCourseName.getText().toString();
                     ap_Comment = apComment.getText().toString();
@@ -78,6 +81,8 @@ public class AddProf extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
                     */
 
+                    createProf(ap_Prof,ap_C,ap_E,ap_H,ap_Comment);
+
                     finish(); //end current activity
                     startActivity(new Intent(AddProf.this, ProfPage.class)); //create a new activity
                     break;
@@ -89,11 +94,10 @@ public class AddProf extends AppCompatActivity {
         }
     };
 
-    private void createProf(String apName, int apRatingC, int apRatingE, int apRatingH){
+    private void createProf(String apName, int apRatingC, int apRatingE, int apRatingH, String apComment){
         Professor newProf = new Professor();
         newProf.setup(apName);
         newProf.addRating(apRatingC,apRatingE,apRatingH);
-
-        //TODO:add comment
+        newProf.addComment(apComment);
     }
 }
