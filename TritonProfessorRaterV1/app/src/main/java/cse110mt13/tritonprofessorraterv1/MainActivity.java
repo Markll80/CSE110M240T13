@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         Parse.enableLocalDatastore(this);
         ParseObject.registerSubclass(Professor.class);
         ParseObject.registerSubclass(Comment.class);
+        ParseObject.registerSubclass(Course.class);
         Parse.initialize(this);
         ParseUser.logOut();
         ParseUser.enableAutomaticUser();
@@ -63,10 +64,9 @@ public class MainActivity extends AppCompatActivity {
         list.setAdapter(adapter);
         Log.d("test", "hi");
         profs = new ProfList();
-        profs.nameSearch("B");
+        profs.nameSearch("CSE100");
         for(int i = 0; i < profs.professors.size(); i++) {
             Log.d("searchTest", profs.professors.get(i).toString());
-            profs.professors.get(i).addComment("This is a test comment!");
             ArrayList<Comment> testComments = profs.getComments(profs.professors.get(i).getObjID());
             for (int j = 0; j < testComments.size(); j++) {
                 Log.d("getCommentsTest", testComments.get(j).toString());

@@ -57,18 +57,53 @@ public class ProfList{
         else if(!professors.isEmpty()) {
             professors.clear();
         }
-        ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
-        query.whereContains("name", searchedName);
-        List<Professor> objects = new ArrayList<Professor>();
-        try {
-            objects = query.find();
+        if(!searchedName.matches(".*\\d.*")) {
+            ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
+            query.whereContains("name", searchedName);
+            List<Professor> objects = new ArrayList<Professor>();
+            try {
+                objects = query.find();
+            } catch (ParseException e) {
+            }
+            for (Professor prof : objects) {
+                Professor newProf = new Professor();
+                newProf.setProf(prof.getName(), prof.getNumRatings(), prof.getClarity(),
+                        prof.getEasiness(), prof.getHelpfulness(), prof.getComments(), prof.getObjectId());
+                professors.add(newProf);
+            }
         }
-        catch(ParseException e){}
-        for (Professor prof : objects) {
-            Professor newProf = new Professor();
-            newProf.setProf(prof.getName(), prof.getNumRatings(), prof.getClarity(),
-                    prof.getEasiness(), prof.getHelpfulness(), prof.getComments(), prof.getObjectId());
-            professors.add(newProf);
+        else if(searchedName.matches(".*\\d.*")){
+            char currentChar;
+            for(int i = 0; i < searchedName.length(); i++){
+                currentChar = searchedName.charAt(i);
+                if(i > 0 && Character.isDigit(currentChar)){
+                    if(!((Character)searchedName.charAt(i - 1)).equals(' ')){
+                        searchedName = searchedName.substring(0, i) + " " + searchedName.substring(i, searchedName.length());
+                    }
+                    break;
+                }
+            }
+            ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
+            query.whereContains("ClassName", searchedName);
+            List<Course> objects = new ArrayList<Course>();
+            try {
+                objects = query.find();
+            }
+            catch (ParseException e) {}
+            for (Course courses : objects) {
+                Professor newProf = new Professor();
+                JSONArray ProfArray = courses.getProfessors();
+                ArrayList<String> profIds = new ArrayList<String>();
+                if (ProfArray != null) {
+                    for (int i = 0; i < ProfArray.length(); i++) {
+                        try {
+                            profIds.add(ProfArray.get(i).toString());
+                        }
+                        catch (JSONException e1) {}
+                    }
+                    idsToProfs(profIds);
+                }
+            }
         }
     /*    query.findInBackground(new FindCallback<Professor>() {
             @Override
@@ -146,7 +181,6 @@ public class ProfList{
                 Comment newComment = new Comment();
                 newComment.makeNewComment(comm.getComment(), comm.getNumLikes());
                 comments.add(newComment);
-                Integer size = comments.size();
             }
             /*
             query.findInBackground(new FindCallback<Comment>() {
@@ -166,5 +200,21 @@ public class ProfList{
         }
     }
 
-
+    private void idsToProfs(ArrayList<String> profIds) {
+        for (int i = 0; i < profIds.size(); i++) {
+            ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
+            query.whereEqualTo("objectId", profIds.get(i));
+            List<Professor> object = new ArrayList<Professor>();
+            try {
+                object = query.find();
+            } catch (ParseException e) {
+            }
+            for (Professor prof : object) {
+                Professor newProf = new Professor();
+                newProf.setProf(prof.getName(), prof.getNumRatings(), prof.getClarity(),
+                        prof.getEasiness(), prof.getHelpfulness(), prof.getComments(), prof.getObjectId());
+                professors.add(newProf);
+            }
+        }
+    }
 }
