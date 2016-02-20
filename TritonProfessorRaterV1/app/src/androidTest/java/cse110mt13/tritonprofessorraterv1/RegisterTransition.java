@@ -23,7 +23,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(AndroidJUnit4.class)
 public class RegisterTransition{
-
+/*
     private String username;
     @Rule
     public ActivityTestRule<LogIn> mActivityRule = new ActivityTestRule<>(LogIn.class);
@@ -33,13 +33,13 @@ public class RegisterTransition{
         username = "nltu@ucsd.edu";
     }
 
-    /*@Test
+    @Test
     public void RegisterButtonTransition(){
         onView(withId(R.id.username)).perform(typeText(username), closeSoftKeyboard());
         onView(withId(R.id.bRegister)).perform(click());
         onView(withId(R.id.username)).check(matches(withText(username)));
-    }*/
+    }
 
-
+*/
 }
 
