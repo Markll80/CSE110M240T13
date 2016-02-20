@@ -5,6 +5,7 @@ ParseObject.registerSubclass(Course.class);
 ParseObject.registerSubclass(Comment.class);
 ParseUser.enableAutomaticUser();
 ParseACL defaultACL = new ParseACL();
+defaultACL.setPublicReadAccess(true);
 ParseACL.setDefaultACL(defaultACL, true);
 
 Classe Name: Professor
@@ -31,6 +32,9 @@ Class name: Course
 String CourseName
 Array ProfTaught  (each element is an objectID to each professor that taught the class)
 
+//each admin object contains an objectID to the admin user
+Class name: Admin
+String adminID
 
 
 //How to add new professors to the database
