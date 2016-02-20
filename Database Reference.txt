@@ -21,6 +21,13 @@ int numLikes
 Array  UsersLiked   (each element is  an objectID to user's objectID)
 String  ProfID      (objectID of associated prof )
 String  UserBelongedTo    (objectID of the user)
+String ClassName
+
+
+//used for when uesr performs search by class
+Class name: Class   
+String ClassName
+Array ProfTaught  (each element is an objectID to each professor that taught the class)
 
 
 

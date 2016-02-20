@@ -75,7 +75,7 @@ public class LogIn extends AppCompatActivity  {
                     else{ //if is validUser, go to mainpage
 
                         finish(); //end current activity
-                        startActivity(new Intent(LogIn.this, MainActivity.class));  //TODO: might be changed to Main class
+                        startActivity(new Intent(LogIn.this, MainActivity.class));
                     }
                     break;
 
@@ -95,6 +95,6 @@ public class LogIn extends AppCompatActivity  {
 
 
         return true;
-    }  */
+    } */
 }
 

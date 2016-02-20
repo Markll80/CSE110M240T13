@@ -16,6 +16,11 @@ import com.parse.ParseACL;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import com.parse.Parse;
+import com.parse.ParseACL;
+import com.parse.ParseUser;
+import com.parse.ParseObject;
+
 public class AddProf extends AppCompatActivity {
 
     EditText ProfName, apCourseName, apComment;
@@ -23,6 +28,14 @@ public class AddProf extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Parse.enableLocalDatastore(this);
+        ParseObject.registerSubclass(Professor.class);
+        Parse.initialize(this);
+        ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
+        ParseACL.setDefaultACL(defaultACL, true);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_prof);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
