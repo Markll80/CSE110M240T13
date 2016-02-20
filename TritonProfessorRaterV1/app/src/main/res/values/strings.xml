@@ -61,6 +61,21 @@
         <item>comment 2</item>
         <item>comment 3</item>
     </string-array>
+    <string-array name="easiness">
+        <item>easiness 1</item>
+        <item>easiness 2</item>
+        <item>easiness 3</item>
+    </string-array>
+    <string-array name="helpfulness">
+        <item>helpfulness 1</item>
+        <item>helpfulness 2</item>
+        <item>helpfulness 3</item>
+    </string-array>
+    <string-array name="clarity">
+        <item>clarity 1</item>
+        <item>clarity 2</item>
+        <item>clarity 3</item>
+    </string-array>
 
 
     <string name="pwdAgain">Type In Password Again</string>

@@ -37,17 +37,24 @@ public class LoginActivity extends AppCompatActivity{
         Parse.initialize(this);
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
-        ParseACL.setDefaultACL(defaultACL, true);
+      //  ParseACL.setDefaultACL(defaultACL, true);
 
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if(currentUser != null){
+
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         ButterKnife.inject(this);
-
+        _loginButton.setOnClickListener(onclickListener);
+        _signupLink.setOnClickListener(onclickListener);
+/*
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                Log.d("LoginTest", "1");
                 login();
             }
         });
@@ -59,19 +66,32 @@ public class LoginActivity extends AppCompatActivity{
                 Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivityForResult(intent, REQUEST_SIGNUP);
             }
-        });
+        });*/
     }
+
+    private View.OnClickListener onclickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch(v.getId()){
+                case R.id.btn_login:    //when login button is clicked,
+                    login();
+                    break;
+                case R.id.link_signup:  //simpy jump to register page when signup link is clicked
+                    finish();
+                    startActivity(new Intent(LoginActivity.this, Register.class));
+                    break;
+            }
+        }
+
+    };
 
     public void login() {
         Log.d(TAG, "Login");
-
         if (!validate()) {
             onLoginFailed();
             return;
         }
-
         _loginButton.setEnabled(false);
-
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme_AppBarOverlay);
         progressDialog.setIndeterminate(true);
@@ -81,33 +101,38 @@ public class LoginActivity extends AppCompatActivity{
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        // TODO: Implement our own authentication logic here.
+    }
 
+
+/*
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
                         onLoginSuccess();
                         // onLoginFailed();
+                        Log.d("LoginTest", "5");
                         progressDialog.dismiss();
                     }
                 }, 3000);
-    }
 
+    }
+    */
+/*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_SIGNUP) {
             if (resultCode == RESULT_OK) {
                 // TODO: Implement successful signup logic here
                 // By default we just finish the Activity and log them in automatically
-                this.finish();
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+              //  this.finish();
+               // startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         }
     }
-
+*/
     @Override
-    public void onBackPressed() {
+    public void onBackPressed(){
         //disable going back to the MainActivity
         moveTaskToBack(true);
 
@@ -115,7 +140,6 @@ public class LoginActivity extends AppCompatActivity{
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
-        finish();
         finish(); //end current activity
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
     }
@@ -126,7 +150,8 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     public boolean validate() {
-        boolean valid = true;
+      /*
+        boolean valid = false;
 
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
@@ -134,19 +159,30 @@ public class LoginActivity extends AppCompatActivity{
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             _emailText.setError("Enter a valid email address");
             valid = false;
-        } else {
+        }
+        else if(!email.endsWith("@ucsd.edu") && !email.endsWith("@gmail.ucsd.edu")){
+            _emailText.setError("Enter a valid UCSD email address");
+        }
+        else {
             _emailText.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("Between 4 and 10 alphanumeric characters");
+        if (password.isEmpty() || password.length() < 4 || password.length() > 16) {
+            _passwordText.setError("Between 4 and 16 alphanumeric characters");
             valid = false;
         } else {
             _passwordText.setError(null);
         }
 
         return valid;
+        */
+        return true;
     }
 
+    private boolean validUser(String username, String password){
+
+
+        return true;
+    }
 
 }
