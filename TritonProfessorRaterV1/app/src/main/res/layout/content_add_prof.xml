@@ -168,7 +168,7 @@
             android:layout_height="22dp"
             android:id="@+id/ap_Rating"
             android:numStars="5"
-            android:rating="0"
+            android:rating="1"
             android:stepSize="1"
             android:layout_above="@+id/ap_RatingE"
             android:layout_toRightOf="@+id/rating"
@@ -180,7 +180,7 @@
             android:layout_height="22dp"
             android:id="@+id/ap_RatingE"
             android:numStars="5"
-            android:rating="0"
+            android:rating="1"
             android:stepSize="1"
             android:layout_alignTop="@+id/easiness"
             android:layout_toRightOf="@+id/easiness"
@@ -195,7 +195,7 @@
             android:layout_toRightOf="@+id/clarity"
             android:layout_toEndOf="@+id/clarity"
             android:numStars="5"
-            android:rating="0"
+            android:rating="1"
             android:stepSize="1"
             style="@style/newRatingBar"/>
 
@@ -207,7 +207,7 @@
             android:layout_toRightOf="@+id/helpfulness"
             android:layout_toEndOf="@+id/helpfulness"
             android:numStars="5"
-            android:rating="0"
+            android:rating="1"
             android:stepSize="1"
             style="@style/newRatingBar"/>
 
