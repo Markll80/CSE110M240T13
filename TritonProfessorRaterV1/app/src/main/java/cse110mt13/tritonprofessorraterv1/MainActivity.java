@@ -61,16 +61,14 @@ public class MainActivity extends AppCompatActivity {
         Resources res = getResources();
         ProfList nameList = new ProfList();
         //Log.d("ratingTest", "Easiness: " + nameList.professors.g);
-        String easy = "easiness : ";
-        String help = "helpfulness : ";
-        String clear = "clarity : ";
+        String easy;
+        String help;
+        String clear;
         for(Professor name: nameList.professors){
             profNames.add(name.getName());
-            easy = easy + name.getEasiness();
-            Log.d("getEasinessTest", "Easiness: " + name.getEasiness());
-            Log.d("easyTest", "easy : " + easy);
-            help = help + name.getHelpfulness();
-            clear = clear + name.getClarity();
+            easy = "easiness : " + name.getEasiness();
+            help = "helpfulness : " + name.getHelpfulness();
+            clear = "clarity : " + name.getClarity();
             easiness.add(easy);
             helpfulness.add(help);
             clarity.add(clear);

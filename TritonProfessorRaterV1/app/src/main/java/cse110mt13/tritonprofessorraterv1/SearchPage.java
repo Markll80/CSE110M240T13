@@ -41,14 +41,14 @@ public class SearchPage extends AppCompatActivity {
         //initialization for main page;
         Resources res = getResources();
         ProfList nameList = new ProfList();
-        String easy = "easiness : ";
-        String help = "helpfulness : ";
-        String clear = "clarity : ";
+        String easy;
+        String help;
+        String clear;
         for(Professor name: nameList.professors){
-            searchNames.add(name.name);
-            easy = easy + name.getEasiness();
-            help = help + name.getHelpfulness();
-            clear = clear + name.getClarity();
+            searchNames.add(name.getName());
+            easy = "easiness : " + name.getEasiness();
+            help = "helpfulness : " + name.getHelpfulness();
+            clear = "clarity : " + name.getClarity();
             easiness.add(easy);
             helpfulness.add(help);
             clarity.add(clear);
