@@ -16,6 +16,8 @@ import com.parse.ParseACL;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import android.app.AlertDialog;
+
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseUser;
@@ -59,20 +61,23 @@ public class AddProf extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.ap_sumbit_B:
-                     /*  TODO: 1. If course name is empty or invalid ( such as CSE9999),make a warning toast
-                           2. if course name is valid (CSE100), parse it properly (to CSE 100, with space)
-                           3. check if comment is empty or a bunch of empty spaces ( >25%-or more of chars are space-or more?),
+                     /*  TODO:
+
+                           1. If course name is empty (done) or invalid (to do)(such as CSE9999),make a warning toast
+                           2. if course name is valid (CSE100), parse it properly (to CSE 100, with space) (done)
+                           (I think we should check space first, then check if the course name is valid, then parse)
+                           3. check if comment is empty or a bunch of empty spaces
+                              ( >25%-or more of chars are space-or more?) (done)
                               if so, send warning - comment is empty/invalid
+                              
+                              https://www.youtube.com/watch?v=nW_nvmmxURc
                            4. verification box when clicking sumbit
                            5. verification box when clicking cancel
-                           6. set initial step size to 1
+                           6. set initial step size to 1 (done)
                  */
 
                     String ap_Prof, ap_Course, ap_Comment;
                     int ap_C, ap_E, ap_H;
-
-
-
 
                     ap_Prof = ProfName.getText().toString();
                     ap_Course = apCourseName.getText().toString();
@@ -81,12 +86,17 @@ public class AddProf extends AppCompatActivity {
                     ap_E = (int) ap_RatingE.getRating();
                     ap_H = (int) ap_RatingH.getRating();
 
+
+
+
+
                     // test rating num
                     /*
                     String text = "" + ap_C;
                     Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
                     */
-                    // TODO: check if the professor is already in the databse, if so,
+
+                    // TODO: check if the professor is already in the database, if so,
                     //ask if the user still want to create the professor
                     createProf(ap_Prof,ap_C,ap_E,ap_H,ap_Comment);
 
@@ -106,5 +116,40 @@ public class AddProf extends AppCompatActivity {
         newProf.setup(apName);
         newProf.addRating(apRatingC, apRatingE, apRatingH);
         newProf.addComment(apComment);
+    }
+
+    private boolean validComment(String newComment){
+
+        if (newComment.isEmpty() || newComment == null)
+            return false;
+
+        String replace = newComment.replace(" ","");
+
+        int countSpace = newComment.length() - replace.length();
+
+        if(countSpace > (int) 0.25 * newComment.length())
+            return false;
+
+        else return true;
+
+    }
+
+    private boolean validCourse(String newCourse){
+
+        newCourse = newCourse.toLowerCase();
+
+        if (newCourse.isEmpty() || newCourse == null)
+            return false;
+
+        // TODO: check if the course number is valid
+
+        else return true;
+    }
+
+    private String addSpace(String newCourse){
+
+        newCourse = newCourse.toUpperCase().replaceAll("CSE *", "CSE ");
+
+        return newCourse;
     }
 }
