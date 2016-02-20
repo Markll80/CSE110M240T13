@@ -8,11 +8,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,6 +34,8 @@ public class SearchPage extends AppCompatActivity {
     Vector<String> helpfulness = new Vector<>();
     Vector<String> clarity = new Vector<>();
     ListView l;
+    ProfList profs;
+    EditText etSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +53,12 @@ public class SearchPage extends AppCompatActivity {
         setContentView(R.layout.activity_search_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
+        profs = new ProfList();
+        Intent intentBundle = getIntent();
+        if(intentBundle.hasExtra("search")) {
+            profs.nameSearch(intentBundle.getStringExtra("search"));
+        }
+        etSearch = (EditText)findViewById(R.id.search_ET);
         findViewById(R.id.search_B).setOnClickListener(onclickListener);
         findViewById(R.id.sp_AddProf_B).setOnClickListener(onclickListener);
         //initialization for main page;
@@ -121,8 +129,10 @@ public class SearchPage extends AppCompatActivity {
                      /*  TODO: write backend function to determine whether clicking on search
                    should jump to none found page, or search-found page
                  */
+                    Intent searchIntent = new Intent(SearchPage.this, SearchPage.class);
+                    searchIntent.putExtra("search", etSearch.getText().toString());
                     finish(); //end current activity
-                    startActivity(new Intent(SearchPage.this, SearchPage.class)); //create a new activity
+                    startActivity(searchIntent); //create a new activity*/
                     break;
                 case R.id.sp_AddProf_B:
                     finish(); //end current activity

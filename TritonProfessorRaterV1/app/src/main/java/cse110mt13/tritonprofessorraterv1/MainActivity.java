@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     Vector<String> helpfulness = new Vector<>();
     Vector<String> clarity = new Vector<>();
     ProfList profs;
+    EditText etSearch;
+    ProfList nameList;
     int[] images = {R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher};
     //int[] images = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
     @Override
@@ -58,8 +61,9 @@ public class MainActivity extends AppCompatActivity {
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.single_row,R.id.textView8,data);
 
         //l.setAdapter(adapter);
+        etSearch = (EditText)findViewById(R.id.search_ET);
         Resources res = getResources();
-        ProfList nameList = new ProfList();
+        nameList = new ProfList();
         //Log.d("ratingTest", "Easiness: " + nameList.professors.g);
         String easy;
         String help;
@@ -135,8 +139,10 @@ public class MainActivity extends AppCompatActivity {
                 /*  TODO: write backend function to determine whether clicking on search
                    should jump to none found page, or search-found page
                  */
+                Intent searchIntent = new Intent(MainActivity.this, SearchPage.class);
+                searchIntent.putExtra("search", etSearch.getText().toString());
                 finish(); //end current activity
-                startActivity(new Intent(MainActivity.this, SearchPage.class)); //create a new activity
+                startActivity(searchIntent); //create a new activity*/
             }
         });
         ;
