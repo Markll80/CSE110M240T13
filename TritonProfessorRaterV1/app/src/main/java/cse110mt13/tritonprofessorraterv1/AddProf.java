@@ -63,12 +63,12 @@ public class AddProf extends AppCompatActivity {
                 case R.id.ap_sumbit_B:
                      /*  TODO:
 
-                           1. If course name is empty (done) or invalid (to do)(such as CSE9999),make a warning toast
+                           1. If course name is empty (done) or invalid (to do)(such as CSE9999),make a warning toast(done)
                            2. if course name is valid (CSE100), parse it properly (to CSE 100, with space) (done)
                            (I think we should check space first, then check if the course name is valid, then parse)
                            3. check if comment is empty or a bunch of empty spaces
-                              ( >25%-or more of chars are space-or more?) (done)
-                              if so, send warning - comment is empty/invalid
+                              ( >25%-or more of chars are space-or more?)
+                              if so, send warning - comment is empty/invalid (done)
                               
                               https://www.youtube.com/watch?v=nW_nvmmxURc
                            4. verification box when clicking sumbit
@@ -87,6 +87,11 @@ public class AddProf extends AppCompatActivity {
                     ap_H = (int) ap_RatingH.getRating();
 
 
+                    if (!validCourse(ap_Course))
+                        apCourseName.setError("Invalid Course Number!");
+
+                    else if (!validComment(ap_Comment))
+                        apComment.setError("Invalid Comment! Please enter comment and don't enter too much space.");
 
 
 
@@ -98,10 +103,16 @@ public class AddProf extends AppCompatActivity {
 
                     // TODO: check if the professor is already in the database, if so,
                     //ask if the user still want to create the professor
-                    createProf(ap_Prof,ap_C,ap_E,ap_H,ap_Comment);
 
-                    finish(); //end current activity
-                    startActivity(new Intent(AddProf.this, ProfPage.class)); //create a new activity
+
+                    else {
+
+                        ap_Course = addSpace(ap_Course);
+                        // createProf(ap_Prof,ap_C,ap_E,ap_H,ap_Comment);
+                        submitProf();
+
+                    }
+
                     break;
                 case R.id.ap_cancel_B:
                     finish(); //end current activity
@@ -151,5 +162,10 @@ public class AddProf extends AppCompatActivity {
         newCourse = newCourse.toUpperCase().replaceAll("CSE *", "CSE ");
 
         return newCourse;
+    }
+
+    private void submitProf(){
+        finish(); //end current activity
+        startActivity(new Intent(AddProf.this, ProfPage.class)); //create a new activity
     }
 }
