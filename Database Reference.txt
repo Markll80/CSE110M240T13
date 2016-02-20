@@ -1,6 +1,8 @@
-Parse.enableLocalDatastore(this);                  //--------------- have these in every activity page
-ParseObject.registerSubclass(Professor.class);  
+Parse.enableLocalDatastore(this);
 Parse.initialize(this);
+ParseObject.registerSubclass(Professor.class);
+ParseObject.registerSubclass(Course.class);
+ParseObject.registerSubclass(Comment.class);
 ParseUser.enableAutomaticUser();
 ParseACL defaultACL = new ParseACL();
 ParseACL.setDefaultACL(defaultACL, true);
@@ -25,8 +27,8 @@ String ClassName
 
 
 //used for when uesr performs search by class
-Class name: Class   
-String ClassName
+Class name: Course   
+String CourseName
 Array ProfTaught  (each element is an objectID to each professor that taught the class)
 
 

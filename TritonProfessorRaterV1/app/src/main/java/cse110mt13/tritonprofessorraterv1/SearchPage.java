@@ -17,6 +17,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.parse.Parse;
+import com.parse.ParseACL;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+
 import java.util.Vector;
 
 public class SearchPage extends AppCompatActivity {
@@ -30,6 +35,16 @@ public class SearchPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+   /*     Parse.enableLocalDatastore(this);
+        Parse.initialize(this);
+        ParseObject.registerSubclass(Professor.class);
+        ParseObject.registerSubclass(Course.class);
+        ParseObject.registerSubclass(Comment.class);
+        ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
+        defaultACL.setPublicReadAccess(true);
+        ParseACL.setDefaultACL(defaultACL, true);
+*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

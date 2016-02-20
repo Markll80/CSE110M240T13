@@ -23,11 +23,13 @@ public class AddComment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Parse.enableLocalDatastore(this);
-        ParseObject.registerSubclass(Professor.class);
-        ParseObject.registerSubclass(Comment.class);
         Parse.initialize(this);
+        ParseObject.registerSubclass(Professor.class);
+        ParseObject.registerSubclass(Course.class);
+        ParseObject.registerSubclass(Comment.class);
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
+        defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
 
 

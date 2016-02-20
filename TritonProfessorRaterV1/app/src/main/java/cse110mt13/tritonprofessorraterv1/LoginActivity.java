@@ -16,6 +16,7 @@ import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -38,8 +39,12 @@ public class LoginActivity extends AppCompatActivity{
     public void onCreate(Bundle savedInstanceState) {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
+        ParseObject.registerSubclass(Professor.class);
+        ParseObject.registerSubclass(Course.class);
+        ParseObject.registerSubclass(Comment.class);
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
+        defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
 
      /*
@@ -64,25 +69,23 @@ public class LoginActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         ButterKnife.inject(this);
-        _loginButton.setOnClickListener(onclickListener);
-        _signupLink.setOnClickListener(onclickListener);
-    }
+        _loginButton.setOnClickListener(new View.OnClickListener() {
 
-    private View.OnClickListener onclickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch(v.getId()){
-                case R.id.btn_login:    //when login button is clicked,
-                    login();
-                    break;
-                case R.id.link_signup:  //simpy jump to register page when signup link is clicked
-                    finish();
-                    startActivity(new Intent(LoginActivity.this, Register.class));
-                    break;
+            @Override
+            public void onClick(View v) {
+                login();
             }
-        }
+        });
 
-    };
+        _signupLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the Signup activity
+                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
+                startActivityForResult(intent, REQUEST_SIGNUP);
+            }
+        });
+    }
 
     public void login() {
         Log.d(TAG, "Login");
@@ -90,6 +93,14 @@ public class LoginActivity extends AppCompatActivity{
             onLoginFailed();
             return;
         }
+
+        _loginButton.setEnabled(false);
+
+    /*    final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+                R.style.AppTheme_AppBarOverlay);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Authenticating...");
+        progressDialog.show();*/
 
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
@@ -104,47 +115,33 @@ public class LoginActivity extends AppCompatActivity{
                     if (!ParseUser.getCurrentUser().getBoolean("emailVerified")) {
                         Log.d("Login", "verification required");
                         Toast.makeText(getBaseContext(), "Please verify your e-mail!", Toast.LENGTH_LONG).show();
-                    }
-                    else {
+                    } else {
                         Log.d("Login", "Login Sucess, now jumping to main page");
                         onLoginSuccess();
                     }
-                }
-                else{
-                    Log.d("Login", "Login fail, expection caught");
-                    Toast.makeText(getBaseContext(), e.getMessage(),Toast.LENGTH_LONG).show();
+                } else {
+                    Log.d("Login", "Login fail, expection caught: " + e.toString());
+                    Toast.makeText(getBaseContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
+                    onLoginFailed();
                 }
             }
         });
-    }
-
-
-/*
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
 
     }
-    */
-/*
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_SIGNUP) {
             if (resultCode == RESULT_OK) {
                 // TODO: Implement successful signup logic here
                 // By default we just finish the Activity and log them in automatically
-              //  this.finish();
-               // startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                this.finish();
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         }
     }
-*/
+
     @Override
     public void onBackPressed(){
         //disable going back to the MainActivity

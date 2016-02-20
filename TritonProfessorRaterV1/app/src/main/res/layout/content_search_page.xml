@@ -28,7 +28,7 @@
         android:layout_toLeftOf="@+id/search_B"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="@string/search" />
+        android:hint="@string/search" />
 
     <Button
         android:layout_width="wrap_content"

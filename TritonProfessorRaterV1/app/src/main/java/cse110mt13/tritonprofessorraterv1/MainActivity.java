@@ -37,17 +37,17 @@ public class MainActivity extends AppCompatActivity {
     //int[] images = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //parse setup
+       /*
         Parse.enableLocalDatastore(this);
-        ParseObject.registerSubclass(Professor.class);
-        ParseObject.registerSubclass(Comment.class);
         Parse.initialize(this);
-        ParseUser.logOut();
+        ParseObject.registerSubclass(Professor.class);
+        ParseObject.registerSubclass(Course.class);
+        ParseObject.registerSubclass(Comment.class);
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
-
+        */
 
 
         super.onCreate(savedInstanceState);
