@@ -30,6 +30,7 @@ public class AddProf extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Parse.enableLocalDatastore(this);
         ParseObject.registerSubclass(Professor.class);
+        ParseObject.registerSubclass(Comment.class);
         Parse.initialize(this);
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
@@ -58,15 +59,20 @@ public class AddProf extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.ap_sumbit_B:
-                     /*  TODO: write backend function to determine whether clicking on search
-                   should jump to none found page, or search-found page
+                     /*  TODO: 1. If course name is empty or invalid ( such as CSE9999),make a warning toast
+                           2. if course name is valid (CSE100), parse it properly (to CSE 100, with space)
+                           3. check if comment is empty or a bunch of empty spaces ( >25%-or more of chars are space-or more?),
+                              if so, send warning - comment is empty/invalid
+                           4. verification box when clicking sumbit
+                           5. verification box when clicking cancel
+                           6. set initial step size to 1
                  */
 
                     String ap_Prof, ap_Course, ap_Comment;
                     int ap_C, ap_E, ap_H;
 
 
-                    // TODO: Course number in database???
+
 
                     ap_Prof = ProfName.getText().toString();
                     ap_Course = apCourseName.getText().toString();
@@ -80,7 +86,8 @@ public class AddProf extends AppCompatActivity {
                     String text = "" + ap_C;
                     Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
                     */
-
+                    // TODO: check if the professor is already in the databse, if so,
+                    //ask if the user still want to create the professor
                     createProf(ap_Prof,ap_C,ap_E,ap_H,ap_Comment);
 
                     finish(); //end current activity
@@ -97,7 +104,7 @@ public class AddProf extends AppCompatActivity {
     private void createProf(String apName, int apRatingC, int apRatingE, int apRatingH, String apComment){
         Professor newProf = new Professor();
         newProf.setup(apName);
-        newProf.addRating(apRatingC,apRatingE,apRatingH);
+        newProf.addRating(apRatingC, apRatingE, apRatingH);
         newProf.addComment(apComment);
     }
 }

@@ -22,6 +22,15 @@ public class AddComment extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Parse.enableLocalDatastore(this);
+        ParseObject.registerSubclass(Professor.class);
+        ParseObject.registerSubclass(Comment.class);
+        Parse.initialize(this);
+        ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
+        ParseACL.setDefaultACL(defaultACL, true);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_comment);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -44,13 +53,19 @@ public class AddComment extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.ac_Submit_B:
-                     /*  TODO: write backend function to determine whether clicking on search
-                   should jump to none found page, or search-found page
-                 */
+                     /*  TODO: 1. If course name is empty or invalid ( such as CSE9999),make a warning toast
+                           2. if course name is valid (CSE100), parse it properly (to CSE 100, with space)
+                           3. check if comment is empty or a bunch of empty spaces ( >25%-or more of chars are space-or more?),
+                              if so, send warning - comment is empty/invalid
+                           4. verification box when clicking sumbit
+                           5. verification box when clicking cancel
+                     */
 
 
-                    // TODO: Get Prof name from database and add comment to that particular prof???
 
+                    /*
+                    TODO: Add the new comment , let Neil or Eric do this part
+                     */
 
                     String ac_Course, ac_Comment;
                     int ac_C, ac_E, ac_H;
