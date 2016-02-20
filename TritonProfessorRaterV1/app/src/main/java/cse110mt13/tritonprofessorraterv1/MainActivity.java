@@ -63,10 +63,11 @@ public class MainActivity extends AppCompatActivity {
         list.setAdapter(adapter);
         Log.d("test", "hi");
         profs = new ProfList();
-        //profs.nameSearch("B");
+        profs.nameSearch("B");
         for(int i = 0; i < profs.professors.size(); i++) {
             Log.d("searchTest", profs.professors.get(i).toString());
-            ArrayList<Comment> testComments = profs.getComments(profs.professors.get(i).getObjectID());
+            profs.professors.get(i).addComment("This is a test comment!");
+            ArrayList<Comment> testComments = profs.getComments(profs.professors.get(i).getObjID());
             for (int j = 0; j < testComments.size(); j++) {
                 Log.d("getCommentsTest", testComments.get(j).toString());
             }

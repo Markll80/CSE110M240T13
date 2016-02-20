@@ -33,7 +33,7 @@ public class ProfList{
         for (Professor prof : objects) {
             Professor newProf = new Professor();
             newProf.setProf(prof.getName(), prof.getNumRatings(), prof.getClarity(),
-                    prof.getEasiness(), prof.getHelpfulness(), prof.getObjectId());
+                    prof.getEasiness(), prof.getHelpfulness(), prof.getComments(), prof.getObjectId());
             professors.add(newProf);
         }
             /*
@@ -67,7 +67,7 @@ public class ProfList{
         for (Professor prof : objects) {
             Professor newProf = new Professor();
             newProf.setProf(prof.getName(), prof.getNumRatings(), prof.getClarity(),
-                    prof.getEasiness(), prof.getHelpfulness(), prof.getObjectId());
+                    prof.getEasiness(), prof.getHelpfulness(), prof.getComments(), prof.getObjectId());
             professors.add(newProf);
         }
     /*    query.findInBackground(new FindCallback<Professor>() {

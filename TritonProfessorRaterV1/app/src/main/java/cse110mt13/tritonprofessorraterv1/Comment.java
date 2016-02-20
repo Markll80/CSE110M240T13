@@ -13,8 +13,6 @@ import java.util.List;
 @ParseClassName("Comment")
 public class Comment extends ParseObject{
 
-    public String comment;
-    public int numLikes;
 
     public void setup(String comment){
         put("comment", comment);
@@ -39,8 +37,8 @@ public class Comment extends ParseObject{
 
     // used for ParseQuery only, do not use this method to add new comment
     public void makeNewComment(String comment, int numLikes){
-        this.comment = comment;
-        this.numLikes = numLikes;
+        put("comment", comment);
+        put("numLikes", numLikes);
     }
 
     public void setComment(String comment, int numLikes){
@@ -62,7 +60,7 @@ public class Comment extends ParseObject{
 
     @Override
     public String toString(){
-        return comment + "\nLikes: "+numLikes;
+        return getComment() + "\nLikes: "+getNumLikes();
     }
 
 

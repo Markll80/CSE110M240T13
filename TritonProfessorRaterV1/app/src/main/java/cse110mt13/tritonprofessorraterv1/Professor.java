@@ -5,6 +5,7 @@ import android.widget.ListView;
 import com.parse.ParseClassName;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import org.json.JSONArray;
 
@@ -13,13 +14,7 @@ import java.lang.reflect.Array;
 @ParseClassName("Professor")
 public class Professor extends ParseObject{
 
-    public String name;
-    public int numRatings;
-    public int easiness;
-    public int helpfulness;
-    public int clarity;
-    public String objectId;
-
+    private String objectId;
     // this method initializes prof stats
     public void setup(String name) {
         put("name", name);
@@ -53,13 +48,23 @@ public class Professor extends ParseObject{
     public void addComment(String comment){
         Comment commentObj = new Comment();
         commentObj.setup(comment);
+        commentObj.put("ProfID", this.objectId);
         try {
             commentObj.save();
         }
         catch(ParseException e){}
-        getComments().put(commentObj.getObjectId());
+        ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
+        Professor prof = new Professor();
+        try{
+            prof = query.get(this.getObjID());
+        }
+        catch(ParseException e){}
+        JSONArray comments = prof.getComments();
+        comments.put(commentObj.getObjectId());
+        prof.put("comments", comments);
+        this.put("comments", comments);
         try {
-            this.save();
+            prof.save();
         }
         catch(ParseException e1){}
     }
@@ -98,8 +103,8 @@ public class Professor extends ParseObject{
     }
 
     //ONLY USE THIS METHOD ON LOCALLY CREATED PROFESSORS
-    public String getObjectID(){
-        return objectId;
+    public String getObjID(){
+        return this.objectId;
     }
 
     public JSONArray getComments(){
@@ -138,20 +143,21 @@ public class Professor extends ParseObject{
 
     // used for ParseQuery only, do not use this method to add new prof
     public void setProf(String name, int numRatings, int clarity, int easiness, int helpfulness,
-                        String objectId){
-        this.name = name;
-        this.numRatings = numRatings;
-        this.clarity = clarity;
-        this.easiness = easiness;
-        this.helpfulness = helpfulness;
+                        JSONArray comments, String objectId){
+        put("name", name);
+        put("numRatings", numRatings);
+        put("clarity", clarity);
+        put("easiness", easiness);
+        put("helpfulness", helpfulness);
+        put("comments", comments);
         this.objectId = objectId;
     }
 
 
     @Override
     public String toString(){
-        return name + "\nEasiness: "+ easiness + "\nHelpfulness: "+helpfulness
-                + "\nClarity: "+clarity;
+        return this.getName() + "\nEasiness: "+ this.getEasiness() + "\nHelpfulness: "+this.getHelpfulness()
+                + "\nClarity: "+this.getClarity();
     }
 
 }
