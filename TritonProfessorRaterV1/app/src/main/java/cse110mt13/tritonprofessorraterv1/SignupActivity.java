@@ -47,6 +47,8 @@ public class SignupActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void signup() {

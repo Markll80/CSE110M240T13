@@ -85,6 +85,8 @@ public class LoginActivity extends AppCompatActivity{
                 startActivityForResult(intent, REQUEST_SIGNUP);
             }
         });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void login() {

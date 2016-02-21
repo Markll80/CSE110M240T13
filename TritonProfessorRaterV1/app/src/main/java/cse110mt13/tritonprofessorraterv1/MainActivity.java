@@ -107,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     class MyAdapter extends ArrayAdapter<String>

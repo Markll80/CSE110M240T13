@@ -35,6 +35,8 @@ public class ProfPage extends AppCompatActivity {
         MyAdapter adapter = new MyAdapter(this, courseName, num, comData);
         list.setAdapter(adapter);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
     class MyAdapter extends ArrayAdapter<String>
     {

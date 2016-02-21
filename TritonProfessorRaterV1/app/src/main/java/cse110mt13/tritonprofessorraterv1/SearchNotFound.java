@@ -20,8 +20,10 @@ public class SearchNotFound extends AppCompatActivity {
         /* TODO: get the string being searched, and substitute the current string */
 
 
-       findViewById(R.id.search_B).setOnClickListener(onclickListener);;
-       findViewById(R.id.add_Prof_B).setOnClickListener(onclickListener);;
+        findViewById(R.id.search_B).setOnClickListener(onclickListener);
+        findViewById(R.id.add_Prof_B).setOnClickListener(onclickListener);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 }
 
 
