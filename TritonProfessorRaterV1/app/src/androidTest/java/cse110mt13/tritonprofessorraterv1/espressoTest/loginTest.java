@@ -10,6 +10,7 @@ import android.test.ViewAsserts;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -24,19 +25,20 @@ import org.junit.runner.RunWith;
 import android.test.ActivityInstrumentationTestCase2;
 
 import cse110mt13.tritonprofessorraterv1.LogIn;
+import cse110mt13.tritonprofessorraterv1.LoginActivity;
 import cse110mt13.tritonprofessorraterv1.R;
 
 /**
  * Created by Rui Deng on 2016/2/20.
  */
 @RunWith(AndroidJUnit4.class)
-public class loginTest extends ActivityInstrumentationTestCase2<LogIn>{
+public class loginTest extends ActivityInstrumentationTestCase2<LoginActivity>{
     @Rule
-    public ActivityTestRule<LogIn> activityTestRule =
-            new ActivityTestRule<>(LogIn.class);
+    public ActivityTestRule<LoginActivity> activityTestRule =
+            new ActivityTestRule<>(LoginActivity.class);
 
-    public loginTest(Class<LogIn> activityClass) {
-        super(activityClass);
+    public loginTest() {
+        super(LoginActivity.class);
     }
 
     @Override
@@ -52,7 +54,7 @@ public class loginTest extends ActivityInstrumentationTestCase2<LogIn>{
         String password = "123456";
         onView(withId(R.id.input_email)).perform(typeText(username));
         onView(withId(R.id.input_password)).perform(typeText(password));
-        onView(withId(R.id.btn_login)).perform(click());
+        onView(withId(R.id.btn_login)).perform(scrollTo(),click());
         onView(withId(R.layout.activity_main)).check(ViewAssertions.matches(isDisplayed()));
     }
 }
