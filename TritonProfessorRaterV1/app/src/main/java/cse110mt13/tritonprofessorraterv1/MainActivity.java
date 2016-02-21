@@ -10,12 +10,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
@@ -91,6 +93,20 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("getCommentsTest", testComments.get(j).toString());
             }
         }*/
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), ((TextView)view).getText(),
+                        Toast.LENGTH_SHORT).show();
+                String sText = ((TextView) view).getText().toString();
+                Intent intent = null;
+                intent = new Intent(getBaseContext(), ProfPage.class);
+                if(intent != null)
+                    startActivity(intent);
+
+            }
+        });
     }
 
     class MyAdapter extends ArrayAdapter<String>
@@ -147,4 +163,5 @@ public class MainActivity extends AppCompatActivity {
         });
         ;
     }
+
 }
