@@ -1,7 +1,9 @@
 package cse110mt13.tritonprofessorraterv1;
 
+import android.util.Log;
 import android.widget.ListView;
 
+import com.parse.Parse;
 import com.parse.ParseClassName;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -24,6 +26,20 @@ public class Professor extends ParseObject{
         put("clarity", 0);
     }
 
+    public static Professor createProf(String name, int clarity, int easiness, int helpfulness, String comment){
+        Professor newProf = new Professor();
+        JSONArray comments = new JSONArray();
+        comments.put(comment);
+        newProf.setProf(name, 1, clarity, easiness, helpfulness, comments, "");
+        try{
+            newProf.save();
+        }
+        catch(ParseException e){
+            Log.e("createProfError", e.getMessage());
+        }
+        newProf.objectId = newProf.getObjectId();
+        return newProf;
+    }
 
 
   /*
@@ -43,9 +59,10 @@ public class Professor extends ParseObject{
 
     /*
     create a new comment parseobject and save to database
-    *  TODO: complete comment class and add associated prof object id to it
+    *  Precondition: corresponding prof must be in database
     * */
     public void addComment(String comment){
+        //create new comment and save to database
         Comment commentObj = new Comment();
         commentObj.setup(comment);
         commentObj.put("ProfID", this.objectId);
@@ -53,12 +70,14 @@ public class Professor extends ParseObject{
             commentObj.save();
         }
         catch(ParseException e){}
+        //gets professor of from database of corresponding professor
         ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
         Professor prof = new Professor();
         try{
             prof = query.get(this.getObjID());
         }
         catch(ParseException e){}
+        //add comment to both the prof in the profList and the database
         JSONArray comments = prof.getComments();
         comments.put(commentObj.getObjectId());
         prof.put("comments", comments);
