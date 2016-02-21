@@ -34,24 +34,76 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".ForgotPassword" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="LoginActivity">
+        </activity>
+        <activity
+            android:name=".SignupActivity"
+            android:label="SignupActivity"
+            android:parentActivityName=".LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity"
+                />
+        </activity>
+        <activity
+            android:name=".ForgotPassword"
+            android:label="ForgotPassword"
+            android:parentActivityName=".LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity">
+            </meta-data>
+        </activity>
         <activity
             android:name=".AddProf"
             android:label="@string/title_activity_add_prof"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" >
+            </meta-data>
+        </activity>
         <activity
             android:name=".SearchPage"
             android:label="@string/title_activity_search_page"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" >
+            </meta-data>
+        </activity>
         <activity
             android:name=".AddComment"
             android:label="@string/title_activity_add_comment"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SearchNotFound" />
-        <activity android:name=".ProfPage"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".ProfPage" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ProfPage" >
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".SearchNotFound"
+            android:label="SearchNotFound"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" >
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".ProfPage"
+            android:label="ProfPage"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" >
+            </meta-data>
+        </activity>
     </application>
 
 </manifest>
