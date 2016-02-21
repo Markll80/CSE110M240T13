@@ -21,6 +21,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import android.test.ActivityInstrumentationTestCase2;
 
 import cse110mt13.tritonprofessorraterv1.LogIn;
 import cse110mt13.tritonprofessorraterv1.R;
@@ -29,11 +30,21 @@ import cse110mt13.tritonprofessorraterv1.R;
  * Created by Rui Deng on 2016/2/20.
  */
 @RunWith(AndroidJUnit4.class)
-public class loginTest{
+public class loginTest extends ActivityInstrumentationTestCase2<LogIn>{
     @Rule
     public ActivityTestRule<LogIn> activityTestRule =
             new ActivityTestRule<>(LogIn.class);
 
+    public loginTest(Class<LogIn> activityClass) {
+        super(activityClass);
+    }
+
+    @Override
+    protected void setUp() throws Exception
+    {
+        super.setUp();
+        getActivity();
+    }
     @Test
     public void testTypeInAndLogin()
     {
