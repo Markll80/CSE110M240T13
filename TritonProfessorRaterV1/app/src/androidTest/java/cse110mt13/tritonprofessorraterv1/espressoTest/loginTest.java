@@ -22,6 +22,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import cse110mt13.tritonprofessorraterv1.LogIn;
 import cse110mt13.tritonprofessorraterv1.R;
 
 /**
@@ -29,6 +30,10 @@ import cse110mt13.tritonprofessorraterv1.R;
  */
 @RunWith(AndroidJUnit4.class)
 public class loginTest{
+    @Rule
+    public ActivityTestRule<LogIn> activityTestRule =
+            new ActivityTestRule<>(LogIn.class);
+
     @Test
     public void testTypeInAndLogin()
     {
