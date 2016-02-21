@@ -29,7 +29,6 @@
     <string name="profname">Prof Name</string>
 
 
-
     <string name="submit">Submit</string>
 
     <string name="rating">Ratings:</string>
@@ -80,5 +79,8 @@
 
 
     <string name="pwdAgain">Type In Password Again</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
