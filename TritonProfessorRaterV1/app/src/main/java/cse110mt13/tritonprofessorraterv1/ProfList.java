@@ -72,6 +72,7 @@ public class ProfList{
                 newProf.setProf(prof.getName(), prof.getNumRatings(), prof.getClarity(),
                         prof.getEasiness(), prof.getHelpfulness(), prof.getComments(), prof.getObjectId());
                 professors.add(newProf);
+                Log.d("ProfListSearch", "prof found: " + newProf.getName());
             }
         }
         else if(searchedName.matches(".*\\d.*")){

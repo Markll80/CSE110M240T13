@@ -39,7 +39,7 @@ public class SearchPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-   /*     Parse.enableLocalDatastore(this);
+     /*   Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseObject.registerSubclass(Professor.class);
         ParseObject.registerSubclass(Course.class);
@@ -53,20 +53,26 @@ public class SearchPage extends AppCompatActivity {
         setContentView(R.layout.activity_search_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        profs = new ProfList();
+     /*   profs = new ProfList();
         Intent intentBundle = getIntent();
         if(intentBundle.hasExtra("search")) {
             profs.nameSearch(intentBundle.getStringExtra("search"));
-        }
+        }*/
         etSearch = (EditText)findViewById(R.id.search_ET);
         findViewById(R.id.search_B).setOnClickListener(onclickListener);
         findViewById(R.id.sp_AddProf_B).setOnClickListener(onclickListener);
         //initialization for main page;
+
         Resources res = getResources();
         ProfList nameList = new ProfList();
         String easy;
         String help;
         String clear;
+        Intent intentBundle = getIntent();
+        if(intentBundle.hasExtra("search")) {
+            nameList.nameSearch(intentBundle.getStringExtra("search"));
+        }
+
         for(Professor name: nameList.professors){
             searchNames.add(name.getName());
             easy = "easiness : " + name.getEasiness();
@@ -80,6 +86,7 @@ public class SearchPage extends AppCompatActivity {
         l= (ListView) findViewById(R.id.listViewSearch_page);
         MyAdapter adapter = new MyAdapter(this, searchNames, searcImages,easiness, helpfulness, clarity);
         l.setAdapter(adapter);
+
     }
 
     class MyAdapter extends ArrayAdapter<String>
