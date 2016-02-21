@@ -79,7 +79,6 @@
         <activity
             android:name=".AddComment"
             android:label="@string/title_activity_add_comment"
-            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".ProfPage" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

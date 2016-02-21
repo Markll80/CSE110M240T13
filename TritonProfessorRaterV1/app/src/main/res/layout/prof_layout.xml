@@ -45,7 +45,8 @@
         android:id="@+id/Like"
         android:layout_below="@+id/commentText"
         android:layout_toRightOf="@+id/numOfLikes"
-        android:layout_toEndOf="@+id/numOfLikes" />
+        android:layout_toEndOf="@+id/numOfLikes"
+        android:allowUndo="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
