@@ -1,5 +1,7 @@
 package cse110mt13.tritonprofessorraterv1;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -24,6 +26,8 @@ import com.parse.ParseUser;
 import com.parse.ParseObject;
 
 public class AddProf extends AppCompatActivity {
+
+    final Context context = this;
 
     EditText ProfName, apCourseName, apComment;
     RatingBar ap_RatingC, ap_RatingE, ap_RatingH;
@@ -63,17 +67,22 @@ public class AddProf extends AppCompatActivity {
                 case R.id.ap_sumbit_B:
                      /*  TODO:
 
-                           1. If course name is empty (done) or invalid (to do)(such as CSE9999),make a warning toast(done)
-                           2. if course name is valid (CSE100), parse it properly (to CSE 100, with space) (done)
+
+                            Connect to Parse!!
+                            Check valid course name!!
+
+                           Tasks below are finished...
+
+                           1. If course name is empty or invalid (to do)(such as CSE9999),make a warning toast
+                           2. if course name is valid (CSE100), parse it properly (to CSE 100, with space)
                            (I think we should check space first, then check if the course name is valid, then parse)
                            3. check if comment is empty or a bunch of empty spaces
                               ( >25%-or more of chars are space-or more?)
-                              if so, send warning - comment is empty/invalid (done)
-                              
+                              if so, send warning - comment is empty/invalid
                               https://www.youtube.com/watch?v=nW_nvmmxURc
                            4. verification box when clicking sumbit
                            5. verification box when clicking cancel
-                           6. set initial step size to 1 (done)
+                           6. set initial step size to 1
                  */
 
                     String ap_Prof, ap_Course, ap_Comment;
@@ -88,11 +97,10 @@ public class AddProf extends AppCompatActivity {
 
 
                     if (!validCourse(ap_Course))
-                        apCourseName.setError("Invalid Course Number!");
+                    { apCourseName.setError("Invalid Course Number!");}
 
                     else if (!validComment(ap_Comment))
-                        apComment.setError("Invalid Comment! Please enter comment and don't enter too much space.");
-
+                    { apComment.setError("Invalid Comment! Please enter comment and don't enter too much space.");}
 
 
                     // test rating num
@@ -107,16 +115,62 @@ public class AddProf extends AppCompatActivity {
 
                     else {
 
-                        ap_Course = addSpace(ap_Course);
-                        // createProf(ap_Prof,ap_C,ap_E,ap_H,ap_Comment);
-                        submitProf();
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                        alertDialogBuilder.setTitle("Are you sure?");
+
+                        alertDialogBuilder
+                                .setMessage("Click yes to submit!")
+                                .setCancelable(false)
+                                .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+
+                                        // TODO: createProf using Parse!!
+                                        // ap_Course = addSpace(ap_Course);
+                                        // createProf(ap_Prof,ap_C,ap_E,ap_H,ap_Comment);
+
+
+                                        submitProf();
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+
+                        alertDialog.show();
 
                     }
 
                     break;
                 case R.id.ap_cancel_B:
-                    finish(); //end current activity
-                    startActivity(new Intent(AddProf.this, MainActivity.class)); //create a new activity
+
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                    alertDialogBuilder.setTitle("Are you sure?");
+
+                    alertDialogBuilder
+                            .setMessage("Click yes to cancal!")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    cancelProf();
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+
+                    alertDialog.show();
+
                     break;
             }
         }
@@ -167,5 +221,10 @@ public class AddProf extends AppCompatActivity {
     private void submitProf(){
         finish(); //end current activity
         startActivity(new Intent(AddProf.this, ProfPage.class)); //create a new activity
+    }
+
+    private void cancelProf() {
+        finish(); //end current activity
+        startActivity(new Intent(AddProf.this, MainActivity.class)); //create a new activity
     }
 }

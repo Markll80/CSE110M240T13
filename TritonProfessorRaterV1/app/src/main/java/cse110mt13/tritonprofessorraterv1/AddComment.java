@@ -55,11 +55,14 @@ public class AddComment extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.ac_Submit_B:
-                     /*  TODO: 1. If course name is empty or invalid ( such as CSE9999),make a warning toast
-                           2. if course name is valid (CSE100), parse it properly (to CSE 100, with space)
+
+                     /*  TODO:
+
+                           1. If course name is empty(done) or invalid(to do) (such as CSE9999),make a warning toast(done)
+                           2. if course name is valid (CSE100), parse it properly (to CSE 100, with space)(done)
                            3. check if comment is empty or a bunch of empty spaces ( >25%-or more of chars are space-or more?),
-                              if so, send warning - comment is empty/invalid
-                           4. verification box when clicking sumbit
+                              if so, send warning - comment is empty/invalid(done)
+                           4. verification box when clicking submit
                            5. verification box when clicking cancel
                      */
 
