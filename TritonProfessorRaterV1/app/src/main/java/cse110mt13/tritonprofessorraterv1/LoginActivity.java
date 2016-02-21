@@ -160,6 +160,10 @@ public class LoginActivity extends AppCompatActivity{
         _loginButton.setEnabled(true);
     }
 
+    public void GoToRegisterPage(View view) {
+        startActivity(new Intent(this, SignupActivity.class));
+    }
+
     public boolean validate() {
       /*
         boolean valid = false;

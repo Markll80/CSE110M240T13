@@ -163,4 +163,8 @@ public class SearchPage extends AppCompatActivity {
             }
         }
     };
+
+    public void ForwardToAddProf(View view) {
+        startActivity(new Intent(this, AddProf.class));
+    }
 }

@@ -66,6 +66,7 @@
         android:textSize="20dp"
         android:layout_marginTop="48dp"
         android:layout_below="@+id/textView6"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="ForwardToAddProf"/>
 
 </RelativeLayout>

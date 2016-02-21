@@ -29,22 +29,26 @@ public class SearchNotFound extends AppCompatActivity {
     @Override
        public void onClick(View v) {
            switch (v.getId()) {
-              case R.id.search_B:
+               case R.id.search_B:
                      /*  TODO: write backend function to determine whether clicking on search
                    should jump to none found page, or search-found page
                  */
-                  Intent searchIntent = new Intent(SearchNotFound.this, SearchPage.class);
-                  searchIntent.putExtra("search", etSearch.getText().toString());
-                  finish(); //end current activity
-                  startActivity(searchIntent); //create a new activity*/
+                   Intent searchIntent = new Intent(SearchNotFound.this, SearchPage.class);
+                   searchIntent.putExtra("search", etSearch.getText().toString());
+                   finish(); //end current activity
+                   startActivity(searchIntent); //create a new activity*/
                    break;
-              case R.id.add_Prof_B:
-                  finish(); //end current activity
-                  startActivity(new Intent(SearchNotFound.this, AddProf.class)); //create a new activity
+               case R.id.add_Prof_B:
+                   finish(); //end current activity
+                   startActivity(new Intent(SearchNotFound.this, AddProf.class)); //create a new activity
                    break;
+           }
         }
+    };
+
+    public void ForwardToAddProf(View view) {
+        startActivity(new Intent(this, AddProf.class));
     }
-};
 
 
 

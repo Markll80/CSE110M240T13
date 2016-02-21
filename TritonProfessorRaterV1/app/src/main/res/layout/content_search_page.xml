@@ -38,7 +38,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/search_B"
         android:layout_alignEnd="@+id/search_B"
-        android:layout_marginBottom="41dp" />
+        android:layout_marginBottom="41dp"
+        android:onClick="ForwardToAddProf" />
 
     <ListView
         android:layout_width="wrap_content"

@@ -63,7 +63,8 @@
         android:id="@+id/ac_Cancel_B"
         android:layout_below="@+id/ac_Comment_ET"
         android:layout_toRightOf="@+id/ac_Submit_B"
-        android:layout_toEndOf="@+id/ac_Submit_B" />
+        android:layout_toEndOf="@+id/ac_Submit_B"
+        android:onClick="BackToProfPage" />
 
     <TextView
         android:layout_width="150dp"

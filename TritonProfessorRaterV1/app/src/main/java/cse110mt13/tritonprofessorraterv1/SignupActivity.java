@@ -1,6 +1,7 @@
 package cse110mt13.tritonprofessorraterv1;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -93,6 +94,10 @@ public class SignupActivity extends AppCompatActivity {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
 
         _signupButton.setEnabled(true);
+    }
+
+    public void GoToLoginPage(View view) {
+        startActivity(new Intent(this, LoginActivity.class));
     }
 
     public boolean validate() {

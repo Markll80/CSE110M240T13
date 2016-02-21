@@ -148,5 +148,9 @@ public class AddComment extends AppCompatActivity {
         startActivity(new Intent(AddComment.this, ProfPage.class)); //create a new activity
     }
 
+    public void BackToProfPage(View view) {
+        startActivity(new Intent(this, ProfPage.class));
+    }
+
 
 }

@@ -34,6 +34,7 @@
 
     <string name="rating">Ratings:</string>
     <string name="noAcc">No account yet? Create one</string>
+    <string name="haveAcc">Have account already? Login</string>
     <string name="username">Username</string>
 
     <string-array name="prof_name">
