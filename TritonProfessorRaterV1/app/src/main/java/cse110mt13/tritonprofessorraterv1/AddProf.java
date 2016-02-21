@@ -100,7 +100,7 @@ public class AddProf extends AppCompatActivity {
                     { apCourseName.setError("Invalid Course Number!");}
 
                     else if (!validComment(ap_Comment))
-                    { apComment.setError("Invalid Comment! Please enter comment and don't enter too much space.");}
+                    { apComment.setError("Invalid Comment! Please enter a valid comment");}
 
 
                     // test rating num
@@ -126,6 +126,9 @@ public class AddProf extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog, int id) {
 
                                         // TODO: createProf using Parse!!
+                                        // Professor newProf = new Professor();
+                                        // newProf.setup(ap_Prof);
+                                        // newProf.addRating(ap_C,ap_E,ap_H);
                                         // ap_Course = addSpace(ap_Course);
                                         // createProf(ap_Prof,ap_C,ap_E,ap_H,ap_Comment);
 
