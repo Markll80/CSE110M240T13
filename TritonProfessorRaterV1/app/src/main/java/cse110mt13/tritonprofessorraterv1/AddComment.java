@@ -78,17 +78,72 @@ public class AddComment extends AppCompatActivity {
                     ac_C = (int) ac_RatingC.getRating();
                     ac_E = (int) ac_RatingE.getRating();
                     ac_H = (int) ac_RatingH.getRating();
-                    
-                    finish(); //end current activity
-                    startActivity(new Intent(AddComment.this, ProfPage.class)); //create a new activity
+
+
+
+                    if (!validCourse(ac_Course))
+                        acCourseName.setError("Invalid Course Number!");
+
+                    else if (!validComment(ac_Comment))
+                        acComment.setError("Invalid Comment! Please enter comment and don't enter too much space.");
+
+
+                    else{
+                        submitComment();
+                    }
+
                     break;
                 case R.id.ac_Cancel_B:
                     finish(); //end current activity
                     startActivity(new Intent(AddComment.this, MainActivity.class)); //create a new activity
                     break;
             }
+
         }
     };
+
+
+    // Functions below are for testing, will update later.
+
+    private boolean validComment(String newComment){
+
+        if (newComment.isEmpty() || newComment == null)
+            return false;
+
+        String replace = newComment.replace(" ","");
+
+        int countSpace = newComment.length() - replace.length();
+
+        if(countSpace > (int) 0.25 * newComment.length())
+            return false;
+
+        else return true;
+
+    }
+
+    private boolean validCourse(String newCourse){
+
+        newCourse = newCourse.toLowerCase();
+
+        if (newCourse.isEmpty() || newCourse == null)
+            return false;
+
+            // TODO: check if the course number is valid
+
+        else return true;
+    }
+
+    private String addSpace(String newCourse){
+
+        newCourse = newCourse.toUpperCase().replaceAll("CSE *", "CSE ");
+
+        return newCourse;
+    }
+
+    private void submitComment(){
+        finish(); //end current activity
+        startActivity(new Intent(AddComment.this, ProfPage.class)); //create a new activity
+    }
 
 
 }
