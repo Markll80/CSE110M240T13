@@ -1,9 +1,9 @@
 Schedule
 Week 4: set up UI
 Week 5: Link UI pages and set up database
-Week 6: set up Login/Register page, e-mail verification 
-Week 7: setup like functionality, rank comments by # of likes, 
-         reported comments page for admin
-Week 8: forgot password page + ability to search by class name
+Week 6:  e-mail verification 
+Week 7: set up Login/Register page,search functionality, search transition
+Week 8: forgot password page + ability to search by class name, abitlity to 
+        report and edit comments
 Week 9: TBD base on client feedback
-Week 10: Payday $$$$$$$$$$$$$$$$ 
+Week 10: --
