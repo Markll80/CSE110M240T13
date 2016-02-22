@@ -87,21 +87,16 @@ public class AddProf extends AppCompatActivity {
                            6. set initial step size to 1
                  */
 
-                    String ap_Prof, ap_Course, ap_Comment;
-                    int ap_C, ap_E, ap_H;
+                    String vap_Course, vap_Comment;
 
-                    ap_Prof = ProfName.getText().toString();
-                    ap_Course = apCourseName.getText().toString();
-                    ap_Comment = apComment.getText().toString();
-                    ap_C = (int) ap_RatingC.getRating();
-                    ap_E = (int) ap_RatingE.getRating();
-                    ap_H = (int) ap_RatingH.getRating();
+                    vap_Course = apCourseName.getText().toString();
+                    vap_Comment = apComment.getText().toString();
 
 
-                    if (!validCourse(ap_Course))
+                    if (!validCourse(vap_Course))
                     { apCourseName.setError("Invalid Course Number!");}
 
-                    else if (!validComment(ap_Comment))
+                    else if (!validComment(vap_Comment))
                     { apComment.setError("Invalid Comment! Please enter a valid comment");}
 
 
@@ -127,12 +122,18 @@ public class AddProf extends AppCompatActivity {
                                 .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
 
-                                        // TODO: createProf using Parse!!
-                                        // Professor newProf = new Professor();
-                                        // newProf.setup(ap_Prof);
-                                        // newProf.addRating(ap_C,ap_E,ap_H);
-                                        // ap_Course = addSpace(ap_Course);
-                                        // createProf(ap_Prof,ap_C,ap_E,ap_H,ap_Comment);
+
+                                        String ap_Prof, ap_Course, ap_Comment;
+                                        int ap_C, ap_E, ap_H;
+
+                                        ap_Prof = ProfName.getText().toString();
+                                        ap_Course = apCourseName.getText().toString();
+                                        ap_Comment = apComment.getText().toString();
+                                        ap_C = (int) ap_RatingC.getRating();
+                                        ap_E = (int) ap_RatingE.getRating();
+                                        ap_H = (int) ap_RatingH.getRating();
+
+                                        createProf(ap_Prof,ap_C,ap_E,ap_H,ap_Comment);
 
 
                                         submitProf();
