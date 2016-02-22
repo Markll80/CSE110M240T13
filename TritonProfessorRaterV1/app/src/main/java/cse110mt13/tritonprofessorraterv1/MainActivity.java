@@ -50,57 +50,58 @@ public class MainActivity extends AppCompatActivity {
     ProfList nameList;
     int[] images = {R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher};
     //int[] images = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        try {
 
-     //   Parse.enableLocalDatastore(this);
-        Parse.initialize(this);
-        ParseObject.registerSubclass(Professor.class);
-        ParseObject.registerSubclass(Course.class);
-        ParseObject.registerSubclass(Comment.class);
-        ParseUser.enableAutomaticUser();
-        ParseACL defaultACL = new ParseACL();
-        defaultACL.setPublicReadAccess(true);
-        ParseACL.setDefaultACL(defaultACL, true);
+            //   Parse.enableLocalDatastore(this);
+            Parse.initialize(this);
+            ParseObject.registerSubclass(Professor.class);
+            ParseObject.registerSubclass(Course.class);
+            ParseObject.registerSubclass(Comment.class);
+            ParseUser.enableAutomaticUser();
+            ParseACL defaultACL = new ParseACL();
+            defaultACL.setPublicReadAccess(true);
+            ParseACL.setDefaultACL(defaultACL, true);
 
 
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+            Fragment main = new MainFragment();
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, main);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.addToBackStack(null);
+            ft.commit();
 
-        Fragment main = new MainFragment();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame, main);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.addToBackStack(null);
-        ft.commit();
+            setupSearchButton();
 
-        setupSearchButton();
+            //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.single_row,R.id.textView8,data);
 
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.single_row,R.id.textView8,data);
+            //l.setAdapter(adapter);
+            etSearch = (EditText) findViewById(R.id.search_ET);
+            Resources res = getResources();
+            nameList = new ProfList();
+            //Log.d("ratingTest", "Easiness: " + nameList.professors.g);
+            String easy;
+            String help;
+            String clear;
+            for (Professor name : nameList.professors) {
+                profNames.add(name.getName());
+                easy = "easiness : " + name.getEasiness();
+                help = "helpfulness : " + name.getHelpfulness();
+                clear = "clarity : " + name.getClarity();
+                easiness.add(easy);
+                helpfulness.add(help);
+                clarity.add(clear);
+            }
 
-        //l.setAdapter(adapter);
-        etSearch = (EditText)findViewById(R.id.search_ET);
-        Resources res = getResources();
-        nameList = new ProfList();
-        //Log.d("ratingTest", "Easiness: " + nameList.professors.g);
-        String easy;
-        String help;
-        String clear;
-        for(Professor name: nameList.professors){
-            profNames.add(name.getName());
-            easy = "easiness : " + name.getEasiness();
-            help = "helpfulness : " + name.getHelpfulness();
-            clear = "clarity : " + name.getClarity();
-            easiness.add(easy);
-            helpfulness.add(help);
-            clarity.add(clear);
-        }
-
-        list= (ListView) findViewById(R.id.listView);
-        MyAdapter adapter = new MyAdapter(this, profNames, images, easiness, helpfulness, clarity);
-        list.setAdapter(adapter);
-        Log.d("test", "hi");
+            list = (ListView) findViewById(R.id.listView);
+            MyAdapter adapter = new MyAdapter(this, profNames, images, easiness, helpfulness, clarity);
+            list.setAdapter(adapter);
+            Log.d("test", "hi");
        /*profs = new ProfList();
         //profs.nameSearch("B");
         for(int i = 0; i < profs.professors.size(); i++) {
@@ -111,21 +112,24 @@ public class MainActivity extends AppCompatActivity {
             }
         }*/
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), ((TextView)view).getText(),
-                        Toast.LENGTH_SHORT).show();
-                String sText = ((TextView) view).getText().toString();
-                Intent intent = null;
-                intent = new Intent(getBaseContext(), ProfPage.class);
-                if(intent != null)
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
+                            Toast.LENGTH_SHORT).show();
+                    String sText = ((TextView) view).getText().toString();
+                    Intent intent = new Intent(MainActivity.this, ProfPage.class);
                     startActivity(intent);
 
-            }
-        });
+                }
+            });
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        catch (Exception e) {
+            Log.e("Error", "ERROR IN CODE: " + e.toString());
+            e.printStackTrace();
+        }
 
     }
 
@@ -196,8 +200,8 @@ public class MainActivity extends AppCompatActivity {
 
         int id = item.getItemId();
         switch (id) {
-            case R.id.action_call:
-                Intent dialer= new Intent(Intent.ACTION_DIAL);
+            case R.id.action_sync:
+                Intent dialer= new Intent(Intent.ACTION_SYNC);
                 startActivity(dialer);
                 return true;
             case R.id.action_speech:
@@ -205,7 +209,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                         RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
                 startActivityForResult(intent, 1234);
-
                 return true;
             case R.id.action_contacts:
                 Toast.makeText(getApplicationContext(),"Contacts Clicked",Toast.LENGTH_SHORT).show();
