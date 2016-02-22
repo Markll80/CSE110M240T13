@@ -45,7 +45,7 @@ public class Professor extends ParseObject{
     }
 
 
-
+// Professor prof = Professor.getProf("SomeID")
     public static Professor getProf(String profId) {
         ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
         Professor prof = new Professor();

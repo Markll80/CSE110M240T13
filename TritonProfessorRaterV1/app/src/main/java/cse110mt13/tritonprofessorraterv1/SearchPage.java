@@ -41,7 +41,7 @@ public class SearchPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-  /*
+
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseObject.registerSubclass(Professor.class);
@@ -51,7 +51,7 @@ public class SearchPage extends AppCompatActivity {
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
-*/
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -67,7 +67,7 @@ public class SearchPage extends AppCompatActivity {
         //initialization for main page;
 
         Resources res = getResources();
-        ProfList nameList = new ProfList();
+        final ProfList nameList = new ProfList();
         String easy;
         String help;
         String clear;
@@ -93,9 +93,10 @@ public class SearchPage extends AppCompatActivity {
         l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
-                        Toast.LENGTH_SHORT).show();
-                String sText = ((TextView) view).getText().toString();
+//                Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
+//                        Toast.LENGTH_SHORT).show();
+ //               String sText = ((TextView) view).getText().toString();
+                Log.d("SearchTest", nameList.professors.get(position).getObjID()); //retrieve objectID of the corresponding professor
                 Intent intent = null;
                 intent = new Intent(getBaseContext(), ProfPage.class);
                 if(intent != null)
