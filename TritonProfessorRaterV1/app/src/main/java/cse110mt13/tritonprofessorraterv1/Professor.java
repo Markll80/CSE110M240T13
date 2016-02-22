@@ -135,7 +135,8 @@ public class Professor extends ParseObject{
     }
 
     public String getName() {
-        return getString("name");
+        return TextParser.convertToUpperCase(getString("name"));
+
     }
 
     //ONLY USE THIS METHOD ON LOCALLY CREATED PROFESSORS

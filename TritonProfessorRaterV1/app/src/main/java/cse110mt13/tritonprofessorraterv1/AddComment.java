@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
+
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseObject;
@@ -25,10 +27,12 @@ public class AddComment extends AppCompatActivity {
 
     EditText acCourseName, acComment;
     RatingBar ac_RatingC, ac_RatingE, ac_RatingH;
+    TextView profNameET;
 
+    String profID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Parse.enableLocalDatastore(this);
+  /*      Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseObject.registerSubclass(Professor.class);
         ParseObject.registerSubclass(Course.class);
@@ -37,7 +41,7 @@ public class AddComment extends AppCompatActivity {
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
-
+*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_comment);
@@ -50,9 +54,15 @@ public class AddComment extends AppCompatActivity {
         ac_RatingC = (RatingBar) findViewById(R.id.ac_RatingC);
         ac_RatingE = (RatingBar) findViewById(R.id.ac_RatingE);
         ac_RatingH = (RatingBar) findViewById(R.id.ac_RatingH);
-
+        profNameET=(TextView)findViewById(R.id.ac_ProfName_TV);
         findViewById(R.id.ac_Submit_B).setOnClickListener(onclickListener);
         findViewById(R.id.ac_Cancel_B).setOnClickListener(onclickListener);
+
+        Intent intentBundle = getIntent();
+        String profID = intentBundle.getStringExtra("profID");
+        Professor prof = Professor.getProf(profID);
+        profNameET.setText(prof.getName());
+
 
       //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -96,7 +106,7 @@ public class AddComment extends AppCompatActivity {
                         acCourseName.setError("Invalid Course Number!");
 
                     else if (!validComment(ac_Comment))
-                        acComment.setError("Invalid Comment! Please enter comment and don't enter too much space.");
+                        acComment.setError("Invalid Comment!");
 
 
                     else{
@@ -168,10 +178,11 @@ public class AddComment extends AppCompatActivity {
 
         int countSpace = newComment.length() - replace.length();
 
-        if(countSpace > (int) 0.25 * newComment.length())
-            return false;
+      //  if(countSpace > (int) 0..25 * newComment.length())
+     //       return false;
 
-        else return true;
+      //  else
+            return true;
 
     }
 
@@ -195,18 +206,19 @@ public class AddComment extends AppCompatActivity {
     }
 
     private void submitComment(){
-        finish(); //end current activity
-        startActivity(new Intent(AddComment.this, ProfPage.class)); //create a new activity
+        BackToProfPage();
     }
 
     private void cancelComment(){
+        BackToProfPage();
 
-        finish(); //end current activity
-        startActivity(new Intent(AddComment.this, MainActivity.class)); //create a new activity
     }
 
-    public void BackToProfPage(View view) {
-        startActivity(new Intent(this, ProfPage.class));
+    public void BackToProfPage() {
+        finish(); //end current activity
+      //  Intent intent = new Intent(AddComment.this, ProfPage.class);
+      //  intent.putExtra("profID", profID);
+      //  startActivity(intent);
     }
 
 

@@ -25,7 +25,14 @@ public class Comment extends ParseObject implements Comparable{
     public int getNumLikes() {
         return getInt("numLikes");
     }
-    public String getClassName(){return getString("ClassName");}
+
+    public String getCourseName() {
+        return getString("CourseName");
+    }
+
+    public void setCourseName(String courseName){
+        put("CourseName", courseName);
+    }
 
     public void putComment(String comment){
         put("comment",comment);
@@ -36,9 +43,10 @@ public class Comment extends ParseObject implements Comparable{
     }
 
     // used for ParseQuery only, do not use this method to add new comment
-    public void makeNewComment(String comment, int numLikes){
+    public void makeNewComment(String comment, int numLikes, String courseName){
         put("comment", comment);
         put("numLikes", numLikes);
+        put("CourseName", courseName);
     }
 
     public void setComment(String comment, int numLikes){

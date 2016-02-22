@@ -8,6 +8,7 @@
     <string name="title_activity_add_comment">AddComment</string>
 
     <string name="addProf">Add New Professor</string>
+    <string name="addRating">Add A Rating</string>
     <string name="cancel">Cancel</string>
     <string name="clarity">Clarity</string>
     <string name="comment">Comment:</string>

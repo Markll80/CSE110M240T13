@@ -123,7 +123,7 @@ public class ProfList{
         });*/
     }
 
-    public ArrayList<Comment>  getComments(String profId){
+    public  ArrayList<Comment>  getComments(String profId){
         retrieveComments(profId);
         Collections.sort(comments);
         return comments;
@@ -184,9 +184,9 @@ public class ProfList{
             }
             catch(ParseException e){}
             for(Comment comm: object) {
-                Comment newComment = new Comment();
-                newComment.makeNewComment(comm.getComment(), comm.getNumLikes());
-                comments.add(newComment);
+              //  Comment newComment = new Comment();
+            //    newComment.makeNewComment(comm.getComment(), comm.getNumLikes());
+                comments.add(comm);
             }
             /*
             query.findInBackground(new FindCallback<Comment>() {
