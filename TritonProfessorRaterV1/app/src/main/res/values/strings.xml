@@ -19,6 +19,7 @@
 
     <string name="helpfulness">Helpfulness</string>
     <string name="login_B">Login</string>
+    <string name="findPW">Find Password</string>
 
     <string name="search">Class/Professor Name</string>
     <string name="searchText">Search</string>
@@ -35,6 +36,7 @@
     <string name="rating">Ratings:</string>
     <string name="noAcc">No account yet? Create one</string>
     <string name="haveAcc">Have account already? Login</string>
+    <string name="remember">Remember your password? Login</string>
     <string name="username">Username</string>
 
     <string-array name="prof_name">
