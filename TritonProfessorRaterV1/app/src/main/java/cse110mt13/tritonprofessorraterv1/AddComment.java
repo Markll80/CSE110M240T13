@@ -54,7 +54,7 @@ public class AddComment extends AppCompatActivity {
         findViewById(R.id.ac_Submit_B).setOnClickListener(onclickListener);
         findViewById(R.id.ac_Cancel_B).setOnClickListener(onclickListener);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     //int[] images = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-/*
+
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseObject.registerSubclass(Professor.class);
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
-*/
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -114,9 +114,9 @@ public class MainActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), ((TextView)view).getText(),
-                        Toast.LENGTH_SHORT).show();
-                String sText = ((TextView) view).getText().toString();
+               // Toast.makeText(getApplicationContext(), ((TextView)view).getText(),
+             //           Toast.LENGTH_SHORT).show();
+             //  String sText = ((TextView) view).getText().toString();
                 Intent intent = null;
                 intent = new Intent(getBaseContext(), ProfPage.class);
                 if(intent != null)
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+     //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
