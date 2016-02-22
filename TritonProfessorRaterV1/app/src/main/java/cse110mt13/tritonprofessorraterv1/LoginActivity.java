@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseObject.registerSubclass(Professor.class);
         ParseObject.registerSubclass(Course.class);
