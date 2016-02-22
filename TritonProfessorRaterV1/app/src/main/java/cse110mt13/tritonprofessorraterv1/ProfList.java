@@ -13,6 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 /**
  * Created by Neil on 2/12/2016.
@@ -59,7 +60,8 @@ public class ProfList{
         else if(!professors.isEmpty()) {
             professors.clear();
         }
-        if(!searchedName.matches(".*\\d.*")) {
+        searchedName = searchedName.toLowerCase();
+        if(!searchedName.matches(".*\\d.*")) {//if doesn't have number, search by prof
             ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
             query.whereContains("name", searchedName);
             List<Professor> objects = new ArrayList<Professor>();
@@ -75,7 +77,7 @@ public class ProfList{
                 Log.d("ProfListSearch", "prof found: " + newProf.getName());
             }
         }
-        else if(searchedName.matches(".*\\d.*")){
+        else if(searchedName.matches(".*\\d.*")){ //if contains number, search by course
             char currentChar;
             for(int i = 0; i < searchedName.length(); i++){
                 currentChar = searchedName.charAt(i);
@@ -123,6 +125,7 @@ public class ProfList{
 
     public ArrayList<Comment> getComments(String profId){
         retrieveComments(profId);
+        Collections.sort(comments);
         return comments;
     }
 

@@ -17,11 +17,11 @@ public class Course extends ParseObject{
     private String objectId;
     // this method initializes prof stats
     public void setup(String courseName) {
-        put("ClassName", courseName);
+        put("CourseName", courseName);
     }
 
     public String getCourseName() {
-        return getString("ClassName");
+        return getString("CourseName");
     }
 
     public JSONArray getProfessors(){

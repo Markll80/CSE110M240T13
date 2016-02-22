@@ -48,4 +48,24 @@ public class TextParser {
     }
 
 
+    //use this method to convert any prof/course names to proper capitalization
+    public static String convertToUpperCase(String lowerCase){
+        String convertedName;
+        if(lowerCase.matches(".*\\d.*")){
+            convertedName = lowerCase.toUpperCase();
+        }
+        else{
+            String[] words = lowerCase.split(" ");
+            StringBuilder builder = new StringBuilder();
+            for(int i = 0; i < words.length; i++){
+                builder.append(Character.toUpperCase(words[i].charAt(0)));
+                builder.append(words[i].substring(1));
+                if(i < words.length - 1){
+                    builder.append(' ');
+                }
+            }
+            convertedName = builder.toString();
+        }
+        return convertedName;
+    }
 }

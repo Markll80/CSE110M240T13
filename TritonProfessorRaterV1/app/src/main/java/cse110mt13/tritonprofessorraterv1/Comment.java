@@ -11,8 +11,7 @@ import java.util.List;
 
 
 @ParseClassName("Comment")
-public class Comment extends ParseObject{
-
+public class Comment extends ParseObject implements Comparable{
 
     public void setup(String comment){
         put("comment", comment);
@@ -47,7 +46,7 @@ public class Comment extends ParseObject{
     }
 
     public void setComment(String comment){
-        put("comment",comment);
+        put("comment", comment);
     }
 
    /* when user clicks like, this method should be provoked.
@@ -64,4 +63,8 @@ public class Comment extends ParseObject{
     }
 
 
+    @Override
+    public int compareTo(Object another) {
+        return ((Comment)another).getNumLikes() - this.getNumLikes();
+    }
 }

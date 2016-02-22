@@ -88,7 +88,8 @@ public class MainActivity extends AppCompatActivity {
         String help;
         String clear;
         for(Professor name: nameList.professors){
-            profNames.add(name.getName());
+            String convertedName = TextParser.convertToUpperCase(name.getName());
+            profNames.add(convertedName);
             easy = "easiness : " + name.getEasiness();
             help = "helpfulness : " + name.getHelpfulness();
             clear = "clarity : " + name.getClarity();
