@@ -1,5 +1,8 @@
 package cse110mt13.tritonprofessorraterv1;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +19,9 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 public class AddComment extends AppCompatActivity {
+
+
+    final Context context = this;
 
     EditText acCourseName, acComment;
     RatingBar ac_RatingC, ac_RatingE, ac_RatingH;
@@ -94,13 +100,56 @@ public class AddComment extends AppCompatActivity {
 
 
                     else{
-                        submitComment();
+
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                        alertDialogBuilder.setTitle("Are you sure?");
+
+                        alertDialogBuilder
+                                .setMessage("Click yes to submit!")
+                                .setCancelable(false)
+                                .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        submitComment();
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+
+                        alertDialog.show();
+
                     }
 
                     break;
                 case R.id.ac_Cancel_B:
-                    finish(); //end current activity
-                    startActivity(new Intent(AddComment.this, MainActivity.class)); //create a new activity
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                    alertDialogBuilder.setTitle("Are you sure?");
+
+                    alertDialogBuilder
+                            .setMessage("Click yes to cancel!")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    cancelComment();
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+
+                    alertDialog.show();
+
                     break;
             }
 
@@ -148,6 +197,12 @@ public class AddComment extends AppCompatActivity {
     private void submitComment(){
         finish(); //end current activity
         startActivity(new Intent(AddComment.this, ProfPage.class)); //create a new activity
+    }
+
+    private void cancelComment(){
+
+        finish(); //end current activity
+        startActivity(new Intent(AddComment.this, MainActivity.class)); //create a new activity
     }
 
     public void BackToProfPage(View view) {

@@ -159,7 +159,7 @@ public class AddProf extends AppCompatActivity {
                     alertDialogBuilder.setTitle("Are you sure?");
 
                     alertDialogBuilder
-                            .setMessage("Click yes to cancal!")
+                            .setMessage("Click yes to cancel!")
                             .setCancelable(false)
                             .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
