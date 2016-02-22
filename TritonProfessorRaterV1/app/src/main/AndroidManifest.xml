@@ -19,7 +19,8 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="s9BPYGtxQdePN5sOtkA3g5tqPnJnQccRKu8rO0nX" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,12 +37,14 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="LoginActivity">
+            android:label="LoginActivity"
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
             android:name=".SignupActivity"
             android:label="SignupActivity"
-            android:parentActivityName=".LoginActivity" >
+            android:parentActivityName=".LoginActivity"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LoginActivity"
@@ -50,7 +53,8 @@
         <activity
             android:name=".ForgotPassword"
             android:label="ForgotPassword"
-            android:parentActivityName=".LoginActivity" >
+            android:parentActivityName=".LoginActivity"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LoginActivity">
@@ -60,7 +64,8 @@
             android:name=".AddProf"
             android:label="@string/title_activity_add_prof"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" >
@@ -70,7 +75,8 @@
             android:name=".SearchPage"
             android:label="@string/title_activity_search_page"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" >
@@ -88,7 +94,8 @@
         <activity
             android:name=".SearchNotFound"
             android:label="SearchNotFound"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" >
@@ -97,7 +104,8 @@
         <activity
             android:name=".ProfPage"
             android:label="ProfPage"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" >
