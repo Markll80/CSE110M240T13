@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     //int[] images = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-/*
+
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseObject.registerSubclass(Professor.class);
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
-*/
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
         list= (ListView) findViewById(R.id.listView);
         MyAdapter adapter = new MyAdapter(this, profNames, images, easiness, helpfulness, clarity);
         list.setAdapter(adapter);
-        Log.d("test", "hi");
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -110,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
              //  String sText = ((TextView) view).getText().toString();
                 Intent intent = null;
                 intent = new Intent(getBaseContext(), ProfPage.class);
+                intent.putExtra("profID",nameList.professors.get(position).getObjID());
+                Log.d("Intent",nameList.professors.get(position).getObjID());
                 if(intent != null)
                     startActivity(intent);
 
