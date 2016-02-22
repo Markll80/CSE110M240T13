@@ -4,6 +4,6 @@ Week 5: Link UI pages and set up database
 Week 6:  e-mail verification 
 Week 7: set up Login/Register page,search functionality, search transition
 Week 8: forgot password page + ability to search by class name, abitlity to 
-        report and edit comments
+        report and edit comments (time restriction), like/cancel like comment
 Week 9: TBD base on client feedback
 Week 10: --
