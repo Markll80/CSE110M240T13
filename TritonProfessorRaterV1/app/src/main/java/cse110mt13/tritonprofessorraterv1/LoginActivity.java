@@ -30,40 +30,19 @@ public class LoginActivity extends AppCompatActivity{
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
-    @InjectView(R.id.input_email) EditText _emailText;
+    @InjectView(R.id.input_email) EditText _userText;
     @InjectView(R.id.input_password) EditText _passwordText;
     @InjectView(R.id.btn_login) Button _loginButton;
     @InjectView(R.id.link_signup) TextView _signupLink;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Parse.enableLocalDatastore(this);
+     /*   Parse.enableLocalDatastore(this);
         Parse.initialize(this);
-        ParseObject.registerSubclass(Professor.class);
-        ParseObject.registerSubclass(Course.class);
-        ParseObject.registerSubclass(Comment.class);
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
-
-     /*
-        ParseUser.getCurrentUser().logOut();
-        ParseUser newUser = new ParseUser();
-        newUser.setUsername("admin");
-        newUser.setEmail("yil295@ucsd.edu");
-        newUser.setPassword("123456");
-        newUser.signUpInBackground(new SignUpCallback() {
-            @Override
-            public void done(ParseException e) {
-                if(e==null){  //signup sucessfull
-                    Log.d("Login", "Sign Up Successful");
-                }
-                else{         //sign up fail
-                    Log.d("Login", "Sign Up Fail: "+e.getMessage());
-                }
-            }
-        });
 */
 
         super.onCreate(savedInstanceState);
@@ -104,12 +83,12 @@ public class LoginActivity extends AppCompatActivity{
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();*/
 
-        String email = _emailText.getText().toString();
+        String username = _userText.getText().toString();
         String password = _passwordText.getText().toString();
 
         ParseUser.logOut();
        // ParseUser.logInInBackground("opuser", "123456", new LogInCallback(){
-        ParseUser.logInInBackground(email, password, new LogInCallback() {
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
@@ -167,33 +146,17 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     public boolean validate() {
-      /*
+
         boolean valid = false;
 
-        String email = _emailText.getText().toString();
+        String username = _userText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("Enter a valid email address");
+        if ( username.length() <= 4  ) {
             valid = false;
+            _userText.setError("Invalid username");
         }
-        else if(!email.endsWith("@ucsd.edu") && !email.endsWith("@gmail.ucsd.edu")){
-            _emailText.setError("Enter a valid UCSD email address");
-        }
-        else {
-            _emailText.setError(null);
-        }
-
-        if (password.isEmpty() || password.length() < 4 || password.length() > 16) {
-            _passwordText.setError("Between 4 and 16 alphanumeric characters");
-            valid = false;
-        } else {
-            _passwordText.setError(null);
-        }
-
         return valid;
-        */
-        return true;
     }
 
 

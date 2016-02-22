@@ -12,6 +12,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.LogInCallback;
+import com.parse.Parse;
+import com.parse.ParseACL;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -29,6 +37,18 @@ public class SignupActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this);
+        ParseObject.registerSubclass(Professor.class);
+        ParseObject.registerSubclass(Course.class);
+        ParseObject.registerSubclass(Comment.class);
+        ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
+        defaultACL.setPublicReadAccess(true);
+        ParseACL.setDefaultACL(defaultACL, true);
+        
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.inject(this);
@@ -58,21 +78,48 @@ public class SignupActivity extends AppCompatActivity {
             onSignupFailed();
             return;
         }
-
         _signupButton.setEnabled(false);
-
+/*
         final ProgressDialog progressDialog = new ProgressDialog(SignupActivity.this,
                 R.style.AppTheme_AppBarOverlay);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
-
+*/
         String name = _nameText.getText().toString();
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
         // TODO: Implement our own signup logic here.
 
+        ParseUser currentUser =  ParseUser.getCurrentUser();
+        if(currentUser != null)
+            currentUser.logOut();
+
+        ParseUser newUser = new ParseUser();
+        newUser.setUsername(name);
+        newUser.setEmail(email);
+        newUser.setPassword(password);
+        newUser.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e==null){  //signup sucessfull
+                    Log.d("SignUp", "Sign Up Successful");
+                    onSignupSuccess();
+                }
+                else{         //sign up fail
+                    if(e.getCode() ==203) //if email is taken
+                        _emailText.setError("Email is taken");
+                    if(e.getCode() == 202) //if username is taken
+                        _nameText.setError("Username is taken");
+
+                    Log.d("SignUp", "Sign Up Fail: "+e.getMessage());
+                    onSignupFailed();
+                }
+            }
+        });
+
+/*
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     @Override
@@ -81,20 +128,21 @@ public class SignupActivity extends AppCompatActivity {
                         // depending on success
                         onSignupSuccess();
                         // onSignupFailed();
-                        progressDialog.dismiss();
+                       // progressDialog.dismiss();
                     }
                 }, 3000);
+                */
     }
 
     public void onSignupSuccess() {
         _signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
         finish();
+       // startActivity(new Intent(SignupActivity.this, MainActivity.class));
     }
 
     public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
+        Toast.makeText(getBaseContext(), "Signup failed", Toast.LENGTH_LONG).show();
         _signupButton.setEnabled(true);
     }
 
@@ -109,17 +157,21 @@ public class SignupActivity extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        if (name.isEmpty() || name.length() < 3) {
-            _nameText.setError("At least 3 characters");
+        if (name.isEmpty() || name.length() < 4) {
+            _nameText.setError("At least 4 characters");
             valid = false;
         } else {
             _nameText.setError(null);
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _nameText.setError("Enter a valid email address");
+            _nameText.setError("Enter a valid UCSD email address");
             valid = false;
-        } else {
+        }
+        else if(!email.endsWith("@ucsd.edu") && !email.endsWith("@gmail.ucsd.edu")){
+            _emailText.setError("Enter a valid UCSD email address");
+        }
+        else {
             _emailText.setError(null);
         }
 
@@ -129,7 +181,6 @@ public class SignupActivity extends AppCompatActivity {
         } else {
             _passwordText.setError(null);
         }
-
         return valid;
     }
 }
