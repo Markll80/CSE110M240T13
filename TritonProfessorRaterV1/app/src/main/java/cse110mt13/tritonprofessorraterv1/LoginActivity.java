@@ -37,13 +37,13 @@ public class LoginActivity extends AppCompatActivity{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-     /*   Parse.enableLocalDatastore(this);
+        Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
-*/
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
@@ -65,13 +65,14 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void login() {
-        Log.d(TAG, "Login");
+        Log.d("Login", "Login Button Clicked");
         if (!validate()) {
             onLoginFailed();
+            Log.d("Login", "Validation failed");
             return;
         }
 
@@ -82,12 +83,11 @@ public class LoginActivity extends AppCompatActivity{
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();*/
-
-        String username = _userText.getText().toString();
+        Log.d("Login", "Verifying User");
+        String username = _userText.getText().toString().toLowerCase();
         String password = _passwordText.getText().toString();
 
         ParseUser.logOut();
-       // ParseUser.logInInBackground("opuser", "123456", new LogInCallback(){
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
@@ -96,6 +96,7 @@ public class LoginActivity extends AppCompatActivity{
                     if (!ParseUser.getCurrentUser().getBoolean("emailVerified")) {
                         Log.d("Login", "verification required");
                         Toast.makeText(getBaseContext(), "Please verify your e-mail!", Toast.LENGTH_LONG).show();
+                        _loginButton.setEnabled(true);
                     } else {
                         Log.d("Login", "Login Sucess, now jumping to main page");
                         onLoginSuccess();
@@ -110,7 +111,7 @@ public class LoginActivity extends AppCompatActivity{
 
     }
 
-
+/*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_SIGNUP) {
@@ -122,7 +123,7 @@ public class LoginActivity extends AppCompatActivity{
             }
         }
     }
-
+*/
     @Override
     public void onBackPressed(){
         //disable going back to the MainActivity
@@ -137,7 +138,7 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Incorrect username or password", Toast.LENGTH_LONG).show();
+       // Toast.makeText(getBaseContext(), "Incorrect username or password", Toast.LENGTH_LONG).show();
         _loginButton.setEnabled(true);
     }
 
@@ -147,16 +148,14 @@ public class LoginActivity extends AppCompatActivity{
 
     public boolean validate() {
 
-        boolean valid = false;
-
         String username = _userText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        if ( username.length() <= 4  ) {
-            valid = false;
+        if ( username.length() < 4  ) {
             _userText.setError("Invalid username");
+            return false;
         }
-        return valid;
+        return true;
     }
 
 

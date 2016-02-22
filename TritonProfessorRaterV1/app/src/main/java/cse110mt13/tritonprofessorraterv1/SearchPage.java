@@ -41,7 +41,7 @@ public class SearchPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-     /*   Parse.enableLocalDatastore(this);
+  /*      Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseObject.registerSubclass(Professor.class);
         ParseObject.registerSubclass(Course.class);
@@ -155,11 +155,11 @@ public class SearchPage extends AppCompatActivity {
                  */
                     Intent searchIntent = new Intent(SearchPage.this, SearchPage.class);
                     searchIntent.putExtra("search", etSearch.getText().toString());
-                    finish(); //end current activity
+                  //  finish(); //end current activity
                     startActivity(searchIntent); //create a new activity*/
                     break;
                 case R.id.sp_AddProf_B:
-                    finish(); //end current activity
+                  //  finish(); //end current activity
                     startActivity(new Intent(SearchPage.this, AddProf.class)); //create a new activity
                     break;
             }

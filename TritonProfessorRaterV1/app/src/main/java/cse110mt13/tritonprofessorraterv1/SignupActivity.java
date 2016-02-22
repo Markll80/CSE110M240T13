@@ -37,7 +37,7 @@ public class SignupActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
+/*
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseObject.registerSubclass(Professor.class);
@@ -47,7 +47,7 @@ public class SignupActivity extends AppCompatActivity {
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
-        
+*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
@@ -67,8 +67,6 @@ public class SignupActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void signup() {
@@ -86,16 +84,16 @@ public class SignupActivity extends AppCompatActivity {
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
 */
-        String name = _nameText.getText().toString();
-        String email = _emailText.getText().toString();
+        String name = _nameText.getText().toString().toLowerCase();
+        String email = _emailText.getText().toString().toLowerCase();
         String password = _passwordText.getText().toString();
 
-        // TODO: Implement our own signup logic here.
 
         ParseUser currentUser =  ParseUser.getCurrentUser();
         if(currentUser != null)
             currentUser.logOut();
 
+        Log.d("SignUp", "Trying to create new user");
         ParseUser newUser = new ParseUser();
         newUser.setUsername(name);
         newUser.setEmail(email);
@@ -138,7 +136,6 @@ public class SignupActivity extends AppCompatActivity {
         _signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
         finish();
-       // startActivity(new Intent(SignupActivity.this, MainActivity.class));
     }
 
     public void onSignupFailed() {
@@ -146,9 +143,7 @@ public class SignupActivity extends AppCompatActivity {
         _signupButton.setEnabled(true);
     }
 
-    public void GoToLoginPage(View view) {
-        startActivity(new Intent(this, LoginActivity.class));
-    }
+
 
     public boolean validate() {
         boolean valid = true;
@@ -165,7 +160,7 @@ public class SignupActivity extends AppCompatActivity {
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _nameText.setError("Enter a valid UCSD email address");
+            _emailText.setError("Enter a valid UCSD email address");
             valid = false;
         }
         else if(!email.endsWith("@ucsd.edu") && !email.endsWith("@gmail.ucsd.edu")){

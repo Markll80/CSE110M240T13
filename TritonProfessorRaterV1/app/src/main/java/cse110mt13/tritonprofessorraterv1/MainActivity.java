@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-     //   Parse.enableLocalDatastore(this);
+/*
         Parse.initialize(this);
         ParseObject.registerSubclass(Professor.class);
         ParseObject.registerSubclass(Course.class);
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
-
+*/
 
 
         super.onCreate(savedInstanceState);
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                  */
                 Intent searchIntent = new Intent(MainActivity.this, SearchPage.class);
                 searchIntent.putExtra("search", etSearch.getText().toString());
-                finish(); //end current activity
+               // finish();
                 startActivity(searchIntent); //create a new activity*/
             }
         });
