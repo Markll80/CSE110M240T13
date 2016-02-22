@@ -30,7 +30,7 @@ import java.util.Vector;
 
 public class SearchPage extends AppCompatActivity {
     //UI--- search page
-    int[] searcImages = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
+    int[] searcImages = {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
     Vector<String> searchNames =  new Vector<>();
     Vector<String> easiness = new Vector<>();
     Vector<String> helpfulness = new Vector<>();
@@ -138,7 +138,7 @@ public class SearchPage extends AppCompatActivity {
             TextView myEasiness = (TextView) row.findViewById(R.id.easiness);
             TextView myHelpfulness = (TextView) row.findViewById(R.id.helpfulness);
             TextView myClarity = (TextView) row.findViewById(R.id.clarity);
-            myImage.setImageResource(images[position]);
+            myImage.setImageResource(images[0]);
             myProfNames.setText(nameArray.get(position));
             myEasiness.setText(easyR.get(position));
             myHelpfulness.setText(helpfulR.get(position));
