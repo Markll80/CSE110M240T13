@@ -25,6 +25,7 @@ public class Comment extends ParseObject implements Comparable{
     public int getNumLikes() {
         return getInt("numLikes");
     }
+    public String getClassName(){return getString("ClassName");}
 
     public void putComment(String comment){
         put("comment",comment);

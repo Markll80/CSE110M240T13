@@ -14,13 +14,16 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class ProfPage extends AppCompatActivity {
 
     String[] comData;
+    ArrayList<Comment> coList;
     ListView list;
     String[] courseName;
-    String[] num;
-
+    int[] num;
+    ProfList nameList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +34,7 @@ public class ProfPage extends AppCompatActivity {
         //l.setAdapter(adapter);
         Resources res = getResources();
 
-        String profID;
+        String profID = "";
         Intent intentBundle = getIntent();
         if(intentBundle.hasExtra("profID")) {  //ProfID is stored to profID
             profID = intentBundle.getStringExtra("profID");
@@ -39,9 +42,15 @@ public class ProfPage extends AppCompatActivity {
 
 
 
-        courseName = res.getStringArray(R.array.className);
-        comData = res.getStringArray(R.array.comment);
-        num = res.getStringArray(R.array.numOfLikes);
+        nameList = new ProfList();
+        coList = nameList.getComments(profID);
+        for(int i = 0; i < coList.size(); i++){
+            comData[i] = coList.get(i).getComment();
+            num[i] = coList.get(i).getNumLikes();
+            if(coList.get(i).getClassName()!= null){
+                courseName[i] = coList.get(i).getClassName();
+            }
+        }
         list= (ListView) findViewById(R.id.list_view_prof_comment);
         MyAdapter adapter = new MyAdapter(this, courseName, num, comData);
         list.setAdapter(adapter);
@@ -56,8 +65,8 @@ public class ProfPage extends AppCompatActivity {
         Context context;
         String[] comArray;
         String[] courseArray;
-        String[] numArray;
-        MyAdapter(Context c, String[] courseName, String[] num, String[] comData)
+        int[] numArray;
+        MyAdapter(Context c, String[] courseName, int[] num, String[] comData)
         {
             super(c, R.layout.single_row, R.id.className, courseName);
             this.context = c;
