@@ -34,14 +34,14 @@ public class AddProf extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Parse.enableLocalDatastore(this);
+    /*    Parse.enableLocalDatastore(this);
         ParseObject.registerSubclass(Professor.class);
         ParseObject.registerSubclass(Comment.class);
         Parse.initialize(this);
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         ParseACL.setDefaultACL(defaultACL, true);
-
+*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_prof);

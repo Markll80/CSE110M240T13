@@ -3,6 +3,8 @@ package cse110mt13.tritonprofessorraterv1;
 import android.util.Log;
 import android.widget.ListView;
 
+import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseClassName;
 import com.parse.ParseException;
@@ -12,6 +14,7 @@ import com.parse.ParseQuery;
 import org.json.JSONArray;
 
 import java.lang.reflect.Array;
+import java.util.List;
 
 @ParseClassName("Professor")
 public class Professor extends ParseObject{
@@ -39,6 +42,20 @@ public class Professor extends ParseObject{
         }
         newProf.objectId = newProf.getObjectId();
         return newProf;
+    }
+
+
+
+    public static Professor getProf(String profId) {
+        ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
+        Professor prof = new Professor();
+        try {
+            prof = query.get(profId);
+        }
+        catch(ParseException e){
+        }
+      //  Log.d("ProfTest", prof.getName());
+       return prof;
     }
 
 
