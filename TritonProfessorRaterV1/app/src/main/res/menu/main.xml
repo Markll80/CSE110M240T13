@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_sync"
+        android:icon="@drawable/ic_action_renew"
+        app:showAsAction="ifRoom"
+        android:title="Sync"/>
     <item android:id="@+id/action_speech"
-        android:icon="@drawable/ic_action_bookmark"
+        android:icon="@drawable/ic_action_speech"
         app:showAsAction="ifRoom"
-        android:title="Bookmark"/>
-    <item android:id="@+id/action_call"
-        android:icon="@drawable/ic_action_account"
-        app:showAsAction="ifRoom"
-        android:title="Account"/>
+        android:title="Speech"/>
     <item android:id="@+id/action_contacts"
         app:showAsAction="never"
         android:title="Contacts"/>
