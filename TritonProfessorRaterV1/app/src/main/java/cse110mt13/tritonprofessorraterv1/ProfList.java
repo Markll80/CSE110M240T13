@@ -123,7 +123,7 @@ public class ProfList{
         });*/
     }
 
-    public ArrayList<Comment> getComments(String profId){
+    public ArrayList<Comment>  getComments(String profId){
         retrieveComments(profId);
         Collections.sort(comments);
         return comments;

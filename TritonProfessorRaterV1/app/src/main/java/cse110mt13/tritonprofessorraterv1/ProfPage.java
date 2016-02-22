@@ -1,9 +1,11 @@
 package cse110mt13.tritonprofessorraterv1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,15 @@ public class ProfPage extends AppCompatActivity {
         l.setAdapter(adapter);*/
         //l.setAdapter(adapter);
         Resources res = getResources();
+
+        String profID;
+        Intent intentBundle = getIntent();
+        if(intentBundle.hasExtra("profID")) {  //ProfID is stored to profID
+            profID = intentBundle.getStringExtra("profID");
+        }
+
+
+
         courseName = res.getStringArray(R.array.className);
         comData = res.getStringArray(R.array.comment);
         num = res.getStringArray(R.array.numOfLikes);
@@ -36,6 +47,8 @@ public class ProfPage extends AppCompatActivity {
         list.setAdapter(adapter);
 
        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
     }
     class MyAdapter extends ArrayAdapter<String>

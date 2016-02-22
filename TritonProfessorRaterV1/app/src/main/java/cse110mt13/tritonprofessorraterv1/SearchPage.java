@@ -96,9 +96,11 @@ public class SearchPage extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
 //                        Toast.LENGTH_SHORT).show();
  //               String sText = ((TextView) view).getText().toString();
-                Log.d("SearchTest", nameList.professors.get(position).getObjID()); //retrieve objectID of the corresponding professor
+               // Log.d("SearchTest", nameList.professors.get(position).getObjID()); //retrieve objectID of the corresponding professor
+
                 Intent intent = null;
                 intent = new Intent(getBaseContext(), ProfPage.class);
+                intent.putExtra("profID",nameList.professors.get(position).getObjID());
                 if(intent != null)
                     startActivity(intent);
             }
