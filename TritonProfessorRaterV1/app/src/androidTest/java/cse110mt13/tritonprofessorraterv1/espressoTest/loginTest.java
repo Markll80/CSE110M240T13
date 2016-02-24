@@ -52,13 +52,9 @@ public class loginTest extends ActivityInstrumentationTestCase2<LoginActivity>{
     {
         String username = "admin";
         String password = "123456";
-        onView(withId(R.id.input_email)).perform(typeText(username),closeSoftKeyboard());
-        onView(withId(R.id.input_password)).perform(typeText(password),closeSoftKeyboard());
-        onView(withId(R.id.btn_login)).perform(click());
-
-        //onView(withId(R.layout.activity_main)).check(ViewAssertions.matches(isDisplayed()));
-        onView(withId(R.id.listView)).check(matches(isDisplayed()));
-        onView(withId(R.id.search_B)).check(matches(isDisplayed()));
-        onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
+        onView(withId(R.id.input_email)).perform(typeText(username));
+        onView(withId(R.id.input_password)).perform(typeText(password));
+        onView(withId(R.id.btn_login)).perform(scrollTo(),click());
+        onView(withId(R.layout.activity_main)).check(ViewAssertions.matches(isDisplayed()));
     }
 }
