@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,38 +26,68 @@ public class ProfPage extends AppCompatActivity {
     String[] courseName;
     int[] num;
     ProfList nameList;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_page);
-        /*l=(ListView) findViewById(R.id.list_view_prof_comment);
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, R.layout.single_comment, R.id.textView, comData);
-        l.setAdapter(adapter);*/
-        //l.setAdapter(adapter);
         Resources res = getResources();
 
-        String profID = "";
+      //  String profID = "";
         Intent intentBundle = getIntent();
-        if(intentBundle.hasExtra("profID")) {  //ProfID is stored to profID
-            profID = intentBundle.getStringExtra("profID");
-        }
+      //  if(intentBundle.hasExtra("profID")) {  //ProfID is stored to profID
+          final String profID = intentBundle.getStringExtra("profID");
+      //  }
+
+        TextView profName = (TextView)findViewById(R.id.Prof_name);
+        TextView easiness_v = (TextView)findViewById(R.id.easiness_val);
+        TextView helpfulness_v = (TextView)findViewById(R.id.helpfulness_v);
+        TextView clarity_v = (TextView)findViewById(R.id.clarity_v);
+        Button addratingButton = (Button)findViewById(R.id.addRatingButton);
+        addratingButton.setOnClickListener((new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+              //  finish();
+                Intent intent = new Intent(ProfPage.this,AddComment.class);
+                intent.putExtra("profID", profID);
+                startActivity(intent);
+            }
+          })
+        );
 
 
+
+
+        Professor prof = Professor.getProf(profID);  //set
+        profName.setText(prof.getName());
+        easiness_v.setText(String.valueOf(prof.getEasiness()));
+        helpfulness_v.setText(String.valueOf(prof.getHelpfulness()));
+       clarity_v.setText(String.valueOf(prof.getClarity()));
 
         nameList = new ProfList();
         coList = nameList.getComments(profID);
+
+        int size = coList.size();
+        Log.d("Comments", "comment size:" + size);
+        comData = new String[size];
+        courseName = new String[size];
+        num = new int[size];
+
+
         for(int i = 0; i < coList.size(); i++){
             comData[i] = coList.get(i).getComment();
+          //  Log.d("ProfPage", comData[i]);
             num[i] = coList.get(i).getNumLikes();
-            if(coList.get(i).getClassName()!= null){
-                courseName[i] = "CSE110";
-            }
+            courseName[i] = coList.get(i).getCourseName();
         }
         list= (ListView) findViewById(R.id.list_view_prof_comment);
         MyAdapter adapter = new MyAdapter(this, courseName, num, comData);
         list.setAdapter(adapter);
 
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+     //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 
@@ -82,8 +114,7 @@ public class ProfPage extends AppCompatActivity {
             TextView myNum= (TextView)row.findViewById(R.id.numOfLikes);
             TextView myCourseName = (TextView) row.findViewById(R.id.className);
             TextView myComment = (TextView) row.findViewById(R.id.commentText);
-
-            myNum.setText(numArray[position]);
+          //  myNum.setText(numArray[position]);             //TODO : CAUSING CRASH
             myCourseName.setText(courseArray[position]);
             myComment.setText(comArray[position]);
 
