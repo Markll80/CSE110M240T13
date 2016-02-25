@@ -14,7 +14,8 @@
         android:id="@+id/className"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#767171" />
 
     <!--<EditText
         android:layout_width="wrap_content"
@@ -37,10 +38,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/rectangle_drawable_back"
+        android:background="#bcd9e4"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:id="@+id/commentText"/>
+        android:id="@+id/commentText"
+        android:textColor="#101463" />
 
     <TextView
         android:layout_width="wrap_content"
