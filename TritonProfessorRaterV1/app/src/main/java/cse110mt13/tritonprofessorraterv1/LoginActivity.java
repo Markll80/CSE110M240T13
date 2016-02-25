@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Parse.enableLocalDatastore(this);
+       /* Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseObject.registerSubclass(Professor.class);
         ParseObject.registerSubclass(Course.class);
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity{
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
-        ParseACL.setDefaultACL(defaultACL, true);
+        ParseACL.setDefaultACL(defaultACL, true);*/
 
 
         super.onCreate(savedInstanceState);
