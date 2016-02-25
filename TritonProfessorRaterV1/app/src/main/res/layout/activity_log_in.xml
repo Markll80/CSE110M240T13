@@ -9,7 +9,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cse110mt13.tritonprofessorraterv1.LogIn"
     android:fitsSystemWindows="true"
-    android:fillViewport="false">
+    android:fillViewport="false"
+    android:background="@mipmap/back">
 
     <LinearLayout
         android:orientation="vertical"
@@ -19,7 +20,7 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-        <ImageView android:src="@drawable/logo"
+        <ImageView android:src="@mipmap/logo"
             android:layout_width="wrap_content"
             android:layout_height="72dp"
             android:layout_marginBottom="24dp"

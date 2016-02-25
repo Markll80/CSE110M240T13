@@ -11,7 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="cse110mt13.tritonprofessorraterv1.AddComment"
     tools:showIn="@layout/activity_add_comment"
-    >
+    android:background="@mipmap/b5">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -30,7 +30,7 @@
         android:layout_height="200dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/ac_Comment_ET"
-        android:background="@drawable/rectangle_drawable_back"
+        android:background="#c7ddd3"
         android:inputType="textMultiLine"
         android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
@@ -112,7 +112,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/ac_AddCourse_ET"
         android:layout_below="@+id/ac_ProfName_TV"
-        android:background="@drawable/rectangle_drawable_back"
+        android:background="#c7ddd3"
         android:layout_toRightOf="@+id/acCourseName"
         android:layout_toEndOf="@+id/acCourseName"
         android:inputType="text" />
