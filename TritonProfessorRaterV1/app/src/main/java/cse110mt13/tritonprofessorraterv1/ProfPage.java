@@ -155,7 +155,7 @@ public class ProfPage extends AppCompatActivity {
           //  myNum.setText(numArray[position]);             //TODO : CAUSING CRASH
             myCourseName.setText(courseArray[position]);
             myComment.setText(comArray[position]);
-
+            myNum.setText(""+num[position]);
             return row;
         }
     }
