@@ -7,12 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -47,14 +50,14 @@ public class ProfPage extends AppCompatActivity {
         Button addratingButton = (Button)findViewById(R.id.addRatingButton);
         addratingButton.setOnClickListener((new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-              //  finish();
-                Intent intent = new Intent(ProfPage.this,AddComment.class);
-                intent.putExtra("profID", profID);
-                startActivity(intent);
-            }
-          })
+                    @Override
+                    public void onClick(View v) {
+                        //  finish();
+                        Intent intent = new Intent(ProfPage.this, AddComment.class);
+                        intent.putExtra("profID", profID);
+                        startActivity(intent);
+                    }
+                })
         );
 
 
@@ -83,16 +86,50 @@ public class ProfPage extends AppCompatActivity {
             courseName[i] = coList.get(i).getCourseName();
         }
         list= (ListView) findViewById(R.id.list_view_prof_comment);
-        MyAdapter adapter = new MyAdapter(this, courseName, num, comData);
-        list.setAdapter(adapter);
+        list.setOnTouchListener(new View.OnTouchListener() {
+                                    // Setting on Touch Listener for handling the touch inside ScrollView
+                                    @Override
+                                    public boolean onTouch(View v, MotionEvent event) {
+                                        // Disallow the touch request for parent scroll on touch of child view
+                                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                                        return false;
+                                    }
+                                });
+        setListViewHeightBasedOnChildren(list);
+
+            MyAdapter adapter = new MyAdapter(this, courseName, num, comData);
+            list.setAdapter(adapter);
 
 
-     //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+        }
 
+    /**** Method for Setting the Height of the ListView dynamically.
+     **** Hack to fix the issue of not showing all the items of the ListView
+     **** when placed inside a ScrollView  ****/
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null)
+            return;
+
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.UNSPECIFIED);
+        int totalHeight = 0;
+        View view = null;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            view = listAdapter.getView(i, view, listView);
+            if (i == 0)
+                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, AbsListView.LayoutParams.WRAP_CONTENT));
+
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
     }
-    class MyAdapter extends ArrayAdapter<String>
+        class MyAdapter extends ArrayAdapter<String>
     {
         Context context;
         String[] comArray;
@@ -106,6 +143,7 @@ public class ProfPage extends AppCompatActivity {
             this.courseArray= courseName;
             this.numArray = num;
         }
+
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
