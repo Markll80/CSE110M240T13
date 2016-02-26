@@ -18,7 +18,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -26,7 +25,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -99,63 +97,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         list= (ListView) findViewById(R.id.listView);
-        list.setEnabled(false);
-        list.setFocusable(false);
-
         MyAdapter adapter = new MyAdapter(this, profNames, images, easiness, helpfulness, clarity);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Toast.makeText(getApplicationContext(), ((TextView)view).getText(),
-                //           Toast.LENGTH_SHORT).show();
-                //  String sText = ((TextView) view).getText().toString();
+               // Toast.makeText(getApplicationContext(), ((TextView)view).getText(),
+             //           Toast.LENGTH_SHORT).show();
+             //  String sText = ((TextView) view).getText().toString();
                 Intent intent = null;
                 intent = new Intent(getBaseContext(), ProfPage.class);
-                intent.putExtra("profID", nameList.professors.get(position).getObjID());
-                Log.d("Intent", nameList.professors.get(position).getObjID());
-                if (intent != null)
+                intent.putExtra("profID",nameList.professors.get(position).getObjID());
+                Log.d("Intent",nameList.professors.get(position).getObjID());
+                if(intent != null)
                     startActivity(intent);
 
             }
         });
 
-        /*list.setOnTouchListener(new View.OnTouchListener() {
-
-            // Setting on Touch Listener for handling the touch inside ScrollView
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // Disallow the touch request for parent scroll on touch of child view
-                v.getParent().requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-        });*/
-
-        MainActivity.setListViewHeightBasedOnChildren(list);
-
      //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    }
-
-    private static void setListViewHeightBasedOnChildren(ListView listView) {
-
-        ListAdapter listAdapter = listView.getAdapter();
-        if (listAdapter == null) {
-            return;
-        }
-
-        int totalHeight = 0;
-        for (int i = 0; i < listAdapter.getCount(); i++) {
-            View listItem = listAdapter.getView(i, null, listView);
-            listItem.measure(0, 0);
-            totalHeight += listItem.getMeasuredHeight()+ 30;
-        }
-
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalHeight
-                + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
-        listView.setLayoutParams(params);
     }
 
     class MyAdapter extends ArrayAdapter<String>
@@ -180,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.linear_single_row, parent, false);
+            View row = inflater.inflate(R.layout.single_row, parent, false);
             ImageView myImage = (ImageView)row.findViewById(R.id.imageView);
             TextView myProfNames = (TextView) row.findViewById(R.id.textView9);
             TextView myEasiness = (TextView) row.findViewById(R.id.easiness);
