@@ -86,6 +86,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:smoothScrollbar="false"
+        android:padding="10dp"
         android:layout_below="@+id/Prof_Clt" />
 
     <TextView
