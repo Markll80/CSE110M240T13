@@ -101,7 +101,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             style="@style/Animation.AppCompat.DropDownUp"
-            android:textColor="#f96666" />
+            android:textColor="#635959" />
 
 
         <EditText
@@ -147,7 +147,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="5dp"
-            android:textColor="#f96666"
+            android:textColor="#635959"
             android:textColorHighlight="#3f9fe8"
             android:textColorHint="#e97910" />
 
@@ -161,7 +161,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="5dp"
-            android:textColor="#f96666" />
+            android:textColor="#635959" />
 
         <RatingBar
             android:layout_width="110dp"
