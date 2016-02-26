@@ -95,17 +95,16 @@ public class ProfPage extends AppCompatActivity {
 
             MyAdapter adapter = new MyAdapter(this, courseName, num, comData);
             list.setAdapter(adapter);
-        list.setOnTouchListener(new View.OnTouchListener() {
+        /*list.setOnTouchListener(new View.OnTouchListener() {
 
             // Setting on Touch Listener for handling the touch inside ScrollView
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Log.d("Test1", "Here!");
                 // Disallow the touch request for parent scroll on touch of child view
                 v.getParent().requestDisallowInterceptTouchEvent(true);
                 return false;
             }
-        });
+        });*/
         ProfPage.setListViewHeightBasedOnChildren(list);
 
             //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
