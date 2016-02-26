@@ -5,7 +5,9 @@
     android:fadingEdgeLength="0dp"
     android:fillViewport="true"
     android:overScrollMode="never"
-    android:scrollbars="none" >
+    android:scrollbars="none"
+    android:background="@mipmap/b4"
+    android:clickable="true">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,7 +17,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cse110mt13.tritonprofessorraterv1.ProfPage"
-    android:background="@mipmap/b5">
+    android:background="@mipmap/b17"
+    android:clickable="false">
 
 
     <TextView

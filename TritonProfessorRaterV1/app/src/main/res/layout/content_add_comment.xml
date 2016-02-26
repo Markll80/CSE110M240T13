@@ -45,7 +45,8 @@
         android:gravity="center_horizontal"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:typeface="serif" />
 
     <Button
         android:layout_width="wrap_content"
@@ -74,7 +75,9 @@
         android:id="@+id/acCourseName"
         android:layout_below="@+id/ac_ProfName_TV"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        style="@style/Theme.AppCompat"
+        android:typeface="serif" />
 
     <TextView
         android:layout_width="150dp"
@@ -84,7 +87,8 @@
         android:id="@+id/acClarity"
         android:layout_below="@+id/acCourseName"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:typeface="serif" />
 
     <TextView
         android:layout_width="150dp"
@@ -94,7 +98,9 @@
         android:id="@+id/acEasy"
         android:layout_below="@+id/acClarity"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:allowUndo="true"
+        android:typeface="serif" />
 
     <TextView
         android:layout_width="150dp"
@@ -104,7 +110,8 @@
         android:id="@+id/acHelp"
         android:layout_below="@+id/acEasy"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:typeface="serif" />
 
     <EditText
         android:layout_width="match_parent"
@@ -166,7 +173,8 @@
         android:id="@+id/textView5"
         android:layout_below="@+id/acHelp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:typeface="serif" />
 
 </RelativeLayout>
 </ScrollView>

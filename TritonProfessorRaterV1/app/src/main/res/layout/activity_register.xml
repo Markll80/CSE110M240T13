@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cse110mt13.tritonprofessorraterv1.Register"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:background="@mipmap/b11">
 
     <LinearLayout
         android:orientation="vertical"
