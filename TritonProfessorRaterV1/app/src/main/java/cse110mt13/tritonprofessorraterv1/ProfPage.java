@@ -20,13 +20,14 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+
 import java.util.ArrayList;
 
 public class ProfPage extends AppCompatActivity {
 
     String[] comData;
     ArrayList<Comment> coList;
-    NonScrollListView list;
+    ListView list;
     String[] courseName;
     int[] num;
     ProfList nameList;
@@ -86,8 +87,9 @@ public class ProfPage extends AppCompatActivity {
             num[i] = coList.get(i).getNumLikes();
             courseName[i] = coList.get(i).getCourseName();
         }
-        list= (NonScrollListView) findViewById(R.id.list_view_prof_comment);
-
+        list= (ListView) findViewById(R.id.list_view_prof_comment);
+        list.setEnabled(false);
+        list.setFocusable(false);
 
 
 
@@ -112,7 +114,6 @@ public class ProfPage extends AppCompatActivity {
         }
 
     private static void setListViewHeightBasedOnChildren(ListView listView) {
-        Log.d("Test2", "Welcome!");
 
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null) {
@@ -123,7 +124,7 @@ public class ProfPage extends AppCompatActivity {
         for (int i = 0; i < listAdapter.getCount(); i++) {
             View listItem = listAdapter.getView(i, null, listView);
             listItem.measure(0, 0);
-            totalHeight += listItem.getMeasuredHeight();
+            totalHeight += listItem.getMeasuredHeight()+ 30;
         }
 
         ViewGroup.LayoutParams params = listView.getLayoutParams();
@@ -161,24 +162,4 @@ public class ProfPage extends AppCompatActivity {
         }
     }
 
-    public class NonScrollListView extends ListView {
-
-        public NonScrollListView(Context context) {
-            super(context);
-        }
-        public NonScrollListView(Context context, AttributeSet attrs) {
-            super(context, attrs);
-        }
-        public NonScrollListView(Context context, AttributeSet attrs, int defStyle) {
-            super(context, attrs, defStyle);
-        }
-        @Override
-        public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-            int heightMeasureSpec_custom = MeasureSpec.makeMeasureSpec(
-                    Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
-            super.onMeasure(widthMeasureSpec, heightMeasureSpec_custom);
-            ViewGroup.LayoutParams params = getLayoutParams();
-            params.height = getMeasuredHeight();
-        }
-    }
 }
