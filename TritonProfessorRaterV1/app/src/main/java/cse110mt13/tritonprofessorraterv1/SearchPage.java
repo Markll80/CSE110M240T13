@@ -76,12 +76,6 @@ public class SearchPage extends AppCompatActivity {
             nameList.nameSearch(intentBundle.getStringExtra("search"));
         }
 
-        if(nameList.professors.isEmpty())
-        {
-            Intent searchIntent = new Intent(SearchPage.this, SearchNotFound.class);
-            startActivity(searchIntent);
-        }
-
         for(Professor name: nameList.professors){
             searchNames.add(name.getName());
             easy = "easiness : " + name.getEasiness();
