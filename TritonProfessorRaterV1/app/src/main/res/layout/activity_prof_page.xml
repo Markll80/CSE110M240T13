@@ -84,7 +84,7 @@
         android:layout_alignParentEnd="false" />
 
 
-    <ListView
+    <cse110mt13.tritonprofessorraterv1.ProfPage.NonScrollListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/list_view_prof_comment"

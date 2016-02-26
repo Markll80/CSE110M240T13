@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -25,7 +26,7 @@ public class ProfPage extends AppCompatActivity {
 
     String[] comData;
     ArrayList<Comment> coList;
-    ListView list;
+    NonScrollListView list;
     String[] courseName;
     int[] num;
     ProfList nameList;
@@ -85,7 +86,7 @@ public class ProfPage extends AppCompatActivity {
             num[i] = coList.get(i).getNumLikes();
             courseName[i] = coList.get(i).getCourseName();
         }
-        list= (ListView) findViewById(R.id.list_view_prof_comment);
+        list= (NonScrollListView) findViewById(R.id.list_view_prof_comment);
 
 
 
@@ -157,6 +158,27 @@ public class ProfPage extends AppCompatActivity {
             myComment.setText(comArray[position]);
             myNum.setText(""+num[position]);
             return row;
+        }
+    }
+
+    public class NonScrollListView extends ListView {
+
+        public NonScrollListView(Context context) {
+            super(context);
+        }
+        public NonScrollListView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+        }
+        public NonScrollListView(Context context, AttributeSet attrs, int defStyle) {
+            super(context, attrs, defStyle);
+        }
+        @Override
+        public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+            int heightMeasureSpec_custom = MeasureSpec.makeMeasureSpec(
+                    Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec_custom);
+            ViewGroup.LayoutParams params = getLayoutParams();
+            params.height = getMeasuredHeight();
         }
     }
 }
