@@ -76,6 +76,12 @@ public class SearchPage extends AppCompatActivity {
             nameList.nameSearch(intentBundle.getStringExtra("search"));
         }
 
+        if(nameList.professors.isEmpty())
+        {
+            Intent searchIntent = new Intent(SearchPage.this, SearchNotFound.class);
+            startActivity(searchIntent);
+        }
+
         for(Professor name: nameList.professors){
             searchNames.add(name.getName());
             easy = "easiness : " + name.getEasiness();
@@ -157,20 +163,10 @@ public class SearchPage extends AppCompatActivity {
                      /*  TODO: write backend function to determine whether clicking on search
                    should jump to none found page, or search-found page
                  */
-                    ProfList nameList = new ProfList();
-                    nameList.nameSearch(etSearch.getText().toString());
-                    if(nameList.professors.isEmpty())
-                    {
-                        Intent searchIntent = new Intent(SearchPage.this, SearchNotFound.class);
-                        startActivity(searchIntent);
-                    }
-                    else
-                    {
-                        Intent searchIntent = new Intent(SearchPage.this, SearchPage.class);
-                        searchIntent.putExtra("search", etSearch.getText().toString());
-                        //  finish(); //end current activity
-                        startActivity(searchIntent); //create a new activity*/
-                    }
+                    Intent searchIntent = new Intent(SearchPage.this, SearchPage.class);
+                    searchIntent.putExtra("search", etSearch.getText().toString());
+                  //  finish(); //end current activity
+                    startActivity(searchIntent); //create a new activity*/
                     break;
                 case R.id.sp_AddProf_B:
                   //  finish(); //end current activity
