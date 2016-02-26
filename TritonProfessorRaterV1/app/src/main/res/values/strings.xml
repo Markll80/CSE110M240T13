@@ -20,6 +20,7 @@
     <string name="helpfulness">Helpfulness</string>
     <string name="login_B">Login</string>
     <string name="findPW">Find Password</string>
+    <string name="findUser">Find Username</string>
 
     <string name="search">Class/Professor Name</string>
     <string name="searchText">Search</string>
