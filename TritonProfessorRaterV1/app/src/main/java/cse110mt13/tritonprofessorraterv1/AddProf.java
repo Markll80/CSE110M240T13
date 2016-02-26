@@ -219,7 +219,8 @@ public class AddProf extends AppCompatActivity {
 
     private String addSpace(String newCourse){
 
-        newCourse = newCourse.toUpperCase().replaceAll("CSE *", "CSE ");
+        newCourse = newCourse.toUpperCase().replaceAll(" *", "");
+        newCourse = newCourse.replaceAll("(?<=[A-Z])(?=[0-9])"," ");
 
         return newCourse;
     }
