@@ -20,12 +20,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+/*
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
-
+*/
 import java.util.Vector;
 
 public class SearchPage extends AppCompatActivity {
@@ -56,11 +56,6 @@ public class SearchPage extends AppCompatActivity {
         setContentView(R.layout.activity_search_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-     /*   profs = new ProfList();
-        Intent intentBundle = getIntent();
-        if(intentBundle.hasExtra("search")) {
-            profs.nameSearch(intentBundle.getStringExtra("search"));
-        }*/
         etSearch = (EditText)findViewById(R.id.search_ET);
         findViewById(R.id.search_B).setOnClickListener(onclickListener);
         findViewById(R.id.sp_AddProf_B).setOnClickListener(onclickListener);

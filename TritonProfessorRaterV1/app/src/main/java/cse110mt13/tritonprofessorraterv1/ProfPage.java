@@ -31,7 +31,9 @@ public class ProfPage extends AppCompatActivity {
     String[] courseName;
     int[] num;
     ProfList nameList;
-
+    //TextView clarityTV;
+  //  TextView easinessTV;
+  //  TextView helpfullnessTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +48,15 @@ public class ProfPage extends AppCompatActivity {
       //  }
 
         TextView profName = (TextView)findViewById(R.id.Prof_name);
-        TextView easiness_v = (TextView)findViewById(R.id.easiness_val);
+      /*  TextView easiness_v = (TextView)findViewById(R.id.easiness_val);
         TextView helpfulness_v = (TextView)findViewById(R.id.helpfulness_v);
-        TextView clarity_v = (TextView)findViewById(R.id.clarity_v);
-        Button addratingButton = (Button)findViewById(R.id.addRatingButton);
+        TextView clarity_v = (TextView)findViewById(R.id.clarity_v);*/
+        TextView easiness_v = (TextView)findViewById(R.id.Prof_Ess);
+        TextView helpfulness_v = (TextView)findViewById(R.id.Prof_Hlp);
+        TextView clarity_v = (TextView)findViewById(R.id.Prof_cla);
+       // Button addratingButton = (Button)findViewById(R.id.addRatingButton);
+/*
         addratingButton.setOnClickListener((new View.OnClickListener() {
-
                     @Override
                     public void onClick(View v) {
                         //  finish();
@@ -61,15 +66,15 @@ public class ProfPage extends AppCompatActivity {
                     }
                 })
         );
-
+*/
 
 
 
         Professor prof = Professor.getProf(profID);  //set
         profName.setText(prof.getName());
-        easiness_v.setText(String.valueOf(prof.getEasiness()));
-        helpfulness_v.setText(String.valueOf(prof.getHelpfulness()));
-       clarity_v.setText(String.valueOf(prof.getClarity()));
+        easiness_v.setText("Easiness: " + String.valueOf(prof.getEasiness()));
+        helpfulness_v.setText("Helpfulness: " + String.valueOf(prof.getHelpfulness()));
+       clarity_v.setText("Clarity: " + String.valueOf(prof.getClarity()));
 
         nameList = new ProfList();
         coList = nameList.getComments(profID);

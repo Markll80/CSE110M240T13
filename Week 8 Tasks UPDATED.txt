@@ -1,0 +1,18 @@
+Search by class (Neil, Eric)
+ProfPage - Like/unlike, edit, report - with auto delete frequently reported comments
+(Neil, Eric)
+Forgot password/username backend (Ellen)
+setting page - change password (Cherish)
+Link addProf/addComment (Eric)
+title bar - refresh button (Cherish)
+
+ProfPage/Main Page UI major makeover (Ting, Rye)
+1. You guys got rid of the add rating button on profpage, 
+   need to add it back through java code to the bottom of the list
+2. same thing for search page, "Add New Professor" button should be 
+   added through the java code to the end of all the searches
+3. Modify the buttons on profPage, change "Like", "Edit", "Report" 
+   to text clickables, instead of buttons (for better visual).
+   Additionally, consider about having a box containing each 
+   comment (wrap each view in a box).
+   

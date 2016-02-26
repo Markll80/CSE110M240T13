@@ -206,6 +206,8 @@ public class AddComment extends AppCompatActivity {
     }
 
     private void submitComment(){
+        String comment = acComment.getText().toString();
+        Professor.addComment(comment ,profID);
         BackToProfPage();
     }
 

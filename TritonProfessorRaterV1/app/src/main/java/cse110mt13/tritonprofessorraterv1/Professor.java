@@ -78,11 +78,11 @@ public class Professor extends ParseObject{
     create a new comment parseobject and save to database
     *  Precondition: corresponding prof must be in database
     * */
-    public void addComment(String comment){
+    public static void addComment(String comment, String profID){
         //create new comment and save to database
         Comment commentObj = new Comment();
         commentObj.setup(comment);
-        commentObj.put("ProfID", this.objectId);
+        commentObj.put("ProfID", profID);
         try {
             commentObj.save();
         }
@@ -91,21 +91,46 @@ public class Professor extends ParseObject{
         ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
         Professor prof = new Professor();
         try{
-            prof = query.get(this.getObjID());
+            prof = query.get(profID);
         }
         catch(ParseException e){}
         //add comment to both the prof in the profList and the database
         JSONArray comments = prof.getComments();
         comments.put(commentObj.getObjectId());
         prof.put("comments", comments);
-        this.put("comments", comments);
+       // this.put("comments", comments);
         try {
             prof.save();
         }
         catch(ParseException e1){}
     }
 
-   
+    public void addComment(String comment){
+        //create new comment and save to database
+        Comment commentObj = new Comment();
+        commentObj.setup(comment);
+        commentObj.put("ProfID", this.getObjectId());
+        try {
+            commentObj.save();
+        }
+        catch(ParseException e){}
+        //gets professor of from database of corresponding professor
+        ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
+        Professor prof = new Professor();
+        try{
+            prof = query.get(this.getObjectId());
+        }
+        catch(ParseException e){}
+        //add comment to both the prof in the profList and the database
+        JSONArray comments = prof.getComments();
+        comments.put(commentObj.getObjectId());
+        prof.put("comments", comments);
+        // this.put("comments", comments);
+        try {
+            prof.save();
+        }
+        catch(ParseException e1){}
+    }
 
 
     public void putName(String name){

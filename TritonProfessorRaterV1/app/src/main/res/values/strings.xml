@@ -10,14 +10,14 @@
     <string name="addProf">Add New Professor</string>
     <string name="addRating">Add A Rating</string>
     <string name="cancel">Cancel</string>
-    <string name="clarity">Clarity</string>
+    <string name="clarity">Clarity: </string>
     <string name="comment">Comment:</string>
     <string name="createAcc">Create Account</string>
     <string name="coursename">Course Name</string>
-    <string name="easiness">Easiness</string>
+    <string name="easiness">Easiness: </string>
     <string name="email">UCSD Email</string>
 
-    <string name="helpfulness">Helpfulness</string>
+    <string name="helpfulness">Helpfulness: </string>
     <string name="login_B">Login</string>
     <string name="findPW">Find Password</string>
     <string name="findUser">Find Username</string>
