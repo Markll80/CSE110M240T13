@@ -54,7 +54,7 @@ public class Professor extends ParseObject{
         }
         catch(ParseException e){
         }
-      //  Log.d("ProfTest", prof.getName());
+        Log.d("ProfQuery", prof.getName());
        return prof;
     }
 

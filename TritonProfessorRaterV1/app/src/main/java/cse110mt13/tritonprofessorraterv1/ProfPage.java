@@ -54,8 +54,8 @@ public class ProfPage extends AppCompatActivity {
         TextView easiness_v = (TextView)findViewById(R.id.Prof_Ess);
         TextView helpfulness_v = (TextView)findViewById(R.id.Prof_Hlp);
         TextView clarity_v = (TextView)findViewById(R.id.Prof_cla);
-       // Button addratingButton = (Button)findViewById(R.id.addRatingButton);
-/*
+        Button addratingButton = (Button)findViewById(R.id.addRatingButton);
+
         addratingButton.setOnClickListener((new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -66,7 +66,7 @@ public class ProfPage extends AppCompatActivity {
                     }
                 })
         );
-*/
+
 
 
 

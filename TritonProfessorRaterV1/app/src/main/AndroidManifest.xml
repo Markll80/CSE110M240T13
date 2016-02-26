@@ -85,7 +85,8 @@
         <activity
             android:name=".AddComment"
             android:label="@string/title_activity_add_comment"
-            android:parentActivityName=".ProfPage" >
+            android:parentActivityName=".ProfPage"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ProfPage" >

@@ -37,15 +37,19 @@ public class LoginActivity extends AppCompatActivity{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        /*Parse.enableLocalDatastore(this);
+        Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseObject.registerSubclass(Professor.class);
         ParseObject.registerSubclass(Course.class);
         ParseObject.registerSubclass(Comment.class);
-        ParseUser.enableAutomaticUser();
+       // ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
-        ParseACL.setDefaultACL(defaultACL, true);*/
+        ParseACL.setDefaultACL(defaultACL, true);
+        if(ParseUser.getCurrentUser() != null){
+            finish();
+            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+        }
 
 
         super.onCreate(savedInstanceState);
@@ -89,8 +93,8 @@ public class LoginActivity extends AppCompatActivity{
         Log.d("Login", "Verifying User");
         String username = _userText.getText().toString().toLowerCase();
         String password = _passwordText.getText().toString();
-
-        ParseUser.logOut();
+        if(ParseUser.getCurrentUser() != null)
+             ParseUser.logOut();
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
