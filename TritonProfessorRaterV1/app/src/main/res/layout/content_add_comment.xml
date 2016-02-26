@@ -30,7 +30,7 @@
         android:layout_height="200dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/ac_Comment_ET"
-        android:background="#c7ddd3"
+        android:background="@drawable/rectangle_drawable_back"
         android:inputType="textMultiLine"
         android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
@@ -112,7 +112,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/ac_AddCourse_ET"
         android:layout_below="@+id/ac_ProfName_TV"
-        android:background="#c7ddd3"
+        android:background="@drawable/rectangle_drawable_back"
         android:layout_toRightOf="@+id/acCourseName"
         android:layout_toEndOf="@+id/acCourseName"
         android:inputType="text" />

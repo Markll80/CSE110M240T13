@@ -10,7 +10,7 @@
     tools:context="cse110mt13.tritonprofessorraterv1.LogIn"
     android:fitsSystemWindows="true"
     android:fillViewport="false"
-    android:background="@mipmap/back">
+    android:background="@mipmap/b11">
 
     <LinearLayout
         android:orientation="vertical"
@@ -23,8 +23,8 @@
         <ImageView android:src="@mipmap/logo"
             android:layout_width="wrap_content"
             android:layout_height="72dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal"
             android:contentDescription="logo" />
 
         <!-- Email Label -->
