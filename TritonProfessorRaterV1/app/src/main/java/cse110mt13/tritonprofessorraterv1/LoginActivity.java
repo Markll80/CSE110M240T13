@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity{
     @InjectView(R.id.input_password) EditText _passwordText;
     @InjectView(R.id.btn_login) Button _loginButton;
     @InjectView(R.id.link_signup) TextView _signupLink;
+    @InjectView(R.id.forgetPW) TextView _foregetPWLink;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,15 @@ public class LoginActivity extends AppCompatActivity{
                 // Start the Signup activity
                 Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivityForResult(intent, REQUEST_SIGNUP);
+            }
+        });
+
+        _foregetPWLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the forgetPW activity
+                Intent intent = new Intent(getApplicationContext(), ForgotPassword.class);
+                startActivityForResult(intent, 0);
             }
         });
 

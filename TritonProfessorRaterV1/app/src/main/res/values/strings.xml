@@ -38,6 +38,7 @@
     <string name="noAcc">No account yet? Create one</string>
     <string name="haveAcc">Have account already? Login</string>
     <string name="remember">Remember your password? Login</string>
+    <string name="forget_pw">Forget your password? Click here</string>
     <string name="username">Username</string>
 
     <string-array name="prof_name">
