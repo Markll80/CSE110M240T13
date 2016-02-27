@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -21,7 +22,6 @@ public class ForgotPassword extends AppCompatActivity {
 
     @InjectView(R.id.input_forgetEmail) EditText _forgetEmail;
     @InjectView(R.id.btn_findUser) Button _findUser;
-    @InjectView(R.id.btn_findPW) Button _findPW;
     @InjectView(R.id.forget_link_login) TextView _fwloginLink;
     @InjectView(R.id.forget_link_signup) TextView _fwsignupLink;
 
@@ -37,13 +37,6 @@ public class ForgotPassword extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 findUser();
-            }
-        });
-
-        _findPW.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                findPW();
             }
         });
 
@@ -67,9 +60,26 @@ public class ForgotPassword extends AppCompatActivity {
 
     }
 
-    public void findUser(){}
+    public void findUser(){
 
-    public void findPW(){}
+        String email = _forgetEmail.getText().toString().toLowerCase();
+        ParseUser.requestPasswordResetInBackground(email,
+                new RequestPasswordResetCallback() {
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            String success = "Email sent";
+                            Toast.makeText(getApplicationContext(), success, Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            // Something went wrong. Look at the ParseException to see what's up.
+                            String fail = "Unable to send email";
+                            Toast.makeText(getApplicationContext(), fail, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+    }
+
 
     public void forwardToLoginPage(){
         finish();
