@@ -85,27 +85,4 @@ public class ForgotPassword extends AppCompatActivity {
         finish();
     }
 
-    //TODO finish method once the ForgotPassword page is done
-
-    /*
-    private View.OnClickListener onclickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.reset_B:
-                    ParseUser.requestPasswordResetInBackground("", new RequestPasswordResetCallback() {
-                        public void done(ParseException e) {
-                            if (e == null) {
-                               // An email was successfully sent with reset instructions.
-                            } else {
-                              // Something went wrong. Look at the ParseException to see what's up.
-                            }
-                        }
-                    });
-                    break;
-            }
-        }
-    };
-    */
-
 }
