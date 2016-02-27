@@ -218,7 +218,18 @@ public class AddProf extends AppCompatActivity {
     }
 
     private String addSpace(String newCourse){
-
+        /*
+        char currentChar;
+            for(int i = 0; i < searchedName.length(); i++){
+                currentChar = searchedName.charAt(i);
+                if(i > 0 && Character.isDigit(currentChar)){
+                    if(!((Character)searchedName.charAt(i - 1)).equals(' ')){
+                        searchedName = searchedName.substring(0, i) + " " + searchedName.substring(i, searchedName.length());
+                    }
+                    break;
+                }
+            }
+         */
         newCourse = newCourse.toUpperCase().replaceAll(" *", "");
         newCourse = newCourse.replaceAll("(?<=[A-Z])(?=[0-9])"," ");
 
