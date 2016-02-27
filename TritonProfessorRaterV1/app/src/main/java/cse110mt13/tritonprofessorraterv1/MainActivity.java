@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     //int[] images = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-  /*      Parse.enableLocalDatastore(this);
+        Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseObject.registerSubclass(Professor.class);
         ParseObject.registerSubclass(Course.class);
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
-*/
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
             TextView myEasiness = (TextView) row.findViewById(R.id.easiness);
             TextView myHelpfulness = (TextView) row.findViewById(R.id.helpfulness);
             TextView myClarity = (TextView) row.findViewById(R.id.clarity);
-            myImage.setImageResource(images[position]);
+            myImage.setImageResource(images[0]);
             myProfNames.setText(nameArray.get(position));
             myEasiness.setText(easyR.get(position));
             myHelpfulness.setText(helpfulR.get(position));

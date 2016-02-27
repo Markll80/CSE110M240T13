@@ -19,11 +19,13 @@ public class SearchNotFound extends AppCompatActivity {
         etSearch = (EditText)findViewById(R.id.search_ET);
         /* TODO: get the string being searched, and substitute the current string */
 
+        Intent intent = getIntent();
+        searchString.setText(intent.getStringExtra("search"));
 
         findViewById(R.id.search_B).setOnClickListener(onclickListener);
         findViewById(R.id.add_Prof_B).setOnClickListener(onclickListener);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 }
 
 
@@ -32,7 +34,7 @@ public class SearchNotFound extends AppCompatActivity {
        public void onClick(View v) {
            switch (v.getId()) {
                case R.id.search_B:
-                     /*  TODO: write backend function to determine whether clicking on search
+                 /*  TODO: write backend function to determine whether clicking on search
                    should jump to none found page, or search-found page
                  */
                    Intent searchIntent = new Intent(SearchNotFound.this, SearchPage.class);

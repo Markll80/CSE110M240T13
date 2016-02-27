@@ -38,7 +38,7 @@ public class SearchPage extends AppCompatActivity {
     ListView l;
     ProfList profs;
     EditText etSearch;
-
+    String search = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 /*
@@ -68,7 +68,12 @@ public class SearchPage extends AppCompatActivity {
         String clear;
         Intent intentBundle = getIntent();
         if(intentBundle.hasExtra("search")) {
-            nameList.nameSearch(intentBundle.getStringExtra("search"));
+            search = intentBundle.getStringExtra("search");
+            nameList.nameSearch(search);
+        }
+
+        if(nameList.professors.size() == 0){
+            forwardToSearchNotFound();
         }
 
         for(Professor name: nameList.professors){
@@ -103,6 +108,13 @@ public class SearchPage extends AppCompatActivity {
 
       //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    }
+
+    public void forwardToSearchNotFound(){
+        Intent intent = new Intent(SearchPage.this, SearchNotFound.class);
+        intent.putExtra("search",search);
+        finish();
+        startActivity(intent);
     }
 
     class MyAdapter extends ArrayAdapter<String>
