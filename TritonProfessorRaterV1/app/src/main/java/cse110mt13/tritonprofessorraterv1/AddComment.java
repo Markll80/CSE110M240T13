@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,8 +18,13 @@ import android.widget.TextView;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddComment extends AppCompatActivity {
 
@@ -28,6 +34,7 @@ public class AddComment extends AppCompatActivity {
     EditText acCourseName, acComment;
     RatingBar ac_RatingC, ac_RatingE, ac_RatingH;
     TextView profNameET;
+    Professor prof;
 
     String profID;
     @Override
@@ -60,7 +67,7 @@ public class AddComment extends AppCompatActivity {
 
         Intent intentBundle = getIntent();
         String profID = intentBundle.getStringExtra("profID");
-        Professor prof = Professor.getProf(profID);
+        prof = Professor.getProf(profID);
         profNameET.setText(prof.getName());
 
 
@@ -187,13 +194,25 @@ public class AddComment extends AppCompatActivity {
     }
 
     private boolean validCourse(String newCourse){
-
         newCourse = newCourse.toLowerCase();
+        newCourse = this.addSpace(newCourse);
+        ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
+        query.whereEqualTo("CourseName", newCourse);
+        List<Course> course = new ArrayList<Course>();
+        try{
+            course = query.find();
+        }
+        catch (ParseException e){
+            Log.e("validCourseError", e.getMessage());
+        }
 
         if (newCourse.isEmpty() || newCourse == null)
             return false;
 
-            // TODO: check if the course number is valid
+
+        else if(course.size() <= 0){
+            return false;
+        }
 
         else return true;
     }
@@ -207,7 +226,7 @@ public class AddComment extends AppCompatActivity {
 
     private void submitComment(){
         String comment = acComment.getText().toString();
-        Professor.addComment(comment ,profID);
+        prof.addComment(comment);
         BackToProfPage();
     }
 

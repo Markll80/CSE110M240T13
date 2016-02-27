@@ -193,9 +193,9 @@ public class Professor extends ParseObject{
         this.objectId = objectId;
     }
 
-    public ArrayList<Comment> getComments(String profId){
+    public ArrayList<Comment> getStringComments(){
         ArrayList<Comment> comments = new ArrayList<>();
-        retrieveComments(profId, comments);
+        retrieveComments(this.getObjectId(), comments);
         Collections.sort(comments);
         return comments;
     }

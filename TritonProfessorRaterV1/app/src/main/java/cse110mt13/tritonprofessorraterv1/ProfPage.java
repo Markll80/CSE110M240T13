@@ -78,7 +78,7 @@ public class ProfPage extends AppCompatActivity {
        clarity_v.setText("Clarity: " + String.valueOf(prof.getClarity()));
 
         nameList = new ProfList();
-        coList = nameList.getComments(profID);
+        coList = prof.getStringComments();
 
         int size = coList.size();
         Log.d("Comments", "comment size:" + size);

@@ -127,29 +127,6 @@ public class AddProf extends AppCompatActivity {
                                 .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
 
-
-                                        String ap_Prof;
-                                        int ap_C, ap_E, ap_H;
-
-                                        ap_Prof = ProfName.getText().toString();
-                                        ap_C = (int) ap_RatingC.getRating();
-                                        ap_E = (int) ap_RatingE.getRating();
-                                        ap_H = (int) ap_RatingH.getRating();
-
-                                        Professor newProf = Professor.createProf(ap_Prof,ap_C,ap_E,ap_H, vap_Comment);
-                                        ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
-                                        query.whereEqualTo("CourseName", vap_Course);
-                                        Course course = new Course();
-                                        try{
-                                            course = query.getFirst();
-                                        }
-                                        catch (ParseException e){
-                                            Log.e("validCourseError", e.getMessage());
-                                        }
-                                        course.addProfToCourse(newProf.getObjectId());
-
-
-
                                         submitProf();
                                     }
                                 })
@@ -244,20 +221,21 @@ public class AddProf extends AppCompatActivity {
     }
 
     private String addSpace(String newCourse){
-        /*
+
         char currentChar;
-            for(int i = 0; i < searchedName.length(); i++){
-                currentChar = searchedName.charAt(i);
+            for(int i = 0; i < newCourse.length(); i++){
+                currentChar = newCourse.charAt(i);
                 if(i > 0 && Character.isDigit(currentChar)){
-                    if(!((Character)searchedName.charAt(i - 1)).equals(' ')){
-                        searchedName = searchedName.substring(0, i) + " " + searchedName.substring(i, searchedName.length());
+                    if(!((Character)newCourse.charAt(i - 1)).equals(' ')){
+                        newCourse = newCourse.substring(0, i) + " " + newCourse.substring(i, newCourse.length());
                     }
                     break;
                 }
             }
-         */
+
+        /*
         newCourse = newCourse.toUpperCase().replaceAll(" *", "");
-        newCourse = newCourse.replaceAll("(?<=[A-Z])(?=[0-9])"," ");
+        newCourse = newCourse.replaceAll("(?<=[A-Z])(?=[0-9])"," ");*/
 
         return newCourse;
     }
@@ -286,6 +264,31 @@ public class AddProf extends AppCompatActivity {
     }
 
     private void submitProf(){
+
+        String ap_Prof, vap_Course, vap_Comment;
+        int ap_C, ap_E, ap_H;
+
+        ap_Prof = ProfName.getText().toString();
+        ap_C = (int) ap_RatingC.getRating();
+        ap_E = (int) ap_RatingE.getRating();
+        ap_H = (int) ap_RatingH.getRating();
+        vap_Course = apCourseName.getText().toString();
+        vap_Comment = apComment.getText().toString();
+
+        Professor newProf = Professor.createProf(ap_Prof,ap_C,ap_E,ap_H, vap_Comment);
+        ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
+        query.whereEqualTo("CourseName", vap_Course);
+        Course course = new Course();
+        try{
+            course = query.getFirst();
+        }
+        catch (ParseException e){
+            Log.e("validCourseError", e.getMessage());
+        }
+        course.addProfToCourse(newProf.getObjectId());
+
+
+
         finish(); //end current activity
         startActivity(new Intent(AddProf.this, ProfPage.class)); //create a new activity
     }
