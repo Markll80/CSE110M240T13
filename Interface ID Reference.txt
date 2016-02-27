@@ -34,3 +34,8 @@ Add Prof:
   Clarity: ap_RatingC       
   Easiness: ap_RatingE          
   Helpfulness: ap_RatingH
+
+Button:
+  Like
+  Report
+  Edit
