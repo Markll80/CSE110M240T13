@@ -35,7 +35,7 @@ Add Prof:
   Easiness: ap_RatingE          
   Helpfulness: ap_RatingH
 
-Button:
+Comment Button:
   Like
   Report
   Edit
