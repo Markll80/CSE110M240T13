@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         etSearch = (EditText)findViewById(R.id.search_ET);
         Resources res = getResources();
         nameList = new ProfList();
+        nameList.nameSearch("");//make a list containing all profs
         //Log.d("ratingTest", "Easiness: " + nameList.professors.g);
         String easy;
         String help;

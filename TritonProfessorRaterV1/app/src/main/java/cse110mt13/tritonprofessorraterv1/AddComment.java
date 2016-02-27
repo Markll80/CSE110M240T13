@@ -226,7 +226,7 @@ public class AddComment extends AppCompatActivity {
 
     private void submitComment(){
         String comment = acComment.getText().toString();
-        prof.addComment(comment);
+        //prof.addComment(comment);
         BackToProfPage();
     }
 

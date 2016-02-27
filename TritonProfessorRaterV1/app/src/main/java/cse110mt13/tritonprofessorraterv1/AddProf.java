@@ -172,13 +172,13 @@ public class AddProf extends AppCompatActivity {
             }
         }
     };
-
+/*
     private void createProf(String apName, int apRatingC, int apRatingE, int apRatingH, String apComment){
         Professor newProf = new Professor();
         newProf.setup(apName);
         newProf.addRating(apRatingC, apRatingE, apRatingH);
         newProf.addComment(apComment);
-    }
+    }*/
 
     private boolean validComment(String newComment){
 
@@ -188,10 +188,14 @@ public class AddProf extends AppCompatActivity {
         String replace = newComment.replace(" ","");
 
         int countSpace = newComment.length() - replace.length();
+        Log.d("countSpace", ((Integer)countSpace).toString());
+        Log.d("0.25*newComment.length", ((Integer)(int)(0.25 * newComment.length())).toString());
 
-        if(countSpace > (int) 0.25 * newComment.length())
+        if(countSpace > ((int)(0.25 * newComment.length()))) {
+            Log.d("validCommentTest", newComment);
+            Log.d("validCommentTest", replace);
             return false;
-
+        }
         else return true;
 
     }
@@ -272,8 +276,10 @@ public class AddProf extends AppCompatActivity {
         ap_C = (int) ap_RatingC.getRating();
         ap_E = (int) ap_RatingE.getRating();
         ap_H = (int) ap_RatingH.getRating();
-        vap_Course = apCourseName.getText().toString();
+        vap_Course = apCourseName.getText().toString().toLowerCase();
+        vap_Course = addSpace(vap_Course);
         vap_Comment = apComment.getText().toString();
+
 
         Professor newProf = Professor.createProf(ap_Prof,ap_C,ap_E,ap_H, vap_Comment);
         ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
@@ -286,11 +292,15 @@ public class AddProf extends AppCompatActivity {
             Log.e("validCourseError", e.getMessage());
         }
         course.addProfToCourse(newProf.getObjectId());
+        newProf.addComment(vap_Comment, vap_Course);
 
 
-
+        Intent intent = null;
+        intent = new Intent(getBaseContext(), ProfPage.class);
+        intent.putExtra("profID", newProf.getObjectId());
         finish(); //end current activity
-        startActivity(new Intent(AddProf.this, ProfPage.class)); //create a new activity
+        if(intent != null)
+            startActivity(intent);
     }
 
     private void cancelProf() {

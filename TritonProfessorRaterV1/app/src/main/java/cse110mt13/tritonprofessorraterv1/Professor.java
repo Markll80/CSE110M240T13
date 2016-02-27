@@ -81,11 +81,12 @@ public class Professor extends ParseObject{
     create a new comment parseobject and save to database
     *  Precondition: corresponding prof must be in database
     * */
-    public void addComment(String comment){
+    public void addComment(String comment, String courseName){
         //create new comment and save to database
         Comment commentObj = new Comment();
         commentObj.setup(comment);
         commentObj.put("ProfID", this.objectId);
+        commentObj.setCourseName(TextParser.convertToUpperCase(courseName));
         try {
             commentObj.save();
         }
