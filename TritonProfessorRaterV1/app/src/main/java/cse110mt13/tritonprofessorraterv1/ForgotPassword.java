@@ -51,8 +51,9 @@ public class ForgotPassword extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the Signup activity
-                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
-                startActivityForResult(intent, 0);
+                finish();
+                Intent intent = new Intent(ForgotPassword.this, SignupActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -60,8 +61,7 @@ public class ForgotPassword extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the Login activity
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivityForResult(intent, 0);
+                forwardToLoginPage();
             }
         });
 
@@ -70,6 +70,10 @@ public class ForgotPassword extends AppCompatActivity {
     public void findUser(){}
 
     public void findPW(){}
+
+    public void forwardToLoginPage(){
+        finish();
+    }
 
     //TODO finish method once the ForgotPassword page is done
 

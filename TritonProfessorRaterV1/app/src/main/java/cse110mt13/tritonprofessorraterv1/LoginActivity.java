@@ -47,12 +47,15 @@ public class LoginActivity extends AppCompatActivity{
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
+
+        /*
+
         if(ParseUser.getCurrentUser() != null){
             finish();
             startActivity(new Intent(LoginActivity.this,MainActivity.class));
         }
 
-
+*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         ButterKnife.inject(this);
