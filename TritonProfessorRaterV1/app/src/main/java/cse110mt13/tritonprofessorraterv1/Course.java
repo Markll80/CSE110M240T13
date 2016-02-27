@@ -28,6 +28,16 @@ public class Course extends ParseObject{
         return getJSONArray("ProfTaught");
     }
 
+    public void addProfToCourse(String profId){
+        JSONArray profs = this.getProfessors();
+        profs.put(profId);
+        this.put("ProfTaught", profs);
+        try {
+            this.save();
+        }
+        catch(ParseException e1){}
+    }
+
     @Override
     public String toString(){
         return this.getCourseName();

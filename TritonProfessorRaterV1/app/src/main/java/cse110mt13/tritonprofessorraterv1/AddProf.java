@@ -8,15 +8,16 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
-import com.parse.Parse;
-import com.parse.ParseACL;
-import com.parse.ParseObject;
-import com.parse.ParseUser;
+import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 import android.app.AlertDialog;
 
@@ -24,6 +25,9 @@ import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseUser;
 import com.parse.ParseObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddProf extends AppCompatActivity {
 
@@ -87,7 +91,7 @@ public class AddProf extends AppCompatActivity {
                            6. set initial step size to 1
                  */
 
-                    String vap_Course, vap_Comment;
+                    final String vap_Course, vap_Comment;
 
                     vap_Course = apCourseName.getText().toString();
                     vap_Comment = apComment.getText().toString();
@@ -106,8 +110,9 @@ public class AddProf extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
                     */
 
-                    // TODO: check if the professor is already in the database, if so,
-                    //ask if the user still want to create the professor
+                    else if(profExists(ProfName.getText().toString())){
+                        //TODO:ask user if still want to create professor
+                    }
 
 
                     else {
@@ -123,17 +128,26 @@ public class AddProf extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog, int id) {
 
 
-                                        String ap_Prof, ap_Course, ap_Comment;
+                                        String ap_Prof;
                                         int ap_C, ap_E, ap_H;
 
                                         ap_Prof = ProfName.getText().toString();
-                                        ap_Course = apCourseName.getText().toString();
-                                        ap_Comment = apComment.getText().toString();
                                         ap_C = (int) ap_RatingC.getRating();
                                         ap_E = (int) ap_RatingE.getRating();
                                         ap_H = (int) ap_RatingH.getRating();
 
-                                        createProf(ap_Prof,ap_C,ap_E,ap_H,ap_Comment);
+                                        Professor newProf = Professor.createProf(ap_Prof,ap_C,ap_E,ap_H, vap_Comment);
+                                        ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
+                                        query.whereEqualTo("CourseName", vap_Course);
+                                        Course course = new Course();
+                                        try{
+                                            course = query.getFirst();
+                                        }
+                                        catch (ParseException e){
+                                            Log.e("validCourseError", e.getMessage());
+                                        }
+                                        course.addProfToCourse(newProf.getObjectId());
+
 
 
                                         submitProf();
@@ -206,13 +220,25 @@ public class AddProf extends AppCompatActivity {
     }
 
     private boolean validCourse(String newCourse){
-
         newCourse = newCourse.toLowerCase();
+        newCourse = this.addSpace(newCourse);
+        ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
+        query.whereEqualTo("CourseName", newCourse);
+        List<Course> course = new ArrayList<Course>();
+        try{
+            course = query.find();
+        }
+        catch (ParseException e){
+            Log.e("validCourseError", e.getMessage());
+        }
 
         if (newCourse.isEmpty() || newCourse == null)
             return false;
 
-        // TODO: check if the course number is valid
+
+        else if(course.size() <= 0){
+            return false;
+        }
 
         else return true;
     }
@@ -234,6 +260,29 @@ public class AddProf extends AppCompatActivity {
         newCourse = newCourse.replaceAll("(?<=[A-Z])(?=[0-9])"," ");
 
         return newCourse;
+    }
+
+    private boolean profExists(String profName){
+        profName = profName.toLowerCase();
+        ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
+        query.whereEqualTo("name", profName);
+        List<Professor> profs = new ArrayList<Professor>();
+        try{
+            profs = query.find();
+        }
+        catch (ParseException e){
+            Log.e("validCourseError", e.getMessage());
+        }
+
+        if (profName.isEmpty() || profName == null)
+            return false;
+
+
+        else if(profs.size() <= 0){
+            return false;
+        }
+
+        else return true;
     }
 
     private void submitProf(){

@@ -12,8 +12,11 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @ParseClassName("Professor")
@@ -54,7 +57,7 @@ public class Professor extends ParseObject{
         }
         catch(ParseException e){
         }
-        Log.d("ProfQuery", prof.getName());
+      //  Log.d("ProfTest", prof.getName());
        return prof;
     }
 
@@ -78,11 +81,11 @@ public class Professor extends ParseObject{
     create a new comment parseobject and save to database
     *  Precondition: corresponding prof must be in database
     * */
-    public static void addComment(String comment, String profID){
+    public void addComment(String comment){
         //create new comment and save to database
         Comment commentObj = new Comment();
         commentObj.setup(comment);
-        commentObj.put("ProfID", profID);
+        commentObj.put("ProfID", this.objectId);
         try {
             commentObj.save();
         }
@@ -91,46 +94,21 @@ public class Professor extends ParseObject{
         ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
         Professor prof = new Professor();
         try{
-            prof = query.get(profID);
+            prof = query.get(this.getObjID());
         }
         catch(ParseException e){}
         //add comment to both the prof in the profList and the database
         JSONArray comments = prof.getComments();
         comments.put(commentObj.getObjectId());
         prof.put("comments", comments);
-       // this.put("comments", comments);
+        this.put("comments", comments);
         try {
             prof.save();
         }
         catch(ParseException e1){}
     }
 
-    public void addComment(String comment){
-        //create new comment and save to database
-        Comment commentObj = new Comment();
-        commentObj.setup(comment);
-        commentObj.put("ProfID", this.getObjectId());
-        try {
-            commentObj.save();
-        }
-        catch(ParseException e){}
-        //gets professor of from database of corresponding professor
-        ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
-        Professor prof = new Professor();
-        try{
-            prof = query.get(this.getObjectId());
-        }
-        catch(ParseException e){}
-        //add comment to both the prof in the profList and the database
-        JSONArray comments = prof.getComments();
-        comments.put(commentObj.getObjectId());
-        prof.put("comments", comments);
-        // this.put("comments", comments);
-        try {
-            prof.save();
-        }
-        catch(ParseException e1){}
-    }
+   
 
 
     public void putName(String name){
@@ -213,6 +191,90 @@ public class Professor extends ParseObject{
         put("helpfulness", helpfulness);
         put("comments", comments);
         this.objectId = objectId;
+    }
+
+    public ArrayList<Comment> getComments(String profId){
+        ArrayList<Comment> comments = new ArrayList<>();
+        retrieveComments(profId, comments);
+        Collections.sort(comments);
+        return comments;
+    }
+
+    //helper method to get an ArrayList of commentIDs of a certain professor
+    private void retrieveComments(String profId, ArrayList<Comment> comments){
+        ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
+        Professor object = new Professor();
+        try {
+            object = query.get(profId);
+        }
+        catch(ParseException e){}
+        JSONArray commentIdArray = object.getComments();
+        ArrayList<String> commentIds = new ArrayList<String>();
+        if (commentIdArray != null) {
+            for (int i = 0; i < commentIdArray.length(); i++) {
+                try {
+                    commentIds.add(commentIdArray.get(i).toString());
+                } catch (JSONException e1) {
+                }
+            }
+            idsToComments(commentIds, comments);
+        }
+        /*
+        query.getInBackground(profId, new GetCallback<Professor>() {
+            @Override
+            public void done(Professor object, ParseException e) {
+                JSONArray commentIdArray = object.getComments();
+                ArrayList<String> commentIds = new ArrayList<String>();
+                if (commentIdArray != null) {
+                    for (int i = 0; i < commentIdArray.length(); i++) {
+                        try {
+                            commentIds.add(commentIdArray.get(i).toString());
+                        } catch (JSONException e1) {
+                        }
+                    }
+                    idsToComments(commentIds);
+                }
+            }
+        });*/
+    }
+
+    //helper method to convert an ArrayList of Comment objectIDs to an ArrayList of Comments
+    private void idsToComments(ArrayList<String> commentIds, ArrayList<Comment> comments){
+        if(comments == null) {
+            comments = new ArrayList<Comment>();
+        }
+        else if(!comments.isEmpty()){
+            comments.clear();
+        }
+        for(int i = 0; i < commentIds.size(); i++) {
+            ParseQuery<Comment> query = ParseQuery.getQuery(Comment.class);
+            query.whereEqualTo("objectId", commentIds.get(i));
+            List<Comment> object = new ArrayList<Comment>();
+            try{
+                object = query.find();
+            }
+            catch(ParseException e){}
+            for(Comment comm: object) {
+                //  Comment newComment = new Comment();
+                //    newComment.makeNewComment(comm.getComment(), comm.getNumLikes());
+                comments.add(comm);
+            }
+            /*
+            query.findInBackground(new FindCallback<Comment>() {
+                @Override
+                public void done(List<Comment> object, ParseException e) {
+                    for(Comment comm: object) {
+                        Comment newComment = new Comment();
+                        Log.d("newComment", comm.getComment());
+                        newComment.makeNewComment(comm.getComment(), comm.getNumLikes());
+                        Log.d("newComment1", newComment.toString());
+                        comments.add(newComment);
+                        Integer size = comments.size();
+                        Log.d("size", size.toString());
+                    }
+                }
+            });*/
+        }
     }
 
 
