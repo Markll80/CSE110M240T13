@@ -36,6 +36,6 @@ Add Prof:
   Helpfulness: ap_RatingH
 
 Comment Button:
-  Like
-  Report
-  Edit
+  Like onClick="addLike"
+  Report onClick="reportComment"
+  Edit onClick="editComment

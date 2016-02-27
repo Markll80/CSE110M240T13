@@ -72,7 +72,8 @@
         android:layout_below="@+id/commentText"
         android:layout_toRightOf="@+id/numOfLikes"
         android:layout_toEndOf="@+id/numOfLikes"
-        android:allowUndo="true" />
+        android:allowUndo="true"
+        android:onClick="addLike"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -86,7 +87,8 @@
         android:id="@+id/Report"
         android:layout_below="@+id/commentText"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="reportComment"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -100,7 +102,8 @@
         android:textSize="18sp"
         android:layout_below="@+id/commentText"
         android:layout_toLeftOf="@+id/Report"
-        android:layout_toStartOf="@+id/Report" />
+        android:layout_toStartOf="@+id/Report"
+        android:onClick="editComment"/>
 
 
 </RelativeLayout>
