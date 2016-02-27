@@ -219,14 +219,33 @@ public class AddComment extends AppCompatActivity {
 
     private String addSpace(String newCourse){
 
-        newCourse = newCourse.toUpperCase().replaceAll("CSE *", "CSE ");
+        char currentChar;
+        for(int i = 0; i < newCourse.length(); i++){
+            currentChar = newCourse.charAt(i);
+            if(i > 0 && Character.isDigit(currentChar)){
+                if(!((Character)newCourse.charAt(i - 1)).equals(' ')){
+                    newCourse = newCourse.substring(0, i) + " " + newCourse.substring(i, newCourse.length());
+                }
+                break;
+            }
+        }
 
         return newCourse;
     }
 
     private void submitComment(){
-        String comment = acComment.getText().toString();
-        //prof.addComment(comment);
+        String ac_Course, ac_Comment;
+        int ac_C, ac_E, ac_H;
+
+        ac_Course = acCourseName.getText().toString().toLowerCase();
+        ac_Course = addSpace(ac_Course);
+        ac_Comment = acComment.getText().toString();
+
+        ac_C = (int) ac_RatingC.getRating();
+        ac_E = (int) ac_RatingE.getRating();
+        ac_H = (int) ac_RatingH.getRating();
+        prof.addRating(ac_C, ac_E, ac_H);
+        prof.addComment(ac_Comment, TextParser.convertToUpperCase(ac_Course), ac_C, ac_E, ac_H);
         BackToProfPage();
     }
 
@@ -236,7 +255,12 @@ public class AddComment extends AppCompatActivity {
     }
 
     public void BackToProfPage() {
+        Intent intent = null;
+        intent = new Intent(getBaseContext(), ProfPage.class);
+        intent.putExtra("profID", prof.getObjectId());
         finish(); //end current activity
+        if(intent != null)
+            startActivity(intent);
       //  Intent intent = new Intent(AddComment.this, ProfPage.class);
       //  intent.putExtra("profID", profID);
       //  startActivity(intent);

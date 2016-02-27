@@ -281,7 +281,7 @@ public class AddProf extends AppCompatActivity {
         vap_Comment = apComment.getText().toString();
 
 
-        Professor newProf = Professor.createProf(ap_Prof,ap_C,ap_E,ap_H, vap_Comment);
+        Professor newProf = Professor.createProf(ap_Prof,ap_C,ap_E,ap_H, "");
         ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
         query.whereEqualTo("CourseName", vap_Course);
         Course course = new Course();
@@ -292,7 +292,7 @@ public class AddProf extends AppCompatActivity {
             Log.e("validCourseError", e.getMessage());
         }
         course.addProfToCourse(newProf.getObjectId());
-        newProf.addComment(vap_Comment, vap_Course);
+        newProf.addComment(vap_Comment, TextParser.convertToUpperCase(vap_Course), ap_C, ap_E, ap_H);
 
 
         Intent intent = null;

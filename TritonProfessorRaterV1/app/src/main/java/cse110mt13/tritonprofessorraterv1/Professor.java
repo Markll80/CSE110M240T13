@@ -31,12 +31,12 @@ public class Professor extends ParseObject{
         put("easiness", 0);
         put("helpfulness", 0);
         put("clarity", 0);
+        put("comments", new JSONArray());
     }
 
     public static Professor createProf(String name, double clarity, double easiness, double helpfulness, String comment){
         Professor newProf = new Professor();
         JSONArray comments = new JSONArray();
-        comments.put(comment);
         newProf.setProf(name, 1, clarity, easiness, helpfulness, comments, "");
         try{
             newProf.save();
@@ -82,23 +82,32 @@ public class Professor extends ParseObject{
     create a new comment parseobject and save to database
     *  Precondition: corresponding prof must be in database
     * */
-    public void addComment(String comment, String courseName){
+    public void addComment(String comment, String courseName, int clarity, int easiness, int helpfulness){
         //create new comment and save to database
         Comment commentObj = new Comment();
         commentObj.setup(comment);
-        commentObj.put("ProfID", this.objectId);
+        commentObj.put("ProfID", this.getObjectId());
         commentObj.setCourseName(TextParser.convertToUpperCase(courseName));
+        commentObj.put("clarity", clarity);
+        commentObj.put("easiness", easiness);
+        commentObj.put("helpfulness", helpfulness);
         try {
             commentObj.save();
         }
-        catch(ParseException e){}
+        catch(ParseException e){
+            Log.e("save Comment error", e.getMessage());
+        }
         //gets professor of from database of corresponding professor
+
         ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
+
         Professor prof = new Professor();
         try{
-            prof = query.get(this.getObjID());
+            prof = query.get(this.getObjectId());
         }
-        catch(ParseException e){}
+        catch(ParseException e){
+            Log.e("save prof error1", e.getMessage());
+        }
         //add comment to both the prof in the profList and the database
         JSONArray comments = prof.getComments();
         comments.put(commentObj.getObjectId());
@@ -107,7 +116,9 @@ public class Professor extends ParseObject{
         try {
             prof.save();
         }
-        catch(ParseException e1){}
+        catch(ParseException e1){
+            Log.e("save prof error2", e1.getMessage());
+        }
     }
 
    

@@ -90,14 +90,15 @@ public class ProfList{
                 }
             }
             ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
-            query.whereContains("ClassName", searchedName);
+            query.whereContains("CourseName", searchedName);
             List<Course> objects = new ArrayList<Course>();
             try {
                 objects = query.find();
             }
-            catch (ParseException e) {}
+            catch (ParseException e) {
+                Log.e("courseSearchError", e.getMessage());
+            }
             for (Course courses : objects) {
-                Professor newProf = new Professor();
                 JSONArray ProfArray = courses.getProfessors();
                 ArrayList<String> profIds = new ArrayList<String>();
                 if (ProfArray != null) {
@@ -105,9 +106,11 @@ public class ProfList{
                         try {
                             profIds.add(ProfArray.get(i).toString());
                         }
-                        catch (JSONException e1) {}
+                        catch (JSONException e1) {
+                            Log.e("courseSearchError", e1.getMessage());
+                        }
                     }
-                    idsToProfs(profIds);
+                    this.idsToProfs(profIds);
                 }
             }
         }
@@ -132,6 +135,7 @@ public class ProfList{
             try {
                 object = query.find();
             } catch (ParseException e) {
+                Log.e("idsToProfsError", e.getMessage());
             }
             for (Professor prof : object) {
                 Professor newProf = new Professor();
