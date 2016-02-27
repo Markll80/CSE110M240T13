@@ -39,7 +39,9 @@
         android:layout_above="@+id/textView6"
         android:layout_alignLeft="@+id/textView7"
         android:layout_alignStart="@+id/textView7"
-        android:gravity="center|fill_vertical|clip_vertical" />
+        android:gravity="center_vertical|center_horizontal|fill"
+        android:layout_alignRight="@+id/add_Prof_B"
+        android:layout_alignEnd="@+id/add_Prof_B" />
 
     <TextView
         android:layout_width="wrap_content"

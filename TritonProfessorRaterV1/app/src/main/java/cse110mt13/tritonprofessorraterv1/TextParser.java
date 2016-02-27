@@ -47,6 +47,11 @@ public class TextParser {
         return (containsLetter && containsNumber);
     }
 
+    public static double roundToDecimalPlaces(double value, int decimalPlaces)
+    {
+        double shift = Math.pow(10,decimalPlaces);
+        return Math.round(value*shift)/shift;
+    }
 
     //use this method to convert any prof/course names to proper capitalization
     public static String convertToUpperCase(String lowerCase){

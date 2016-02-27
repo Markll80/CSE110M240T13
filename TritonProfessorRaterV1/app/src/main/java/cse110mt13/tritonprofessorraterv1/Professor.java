@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -32,7 +33,7 @@ public class Professor extends ParseObject{
         put("clarity", 0);
     }
 
-    public static Professor createProf(String name, int clarity, int easiness, int helpfulness, String comment){
+    public static Professor createProf(String name, double clarity, double easiness, double helpfulness, String comment){
         Professor newProf = new Professor();
         JSONArray comments = new JSONArray();
         comments.put(comment);
@@ -126,21 +127,23 @@ public class Professor extends ParseObject{
         return getInt("numRatings");
     }
 
-    public int getEasiness() {
-        return getInt("easiness");
+    public double getEasiness() {
+        double easiness = getDouble("easiness");
+        return TextParser.roundToDecimalPlaces(easiness, 2);
     }
 
-    public int getHelpfulness() {
-        return getInt("helpfulness");
+    public double getHelpfulness() {
+        double helpfulness = getDouble("helpfulness");
+        return TextParser.roundToDecimalPlaces(helpfulness, 2);
     }
 
-    public int getClarity() {
-        return getInt("clarity");
+    public double getClarity() {
+        double clarity = getDouble("clarity");
+        return TextParser.roundToDecimalPlaces(clarity, 2);
     }
 
     public String getName() {
         return TextParser.convertToUpperCase(getString("name"));
-
     }
 
     //ONLY USE THIS METHOD ON LOCALLY CREATED PROFESSORS
@@ -155,9 +158,9 @@ public class Professor extends ParseObject{
     private boolean addClarity(int clarity){
         if( clarity < 0 || clarity > 5 )
             return false;
-        int averageClarity = getClarity();
+        double averageClarity = getClarity();
         int numCount = getNumRatings();
-        int newAvg = ((averageClarity*(numCount++))+clarity)/numCount;
+        double newAvg = ((averageClarity*(numCount++))+clarity)/numCount;
         put("clarity", newAvg);
         return true;
     }
@@ -165,9 +168,9 @@ public class Professor extends ParseObject{
     private boolean addEasiness(int easiness){
         if( easiness < 0 || easiness > 5 )
             return false;
-        int averageEasiness = getEasiness();
+        double averageEasiness = getEasiness();
         int numCount = getNumRatings();
-        int newAvg = ((averageEasiness*(numCount++))+easiness)/numCount;
+        double newAvg = ((averageEasiness*(numCount++))+easiness)/numCount;
         put("easiness", newAvg);
         return true;
     }
@@ -175,15 +178,15 @@ public class Professor extends ParseObject{
     private boolean addHelpfulness(int helpfulness){
         if( helpfulness < 0 || helpfulness > 5 )
             return false;
-        int averageHelpfulness = getHelpfulness();
+        double averageHelpfulness = getHelpfulness();
         int numCount = getNumRatings();
-        int newAvg = ((averageHelpfulness*(numCount++))+helpfulness)/numCount;
+        double newAvg = ((averageHelpfulness*(numCount++))+helpfulness)/numCount;
         put("helpfulness", newAvg);
         return true;
     }
 
     // used for ParseQuery only, do not use this method to add new prof
-    public void setProf(String name, int numRatings, int clarity, int easiness, int helpfulness,
+    public void setProf(String name, int numRatings, double clarity, double easiness, double helpfulness,
                         JSONArray comments, String objectId){
         put("name", name);
         put("numRatings", numRatings);
