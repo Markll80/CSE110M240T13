@@ -110,6 +110,8 @@
             android:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/ap_comment_ET"
+            android:gravity="top"
+            android:background="@drawable/rectangle_drawable_back"
             android:layout_below="@+id/comment"
             android:layout_alignRight="@+id/ap_course_ET"
             android:layout_alignEnd="@+id/ap_course_ET"
