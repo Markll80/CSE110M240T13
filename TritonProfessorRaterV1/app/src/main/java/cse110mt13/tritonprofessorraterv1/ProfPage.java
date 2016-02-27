@@ -53,7 +53,7 @@ public class ProfPage extends AppCompatActivity {
         TextView clarity_v = (TextView)findViewById(R.id.clarity_v);*/
         TextView easiness_v = (TextView)findViewById(R.id.Prof_Ess);
         TextView helpfulness_v = (TextView)findViewById(R.id.Prof_Hlp);
-        TextView clarity_v = (TextView)findViewById(R.id.Prof_cla);
+        TextView clarity_v = (TextView)findViewById(R.id.Prof_Clt);
         Button addratingButton = (Button)findViewById(R.id.addRatingButton);
 
         addratingButton.setOnClickListener((new View.OnClickListener() {
@@ -62,6 +62,7 @@ public class ProfPage extends AppCompatActivity {
                         //  finish();
                         Intent intent = new Intent(ProfPage.this, AddComment.class);
                         intent.putExtra("profID", profID);
+
                         startActivity(intent);
                     }
                 })

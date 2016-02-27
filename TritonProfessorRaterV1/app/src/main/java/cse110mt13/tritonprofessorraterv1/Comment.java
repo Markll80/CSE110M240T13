@@ -58,6 +58,8 @@ public class Comment extends ParseObject implements Comparable{
         put("comment", comment);
     }
 
+    public void get()
+
    /* when user clicks like, this method should be provoked.
       this method adds user's id to the comment indicating the user liked the comment
     Parameter: String - object id of the user

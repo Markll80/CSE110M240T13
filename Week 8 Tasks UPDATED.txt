@@ -7,16 +7,10 @@ Link addProf/addComment (Eric)
 title bar - refresh button (Cherish)
 
 ProfPage/Main Page UI major makeover (Ting, Rye)
-бя if you guys are going to remove/add any buttons, make sure that the
+****if you guys are going to remove/add any buttons, make sure that the
   id matches the old ID, saves a lot of work for other people
-1. You guys got rid of the add rating button on profpage, 
-   need to add it back through java code to the bottom of the list,
-   i added it back temporary for linking the activities, but it is breaking
-   the scrollable view, feel free to remove it
-2. same thing for search page, "Add New Professor" button should be 
-   added through the java code to the end of all the searches
-3. Modify the buttons on profPage, change "Like", "Edit", "Report" 
+1. Modify the buttons on profPage, change "Like", "Edit", "Report" 
    to text clickables, instead of buttons (for better visual).
    Additionally, consider about having a box containing each 
    comment (wrap each view in a box).
-4. Comment editbox is currently centering the middle, edit it so that 
+2. Comment editbox is currently centering the middle, edit it so that 
