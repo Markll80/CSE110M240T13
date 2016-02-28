@@ -249,16 +249,19 @@ public class ProfPage extends AppCompatActivity {
             TextView reportB = (TextView)row.findViewById(R.id.Report);
             TextView likeB = (TextView)row.findViewById(R.id.Like);
             TextView editB = (TextView)row.findViewById(R.id.Edit);
+            final int anotherPostion = position;
             reportB.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    finish();
+                    String commentID = coList.get(anotherPostion).getObjectId();
                 }
             });
 
             likeB.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    String commentID = coList.get(anotherPostion).getObjectId();
+
 
                 }
             });
@@ -266,7 +269,7 @@ public class ProfPage extends AppCompatActivity {
             editB.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    String commentID = coList.get(anotherPostion).getObjectId();
                 }
             });
 
