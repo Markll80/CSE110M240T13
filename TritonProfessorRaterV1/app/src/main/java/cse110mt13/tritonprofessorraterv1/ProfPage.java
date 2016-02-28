@@ -224,6 +224,30 @@ public class ProfPage extends AppCompatActivity {
             myCourseName.setText(courseArray[position]);
             myComment.setText(comArray[position]);
             myNum.setText(""+num[position]);
+            TextView reportB = (TextView)row.findViewById(R.id.Report);
+            TextView likeB = (TextView)row.findViewById(R.id.Like);
+            TextView editB = (TextView)row.findViewById(R.id.Edit);
+            reportB.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+
+            likeB.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
+            editB.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
             return row;
         }
     }
