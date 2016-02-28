@@ -199,7 +199,15 @@ public class ProfPage extends AppCompatActivity {
             }
         }
 
-        private void onReportPress(Comment comment){
+        private void onReportPress(String commentID){
+            ParseQuery<Comment> query= ParseQuery.getQuery(Comment.class);
+            Comment comment = new Comment();
+            try{
+                comment = query.get(commentID);
+            }
+            catch(ParseException e){
+                Log.e("getCommentFromId error", e.getMessage());
+            }
             String presser  = ParseUser.getCurrentUser().toString();
             JSONArray usersReported = comment.getUsersReported();
             for(int i = 0; i < usersReported.length(); ++i){
