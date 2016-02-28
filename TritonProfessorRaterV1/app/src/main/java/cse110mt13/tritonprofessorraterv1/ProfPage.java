@@ -161,7 +161,7 @@ public class ProfPage extends AppCompatActivity {
             this.numArray = num;
         }
 
-        private void onLikePress(String commentID){
+        private boolean onLikePress(String commentID){
             boolean removedPresser = false;
             ParseQuery<Comment> query= ParseQuery.getQuery(Comment.class);
             Comment comment = new Comment();
@@ -171,7 +171,7 @@ public class ProfPage extends AppCompatActivity {
             catch(ParseException e){
                 Log.e("getCommentFromId error", e.getMessage());
             }
-            String presser  = ParseUser.getCurrentUser().toString();
+            String presser  = ParseUser.getCurrentUser().getObjectId();
             JSONArray usersLiked = comment.getUsersLiked();
             for(int i = 0; i < usersLiked.length(); ++i){
                 try {
@@ -197,6 +197,7 @@ public class ProfPage extends AppCompatActivity {
             catch(ParseException e){
                 Log.e("comment save error", e.getMessage());
             }
+            return removedPresser;
         }
 
         private void onReportPress(String commentID){
@@ -240,7 +241,7 @@ public class ProfPage extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             View row = inflater.inflate(R.layout.linear_prof_layout, parent, false);
-            TextView myNum= (TextView)row.findViewById(R.id.numOfLikes);
+            final TextView myNum= (TextView)row.findViewById(R.id.numOfLikes);
             TextView myCourseName = (TextView) row.findViewById(R.id.className);
             TextView myComment = (TextView) row.findViewById(R.id.commentText);
             myCourseName.setText(courseArray[position]);
@@ -254,6 +255,7 @@ public class ProfPage extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     String commentID = coList.get(anotherPostion).getObjectId();
+                    onReportPress(commentID);
                 }
             });
 
@@ -261,8 +263,13 @@ public class ProfPage extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     String commentID = coList.get(anotherPostion).getObjectId();
-
-
+                    boolean decrement = onLikePress(commentID);
+                    if(decrement) {
+                        myNum.setText("" + (Integer.parseInt(myNum.getText().toString()) - 1));
+                    }
+                    else{
+                        myNum.setText("" + (Integer.parseInt(myNum.getText().toString()) + 1));
+                    }
                 }
             });
 

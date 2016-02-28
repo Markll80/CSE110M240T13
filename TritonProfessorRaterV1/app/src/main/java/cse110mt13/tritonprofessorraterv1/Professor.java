@@ -79,6 +79,16 @@ public class Professor extends ParseObject{
     }
 
     public boolean deleteRating(int clarity, int easiness, int helpfulness){
+        if(getNumRatings() - 1 == 0){
+            put("easiness", 0);
+            put("clarity", 0);
+            put("helpfulness", 0);
+            decrementNumRating();
+            return true;
+        }
+        if(getNumRatings() - 1 < 0){
+            return false;
+        }
         boolean s1 = deleteClarity(clarity);       //use helper methods to add the rating
         boolean s2 = deleteEasiness(easiness);
         boolean s3 = deleteHelpfulness(helpfulness);
@@ -205,7 +215,7 @@ public class Professor extends ParseObject{
         double averageHelpfulness = getHelpfulness();
         int numCount = getNumRatings();
         double newAvg = ((averageHelpfulness*(numCount--))-helpfulness)/numCount;
-        put("clarity", newAvg);
+        put("helpfulness", newAvg);
         return true;
     }
 

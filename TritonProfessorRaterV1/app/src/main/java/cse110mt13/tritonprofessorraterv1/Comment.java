@@ -27,6 +27,7 @@ public class Comment extends ParseObject implements Comparable{
         put("helpfulness", 0);
         put("CourseName", "");
         put("ProfID", "");
+        put("UsersReported", new JSONArray());
     }
 
     public String getComment() {
@@ -133,6 +134,7 @@ public class Comment extends ParseObject implements Comparable{
                 Log.e("deleteSelfError", e.getMessage());
             }
         }
+        Log.d("deleteSelfTest", parent.toString());
         parent.put("comment", parentCommentArray);
         try{
             parent.save();
