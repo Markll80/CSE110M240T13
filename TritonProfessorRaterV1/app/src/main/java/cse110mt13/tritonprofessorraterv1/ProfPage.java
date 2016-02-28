@@ -21,6 +21,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
+import com.parse.ParseUser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
 public class ProfPage extends AppCompatActivity {
@@ -153,6 +158,24 @@ public class ProfPage extends AppCompatActivity {
             this.numArray = num;
         }
 
+        private void onLikePress(Comment comment){
+            String presser  = ParseUser.getCurrentUser().toString();
+            JSONArray usersLiked = comment.getUsersLiked();
+            for(int i = 0; i < usersLiked.length(); ++i){
+                try {
+                    if (((String) usersLiked.get(i)).equals(presser)){
+                        usersLiked.remove(i);
+                        comment.subNumLikes();
+                        return;
+                    }
+                }
+                catch(JSONException e){
+                    Log.e("JSONArray Error", e.getMessage());
+                }
+            }
+            usersLiked.put(presser);
+            comment.addNumLikes();
+        }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {

@@ -7,6 +7,8 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import org.json.JSONArray;
+
 import java.util.List;
 
 
@@ -57,6 +59,14 @@ public class Comment extends ParseObject implements Comparable{
 
     public void addNumLikes(){
         put("numLikes",getNumLikes()+1);
+    }
+
+    public void subNumLikes(){
+        put("numLikes", getNumLikes() - 1);
+    }
+
+    public JSONArray getUsersLiked(){
+        return getJSONArray("UsersLiked");
     }
 
     // used for ParseQuery only, do not use this method to add new comment
