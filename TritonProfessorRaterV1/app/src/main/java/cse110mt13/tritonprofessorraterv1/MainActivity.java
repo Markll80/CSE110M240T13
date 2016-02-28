@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     //int[] images = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Parse.enableLocalDatastore(this);
+   /*     Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseObject.registerSubclass(Professor.class);
         ParseObject.registerSubclass(Course.class);
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
-
+*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -90,9 +90,9 @@ public class MainActivity extends AppCompatActivity {
         for(Professor name: nameList.professors){
         //   if(counter >=LIST_LIMIT) break;
             profNames.add(name.getName());
-            easy = "easiness : " + name.getEasiness();
-            help = "helpfulness : " + name.getHelpfulness();
-            clear = "clarity : " + name.getClarity();
+            easy = "Easiness : " + name.getEasiness();
+            help = "Helpfulness : " + name.getHelpfulness();
+            clear = "Clarity : " + name.getClarity();
             easiness.add(easy);
             helpfulness.add(help);
             clarity.add(clear);
@@ -152,9 +152,20 @@ public class MainActivity extends AppCompatActivity {
             TextView myClarity = (TextView) row.findViewById(R.id.clarity);
             myImage.setImageResource(images[0]);
             myProfNames.setText(nameArray.get(position));
-            myEasiness.setText(easyR.get(position));
-            myHelpfulness.setText(helpfulR.get(position));
-            myClarity.setText(clarityR.get(position));
+
+            if(nameList.professors.get(position).getNumRatings() >=1){
+                myEasiness.setText(easyR.get(position));
+                myHelpfulness.setText(helpfulR.get(position));
+                myClarity.setText(clarityR.get(position));
+            }
+            else{
+                myEasiness.setText("Easiness: N/A");
+                myHelpfulness.setText("Helpfulness: N/A");
+                myClarity.setText("Clarity: N/A");
+            }
+
+
+
 
             return row;
         }

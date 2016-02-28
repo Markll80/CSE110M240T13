@@ -81,9 +81,16 @@ public class ProfPage extends AppCompatActivity {
 
         Professor prof = Professor.getProf(profID);  //set
         profName.setText(prof.getName());
-        easiness_v.setText("Easiness: " + String.valueOf(prof.getEasiness()));
-        helpfulness_v.setText("Helpfulness: " + String.valueOf(prof.getHelpfulness()));
-       clarity_v.setText("Clarity: " + String.valueOf(prof.getClarity()));
+        if(prof.getNumRatings() >= 1) {
+            easiness_v.setText("Easiness: " + String.valueOf(prof.getEasiness()));
+            helpfulness_v.setText("Helpfulness: " + String.valueOf(prof.getHelpfulness()));
+            clarity_v.setText("Clarity: " + String.valueOf(prof.getClarity()));
+        }
+        else{
+            easiness_v.setText("Easiness: N/A" );
+            helpfulness_v.setText("Helpfulness: N/A");
+            clarity_v.setText("Clarity: N/A");
+        }
 
         nameList = new ProfList();
         coList = prof.getStringComments();
@@ -107,8 +114,8 @@ public class ProfPage extends AppCompatActivity {
 
 
 
-            MyAdapter adapter = new MyAdapter(this, courseName, num, comData);
-            list.setAdapter(adapter);
+        MyAdapter adapter = new MyAdapter(this, courseName, num, comData);
+        list.setAdapter(adapter);
         list.setOnTouchListener(new View.OnTouchListener() {
 
             // Setting on Touch Listener for handling the touch inside ScrollView

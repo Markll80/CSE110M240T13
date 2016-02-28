@@ -1,0 +1,24 @@
+To do:
+Major-
+  settings page/ UI
+  integrate data from CSE departments into database(if received in time)
+  Prof page - Edit function
+  read/write ACL when saving objects to database //if needed
+  Title Bar
+
+  testing:
+  saving/reading from database with proper cases(upper/lowercases) 
+  make sure cases are consistent throughout addProf, addComment etc
+  course validation on addComment and addProf.
+  
+Minor - 
+  new default picture 
+  Wrap comment box
+  logo "invisible" background
+  new background page for prof not found?
+
+  Feel free to add additional stuff as needed
+
+
+Ask Client:
+main page - random prof? all prof? top prof(what kind of sorting)?

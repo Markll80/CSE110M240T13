@@ -1,0 +1,21 @@
+To do:
+Major-
+  settings page/ UI
+  integrate data from CSE departments into database(if received in time)
+  Prof page - Edit function
+  read/write ACL when saving objects to database //if needed
+  Title Bar
+
+  saving/reading from database with proper cases(upper/lowercases) 
+  
+Minor - 
+Wrap comment box
+logo "invisible" background
+new background page for prof not found?
+
+
+
+Feel free to add additional stuff as needed
+
+Ask Client:
+main page - random prof? all prof?

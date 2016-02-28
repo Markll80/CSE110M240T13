@@ -55,6 +55,9 @@ public class TextParser {
 
     //use this method to convert any prof/course names to proper capitalization
     public static String convertToUpperCase(String lowerCase){
+        if(lowerCase.isEmpty())
+            return "";
+
         String convertedName;
         if(lowerCase.matches(".*\\d.*")){
             convertedName = lowerCase.toUpperCase();

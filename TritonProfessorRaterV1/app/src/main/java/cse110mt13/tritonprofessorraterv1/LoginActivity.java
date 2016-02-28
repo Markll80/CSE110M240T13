@@ -48,14 +48,14 @@ public class LoginActivity extends AppCompatActivity{
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
 
-        /*
 
-        if(ParseUser.getCurrentUser() != null){
+
+        if(ParseUser.getCurrentUser() != null){   //auto login if user has logged in on last session.
             finish();
             startActivity(new Intent(LoginActivity.this,MainActivity.class));
         }
 
-*/
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         ButterKnife.inject(this);
