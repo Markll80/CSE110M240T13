@@ -21,6 +21,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import org.json.JSONArray;
@@ -158,7 +161,15 @@ public class ProfPage extends AppCompatActivity {
             this.numArray = num;
         }
 
-        private void onLikePress(Comment comment){
+        private void onLikePress(String commentID){
+            ParseQuery<Comment> query= ParseQuery.getQuery(Comment.class);
+            Comment comment = new Comment();
+            try{
+                comment = query.get(commentID);
+            }
+            catch(ParseException e){
+                Log.e("getCommentFromId error", e.getMessage());
+            }
             String presser  = ParseUser.getCurrentUser().toString();
             JSONArray usersLiked = comment.getUsersLiked();
             for(int i = 0; i < usersLiked.length(); ++i){
@@ -175,6 +186,32 @@ public class ProfPage extends AppCompatActivity {
             }
             usersLiked.put(presser);
             comment.addNumLikes();
+            try{
+                comment.save();
+            }
+            catch(ParseException e){
+                Log.e("comment save error", e.getMessage());
+            }
+        }
+
+        private void onReportPress(Comment comment){
+            String presser  = ParseUser.getCurrentUser().toString();
+            JSONArray usersReported = comment.getUsersReported();
+            for(int i = 0; i < usersReported.length(); ++i){
+                try {
+                    if (((String) usersReported.get(i)).equals(presser)){
+                        usersReported.remove(i);
+                        return;
+                    }
+                }
+                catch(JSONException e){
+                    Log.e("JSONArray Error", e.getMessage());
+                }
+            }
+            usersReported.put(presser);
+            if(usersReported.length() > 0){
+                comment.deleteSelf();
+            }
         }
 
         @Override
