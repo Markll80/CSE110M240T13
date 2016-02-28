@@ -1,13 +1,17 @@
 package cse110mt13.tritonprofessorraterv1;
 
+import android.util.Log;
+
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.Parse;
 import com.parse.ParseClassName;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.List;
 
@@ -69,6 +73,14 @@ public class Comment extends ParseObject implements Comparable{
         return getJSONArray("UsersLiked");
     }
 
+    public String getProfId(){
+        return getString("ProfID");
+    }
+
+    public JSONArray getUsersReported(){
+        return getJSONArray("UsersReported");
+    }
+
     // used for ParseQuery only, do not use this method to add new comment
     public void makeNewComment(String comment, int numLikes, String courseName, int clarity, int easiness, int helpfulness){
         put("comment", comment);
@@ -97,6 +109,43 @@ public class Comment extends ParseObject implements Comparable{
     */
     public void addUserLike(String userID){
         add("UsersLiked", userID);
+    }
+
+    public void deleteSelf(){
+        Professor parent = new Professor();
+        ParseQuery<Professor> query = ParseQuery.getQuery(Professor.class);
+        try{
+            parent = query.get(this.getProfId());
+        }
+        catch(ParseException e){
+            Log.e("delete self error", e.getMessage());
+        }
+        JSONArray parentCommentArray = parent.getComments();
+        for(int i = 0; i < parentCommentArray.length(); ++i){
+            try {
+                if (((String) parentCommentArray.get(i)).equals(this.getObjectId())) {
+                    parentCommentArray.remove(i);
+                    parent.deleteRating(this.getClarity(), this.getEasiness(), this.getHelpfulness());
+                    break;
+                }
+            }
+            catch(JSONException e){
+                Log.e("deleteSelfError", e.getMessage());
+            }
+        }
+        parent.put("comment", parentCommentArray);
+        try{
+            parent.save();
+        }
+        catch(ParseException e){
+            Log.e("fail to save parent", e.getMessage());
+        }
+        try{
+            this.delete();
+        }
+        catch(ParseException e){
+            Log.e("fail to delete self", e.getMessage());
+        }
     }
 
     @Override

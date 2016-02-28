@@ -78,6 +78,16 @@ public class Professor extends ParseObject{
         return true;
     }
 
+    public boolean deleteRating(int clarity, int easiness, int helpfulness){
+        boolean s1 = deleteClarity(clarity);       //use helper methods to add the rating
+        boolean s2 = deleteEasiness(easiness);
+        boolean s3 = deleteHelpfulness(helpfulness);
+        if(!s1 || !s2 || !s3)
+            return false;
+        decrementNumRating();
+        return true;
+    }
+
     /*
     create a new comment parseobject and save to database
     *  Precondition: corresponding prof must be in database
@@ -133,6 +143,9 @@ public class Professor extends ParseObject{
         put("numRatings", getNumRatings() + 1);
     }
 
+    public void decrementNumRating(){
+        put("numRatings", getNumRatings() - 1);
+    }
 
     public int getNumRatings() {
         return getInt("numRatings");
@@ -166,6 +179,36 @@ public class Professor extends ParseObject{
         return getJSONArray("comments");
     }
 
+    private boolean deleteClarity(int clarity){
+        if( clarity < 0 || clarity > 5 )
+            return false;
+        double averageClarity = getClarity();
+        int numCount = getNumRatings();
+        double newAvg = ((averageClarity*(numCount--))-clarity)/numCount;
+        put("clarity", newAvg);
+        return true;
+    }
+
+    private boolean deleteEasiness(int easiness){
+        if( easiness < 0 || easiness > 5 )
+            return false;
+        double averageEasiness = getEasiness();
+        int numCount = getNumRatings();
+        double newAvg = ((averageEasiness*(numCount--))-easiness)/numCount;
+        put("easiness", newAvg);
+        return true;
+    }
+
+    private boolean deleteHelpfulness(int helpfulness){
+        if( helpfulness < 0 || helpfulness > 5 )
+            return false;
+        double averageHelpfulness = getHelpfulness();
+        int numCount = getNumRatings();
+        double newAvg = ((averageHelpfulness*(numCount--))-helpfulness)/numCount;
+        put("clarity", newAvg);
+        return true;
+    }
+
     private boolean addClarity(int clarity){
         if( clarity < 0 || clarity > 5 )
             return false;
@@ -195,6 +238,8 @@ public class Professor extends ParseObject{
         put("helpfulness", newAvg);
         return true;
     }
+
+
 
     // used for ParseQuery only, do not use this method to add new prof
     public void setProf(String name, int numRatings, double clarity, double easiness, double helpfulness,

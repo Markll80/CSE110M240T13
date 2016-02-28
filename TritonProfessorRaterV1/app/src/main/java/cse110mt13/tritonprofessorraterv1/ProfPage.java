@@ -162,6 +162,7 @@ public class ProfPage extends AppCompatActivity {
         }
 
         private void onLikePress(String commentID){
+            boolean removedPresser = false;
             ParseQuery<Comment> query= ParseQuery.getQuery(Comment.class);
             Comment comment = new Comment();
             try{
@@ -177,15 +178,19 @@ public class ProfPage extends AppCompatActivity {
                     if (((String) usersLiked.get(i)).equals(presser)){
                         usersLiked.remove(i);
                         comment.subNumLikes();
-                        return;
+                        removedPresser = true;
+                        break;
                     }
                 }
                 catch(JSONException e){
                     Log.e("JSONArray Error", e.getMessage());
                 }
             }
-            usersLiked.put(presser);
-            comment.addNumLikes();
+            if(!removedPresser) {
+                usersLiked.put(presser);
+                comment.addNumLikes();
+            }
+            comment.put("UsersLiked", usersLiked);
             try{
                 comment.save();
             }
@@ -212,6 +217,15 @@ public class ProfPage extends AppCompatActivity {
             if(usersReported.length() > 0){
                 comment.deleteSelf();
             }
+            else{
+                comment.put("UsersReported", usersReported);
+                try{
+                    comment.save();
+                }
+                catch(ParseException e){
+                    Log.e("save comment failed", e.getMessage());
+                }
+            }
         }
 
         @Override
@@ -223,7 +237,7 @@ public class ProfPage extends AppCompatActivity {
             TextView myComment = (TextView) row.findViewById(R.id.commentText);
             myCourseName.setText(courseArray[position]);
             myComment.setText(comArray[position]);
-            myNum.setText(""+num[position]);
+            myNum.setText("" + num[position]);
             TextView reportB = (TextView)row.findViewById(R.id.Report);
             TextView likeB = (TextView)row.findViewById(R.id.Like);
             TextView editB = (TextView)row.findViewById(R.id.Edit);
