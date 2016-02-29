@@ -118,8 +118,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-     //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
     class MyAdapter extends ArrayAdapter<String>
@@ -181,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                  */
                 Intent searchIntent = new Intent(MainActivity.this, SearchPage.class);
                 searchIntent.putExtra("search", etSearch.getText().toString());
-               // finish();
+                // finish();
                 startActivity(searchIntent); //create a new activity*/
             }
         });
@@ -197,39 +195,34 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.action_call:
-                Intent dialer= new Intent(Intent.ACTION_DIAL);
-                startActivity(dialer);
-                return true;
-            case R.id.action_speech:
-                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                startActivityForResult(intent, 1234);
-
-                return true;
-            case R.id.action_contacts:
-                Toast.makeText(getApplicationContext(),"Contacts Clicked",Toast.LENGTH_SHORT).show();
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                refresh();
                 return true;
             case R.id.action_settings:
-                Toast.makeText(getApplicationContext(),"Settings Clicked",Toast.LENGTH_SHORT).show();
+                goSetting();
                 return true;
-            case R.id.action_status:
-                Toast.makeText(getApplicationContext(),"Status Clicked",Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+            /*case R.id.action_Logout:
+                logout();
+                return true;*/
         }
+        return super.onOptionsItemSelected(item);
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1234 && resultCode == RESULT_OK) {
-            String voice_text = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0);
-            Toast.makeText(getApplicationContext(),voice_text,Toast.LENGTH_LONG).show();
 
-        }
+    public void refresh () {
+        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        finish();
+        startActivity(intent);
     }
+
+    public void goSetting() {
+        Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+        startActivity(intent);
+    }
+
+    public void logout() {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
+
 }
