@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    <item
-        android:id="@+id/action_refresh"
-        android:title="refresh"
-        android:icon="@drawable/ic_action_refresh"
-        android:alphabeticShortcut="r"
-        android:orderInCategory="1"
-        app:showAsAction="always"
-        />
-    <item
-        android:id="@+id/action_settings"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_speech"
+        android:icon="@drawable/ic_action_bookmark"
+        app:showAsAction="ifRoom"
+        android:title="Bookmark"/>
+    <item android:id="@+id/action_call"
+        android:icon="@drawable/ic_action_account"
+        app:showAsAction="ifRoom"
+        android:title="Account"/>
+    <item android:id="@+id/action_contacts"
         app:showAsAction="never"
-        android:title="Settings"
-        />
-    <item
-        android:id="@+id/action_Logout"
+        android:title="Contacts"/>
+    <item android:id="@+id/action_settings"
         app:showAsAction="never"
-        android:title="Logout"
-        />
+        android:title="Settings"/>
+    <item android:id="@+id/action_status"
+        app:showAsAction="never"
+        android:title="Logout" />
 </menu>
