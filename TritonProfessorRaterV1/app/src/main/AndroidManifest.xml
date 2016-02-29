@@ -112,17 +112,6 @@
                 android:value=".MainActivity" >
             </meta-data>
         </activity>
-        <activity
-            android:name=".SettingActivity"
-            android:label="SettingActivity"
-            android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="stateHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" >
-            </meta-data>
-        </activity>
-
     </application>
 
 </manifest>
