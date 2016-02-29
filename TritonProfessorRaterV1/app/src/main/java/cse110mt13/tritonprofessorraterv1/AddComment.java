@@ -70,6 +70,9 @@ public class AddComment extends AppCompatActivity {
         prof = Professor.getProf(profID);
         profNameET.setText(prof.getName());
 
+
+      //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     private View.OnClickListener onclickListener = new View.OnClickListener() {
