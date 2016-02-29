@@ -22,3 +22,14 @@ Minor -
 
 Ask Client:
 main page - random prof? all prof? top prof(what kind of sorting)?
+alphabetical - 10 prof max
+
+
+search & search not found page: add prof shouldn't pop up when tying in search box
+button appearance
+found page text Size
+no change password
+
+action bar (Cherish)
+
+edit with new page (Ting-UI, Eric-Link)
