@@ -19,6 +19,14 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="s9BPYGtxQdePN5sOtkA3g5tqPnJnQccRKu8rO0nX" />
 
+        <activity android:name=".StartHere"
+            android:label="StartHere">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".MainActivity"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
@@ -28,13 +36,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".DispatchActivity"
-            android:label="dispatchActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
         <activity
             android:name=".LoginActivity"
             android:label="LoginActivity"

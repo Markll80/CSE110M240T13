@@ -12,7 +12,7 @@ import com.parse.ParseUser;
 /**
  * Created by Cherish on 16/2/14.
  */
-public class DispatchActivity extends MainActivity{
+public class StartHere extends MainActivity{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
