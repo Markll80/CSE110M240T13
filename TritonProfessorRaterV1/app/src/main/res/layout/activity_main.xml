@@ -12,7 +12,6 @@
     tools:context="radarx.tritonprofessorrater.MainActivity"
     android:background="@mipmap/b27"
     android:clickable="true">
-
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
