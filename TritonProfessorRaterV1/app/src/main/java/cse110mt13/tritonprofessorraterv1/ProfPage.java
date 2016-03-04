@@ -35,7 +35,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 public class ProfPage extends AppCompatActivity {
-
+    final int NUM_USERS_REQUIRED_FOR_DELETE = 5;
     String[] comData;
     ArrayList<Comment> coList;
     ListView list;
@@ -264,7 +264,7 @@ public class ProfPage extends AppCompatActivity {
                 }
             }
             usersReported.put(presser);
-            if(usersReported.length() > 0){
+            if(usersReported.length() > NUM_USERS_REQUIRED_FOR_DELETE){
                 comment.deleteSelf();
             }
             else{
