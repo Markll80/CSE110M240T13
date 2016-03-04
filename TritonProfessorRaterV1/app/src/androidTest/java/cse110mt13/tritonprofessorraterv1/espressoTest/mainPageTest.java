@@ -47,4 +47,12 @@ public class mainPageTest extends ActivityInstrumentationTestCase2<MainActivity>
         super.setUp();
         getActivity();
     }
+
+    @Test
+    public void testIsDisplayed()
+    {
+        onView(withId(R.id.listView)).check(matches(isDisplayed()));
+        onView(withId(R.id.search_B)).check(matches(isDisplayed()));
+        onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
+    }
 }
