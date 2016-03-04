@@ -102,7 +102,7 @@ public class Professor extends ParseObject{
     create a new comment parseobject and save to database
     *  Precondition: corresponding prof must be in database
     * */
-    public void addComment(String comment, String courseName, int clarity, int easiness, int helpfulness){
+    public void addComment(String comment, String courseName, String user, int clarity, int easiness, int helpfulness){
         //create new comment and save to database
         Comment commentObj = new Comment();
         commentObj.setup(comment);
@@ -111,6 +111,7 @@ public class Professor extends ParseObject{
         commentObj.put("clarity", clarity);
         commentObj.put("easiness", easiness);
         commentObj.put("helpfulness", helpfulness);
+        commentObj.put("UserBelongedTo", user);
         try {
             commentObj.save();
         }

@@ -242,7 +242,7 @@ public class AddComment extends AppCompatActivity {
         ac_E = (int) ac_RatingE.getRating();
         ac_H = (int) ac_RatingH.getRating();
         prof.addRating(ac_C, ac_E, ac_H);
-        prof.addComment(ac_Comment, TextParser.convertToUpperCase(ac_Course), ac_C, ac_E, ac_H);
+        prof.addComment(ac_Comment, TextParser.convertToUpperCase(ac_Course), ParseUser.getCurrentUser().getObjectId(), ac_C, ac_E, ac_H);
         BackToProfPage();
     }
 

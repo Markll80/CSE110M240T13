@@ -291,7 +291,7 @@ public class AddProf extends AppCompatActivity {
             Log.e("validCourseError", e.getMessage());
         }
         course.addProfToCourse(newProf.getObjectId());
-        newProf.addComment(vap_Comment, TextParser.convertToUpperCase(vap_Course), ap_C, ap_E, ap_H);
+        newProf.addComment(vap_Comment, TextParser.convertToUpperCase(vap_Course), ParseUser.getCurrentUser().getObjectId(), ap_C, ap_E, ap_H);
 
 
         Intent intent = null;
