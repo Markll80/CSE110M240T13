@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity {
-   final int LIST_LIMIT = 5;
+   final int LIST_LIMIT = 10;
     ListView list;
     //String[] profNames;
     Vector<String> profNames =  new Vector<>();
@@ -76,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
         String easy;
         String help;
         String clear;
-      //  int counter = 0;
+        int counter = 0;
         for(Professor name: nameList.professors){
-        //   if(counter >=LIST_LIMIT) break;
+           if(counter > LIST_LIMIT) break;
             profNames.add(name.getName());
             easy = "Easiness : " + name.getEasiness();
             help = "Helpfulness : " + name.getHelpfulness();

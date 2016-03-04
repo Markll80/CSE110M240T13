@@ -45,7 +45,7 @@ public class ProfPage extends AppCompatActivity {
     //TextView clarityTV;
   //  TextView easinessTV;
   //  TextView helpfullnessTV;
-
+    String profID = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +55,8 @@ public class ProfPage extends AppCompatActivity {
       //  String profID = "";
         Intent intentBundle = getIntent();
       //  if(intentBundle.hasExtra("profID")) {  //ProfID is stored to profID
-          final String profID = intentBundle.getStringExtra("profID");
+          final String profid2 = intentBundle.getStringExtra("profID");
+          profID = intentBundle.getStringExtra("profID");
       //  }
 
         TextView profName = (TextView)findViewById(R.id.Prof_name);
@@ -124,7 +125,7 @@ public class ProfPage extends AppCompatActivity {
             // Setting on Touch Listener for handling the touch inside ScrollView
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Log.d("Test1", "Here!");
+              //  Log.d("Test1", "Here!");
                 // Disallow the touch request for parent scroll on touch of child view
                 v.getParent().requestDisallowInterceptTouchEvent(true);
                 return false;
@@ -145,9 +146,9 @@ public class ProfPage extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            /*case R.id.action_refresh:
+            case R.id.action_refresh:
                 refresh();
-                return true;*/
+                return true;
             case R.id.action_settings:
                 goSetting();
                 return true;
@@ -158,6 +159,7 @@ public class ProfPage extends AppCompatActivity {
     public void refresh () {
         Intent intent = new Intent(ProfPage.this, ProfPage.class);
         finish();
+        intent.putExtra("profID",profID);
         startActivity(intent);
     }
 
