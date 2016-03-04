@@ -149,9 +149,9 @@ public class ProfPage extends AppCompatActivity {
             case R.id.action_refresh:
                 refresh();
                 return true;
-            case R.id.action_settings:
-                goSetting();
-                return true;
+           // case R.id.action_settings:
+            //    goSetting();
+             //   return true;
         }
         return super.onOptionsItemSelected(item);
     }
