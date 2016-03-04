@@ -189,9 +189,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_refresh:
                 refresh();
                 return true;
-            case R.id.action_settings:
-                goSetting();
-                return true;
             case R.id.action_Logout:
                 logout();
                 return true;
@@ -205,12 +202,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
         startActivity(intent);
     }
-
-    public void goSetting() {
-        Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-        startActivity(intent);
-    }
-
+    
     public void logout() {
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         if(ParseUser.getCurrentUser() != null) {
