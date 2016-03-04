@@ -28,6 +28,8 @@ public class Comment extends ParseObject implements Comparable{
         put("CourseName", "");
         put("ProfID", "");
         put("UsersReported", new JSONArray());
+        put("UsersLiked", new JSONArray());
+        put("UserBelongedTo", "");
     }
 
     public String getComment() {

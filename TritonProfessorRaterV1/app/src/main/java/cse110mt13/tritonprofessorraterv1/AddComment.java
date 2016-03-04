@@ -52,8 +52,8 @@ public class AddComment extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_comment);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         acCourseName = (EditText) findViewById(R.id.ac_AddCourse_ET);
         acComment = (EditText) findViewById(R.id.ac_Comment_ET);
