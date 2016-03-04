@@ -63,7 +63,6 @@ public class AddProf extends AppCompatActivity {
         findViewById(R.id.ap_sumbit_B).setOnClickListener(onclickListener);
         findViewById(R.id.ap_cancel_B).setOnClickListener(onclickListener);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private View.OnClickListener onclickListener = new View.OnClickListener() {
