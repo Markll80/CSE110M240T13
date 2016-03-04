@@ -14,10 +14,10 @@ Major-
  addRating is breaking - occasionally 
   
 Minor - 
-  new default picture 
+  new default picture  (done)
   Wrap comment box
-  logo "invisible" background
-  new background page for prof not found?
+  logo "invisible" background   (done)
+  new background page for prof not found? (same as main page now, done)
 
   Feel free to add additional stuff as needed
 

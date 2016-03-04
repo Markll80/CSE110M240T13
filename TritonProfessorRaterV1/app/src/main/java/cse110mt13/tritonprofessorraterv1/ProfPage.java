@@ -149,22 +149,27 @@ public class ProfPage extends AppCompatActivity {
             case R.id.action_refresh:
                 refresh();
                 return true;
-           // case R.id.action_settings:
-            //    goSetting();
-             //   return true;
+            case R.id.action_Logout:
+                logout();
+                return true;
         }
-        return super.onOptionsItemSelected(item);
+        return false;
+        // return super.onOptionsItemSelected(item);
     }
 
     public void refresh () {
         Intent intent = new Intent(ProfPage.this, ProfPage.class);
         finish();
-        intent.putExtra("profID",profID);
         startActivity(intent);
     }
 
-    public void goSetting() {
-        Intent intent = new Intent(ProfPage.this, SettingActivity.class);
+    public void logout() {
+        Intent intent = new Intent(ProfPage.this, LoginActivity.class);
+        if(ParseUser.getCurrentUser() != null) {
+            Log.d("Test123","Logging out");
+            ParseUser.logOut();
+        }
+        finish();
         startActivity(intent);
     }
 

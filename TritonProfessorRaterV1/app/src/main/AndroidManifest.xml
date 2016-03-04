@@ -90,7 +90,6 @@
         <activity
             android:name=".AddComment"
             android:label="@string/title_activity_add_comment"
-            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".ProfPage"
             android:windowSoftInputMode="stateHidden">
             <meta-data
@@ -101,6 +100,7 @@
         <activity
             android:name=".SearchNotFound"
             android:label="SearchNotFound"
+            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="stateHidden">
             <meta-data

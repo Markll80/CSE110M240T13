@@ -9,6 +9,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -305,5 +308,42 @@ public class AddProf extends AppCompatActivity {
     private void cancelProf() {
         finish(); //end current activity
         startActivity(new Intent(AddProf.this, MainActivity.class)); //create a new activity
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                refresh();
+                return true;
+            case R.id.action_Logout:
+                logout();
+                return true;
+        }
+        return false;
+        // return super.onOptionsItemSelected(item);
+    }
+
+    public void refresh () {
+        Intent intent = new Intent(AddProf.this, AddProf.class);
+        finish();
+        startActivity(intent);
+    }
+
+    public void logout() {
+        Intent intent = new Intent(AddProf.this, LoginActivity.class);
+        if(ParseUser.getCurrentUser() != null) {
+            Log.d("Test123","Logging out");
+            ParseUser.logOut();
+        }
+        finish();
+        startActivity(intent);
     }
 }
