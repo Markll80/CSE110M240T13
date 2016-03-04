@@ -29,6 +29,7 @@ import cse110mt13.tritonprofessorraterv1.R;
 
 /**
  * Created by Rui Deng on 2016/3/4.
+ * must enter this test from main activity
  */
 public class mainPageTest2 extends ActivityInstrumentationTestCase2<MainActivity>{
     @Rule
