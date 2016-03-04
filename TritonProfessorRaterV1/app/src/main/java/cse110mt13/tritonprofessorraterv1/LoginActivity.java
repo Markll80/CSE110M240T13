@@ -38,22 +38,14 @@ public class LoginActivity extends AppCompatActivity{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(this);
-        ParseObject.registerSubclass(Professor.class);
-        ParseObject.registerSubclass(Course.class);
-        ParseObject.registerSubclass(Comment.class);
-       // ParseUser.enableAutomaticUser();
-        ParseACL defaultACL = new ParseACL();
-        defaultACL.setPublicReadAccess(true);
-        ParseACL.setDefaultACL(defaultACL, true);
 
 
 
-        if(ParseUser.getCurrentUser() != null){   //auto login if user has logged in on last session.
-            finish();
-            startActivity(new Intent(LoginActivity.this,MainActivity.class));
-        }
+
+     //   if(ParseUser.getCurrentUser() != null){   //auto login if user has logged in on last session.
+    //        finish();
+    //        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+    //    }
 
 
         super.onCreate(savedInstanceState);

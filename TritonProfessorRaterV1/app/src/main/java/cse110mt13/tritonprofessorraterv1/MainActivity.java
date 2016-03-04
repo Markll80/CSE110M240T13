@@ -52,16 +52,6 @@ public class MainActivity extends AppCompatActivity {
     //int[] images = {R.drawable.name1, R.drawable.name2, R.drawable.name3};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-   /*     Parse.enableLocalDatastore(this);
-        Parse.initialize(this);
-        ParseObject.registerSubclass(Professor.class);
-        ParseObject.registerSubclass(Course.class);
-        ParseObject.registerSubclass(Comment.class);
-        ParseUser.enableAutomaticUser();
-        ParseACL defaultACL = new ParseACL();
-        defaultACL.setPublicReadAccess(true);
-        ParseACL.setDefaultACL(defaultACL, true);
-*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -72,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.addToBackStack(null);
         ft.commit();
-        Log.d("User","Current Username: "+ ParseUser.getCurrentUser().getUsername());
+//        Log.d("User","Current Username: "+ ParseUser.getCurrentUser().getUsername());
         setupSearchButton();
 
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.single_row,R.id.textView8,data);
@@ -202,11 +192,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 goSetting();
                 return true;
-            /*case R.id.action_Logout:
+            case R.id.action_Logout:
                 logout();
-                return true;*/
+                return true;
         }
-        return super.onOptionsItemSelected(item);
+        return false;
+       // return super.onOptionsItemSelected(item);
     }
 
     public void refresh () {
@@ -222,6 +213,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void logout() {
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        if(ParseUser.getCurrentUser() != null) {
+            Log.d("Test123","Logging out");
+            ParseUser.logOut();
+        }
+        finish();
         startActivity(intent);
     }
 
