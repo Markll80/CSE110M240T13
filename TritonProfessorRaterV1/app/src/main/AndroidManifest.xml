@@ -40,11 +40,13 @@
         <activity
             android:name=".LoginActivity"
             android:label="LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
             android:name=".SignupActivity"
             android:label="SignupActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".LoginActivity"
             android:windowSoftInputMode="stateHidden">
             <meta-data
@@ -55,6 +57,7 @@
         <activity
             android:name=".ForgotPassword"
             android:label="ForgotPassword"
+            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".LoginActivity"
             android:windowSoftInputMode="stateHidden">
             <meta-data
