@@ -10,6 +10,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,6 +65,7 @@ public class AddComment extends AppCompatActivity {
         ac_RatingE = (RatingBar) findViewById(R.id.ac_RatingE);
         ac_RatingH = (RatingBar) findViewById(R.id.ac_RatingH);
         profNameET=(TextView)findViewById(R.id.ac_ProfName_TV);
+
         findViewById(R.id.ac_Submit_B).setOnClickListener(onclickListener);
         findViewById(R.id.ac_Cancel_B).setOnClickListener(onclickListener);
 
@@ -263,5 +267,41 @@ public class AddComment extends AppCompatActivity {
       //  startActivity(intent);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                refresh();
+                return true;
+            case R.id.action_Logout:
+                logout();
+                return true;
+        }
+        return false;
+        // return super.onOptionsItemSelected(item);
+    }
+
+    public void refresh () {
+        Intent intent = new Intent(AddComment.this, AddComment.class);
+        finish();
+        startActivity(intent);
+    }
+
+    public void logout() {
+        Intent intent = new Intent(AddComment.this, LoginActivity.class);
+        if(ParseUser.getCurrentUser() != null) {
+            Log.d("Test123","Logging out");
+            ParseUser.logOut();
+        }
+        finish();
+        startActivity(intent);
+    }
 
 }
