@@ -33,3 +33,5 @@ no change password
 action bar (Cherish)
 
 edit with new page (Ting-UI, Eric-Link)
+
+espresso test (Ryan)
