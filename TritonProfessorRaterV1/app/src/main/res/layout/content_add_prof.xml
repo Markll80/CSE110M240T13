@@ -171,7 +171,7 @@
             android:id="@+id/ap_RatingE"
             android:numStars="5"
             android:rating="1"
-            android:stepSize="1"
+            android:stepSize="0.5"
             android:layout_alignTop="@+id/easiness"
             android:layout_toRightOf="@+id/easiness"
             android:layout_toEndOf="@+id/easiness"
@@ -186,7 +186,7 @@
             android:layout_toEndOf="@+id/clarity"
             android:numStars="5"
             android:rating="1"
-            android:stepSize="1"
+            android:stepSize="0.5"
             style="@style/newRatingBar"/>
 
         <RatingBar
@@ -198,7 +198,7 @@
             android:layout_toEndOf="@+id/helpfulness"
             android:numStars="5"
             android:rating="1"
-            android:stepSize="1"
+            android:stepSize="0.5"
             style="@style/newRatingBar"/>
 
     </RelativeLayout>

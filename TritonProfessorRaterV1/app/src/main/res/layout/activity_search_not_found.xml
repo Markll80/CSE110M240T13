@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cse110mt13.tritonprofessorraterv1.SearchNotFound"
-    android:background="@mipmap/b9">
+    android:background="@mipmap/b19">
 
     <Button
         android:layout_width="wrap_content"
@@ -37,11 +37,11 @@
         android:textColor="#c92121"
         android:textSize="30dp"
         android:layout_above="@+id/textView6"
-        android:layout_alignLeft="@+id/textView7"
-        android:layout_alignStart="@+id/textView7"
-        android:gravity="center_vertical|center_horizontal|fill"
-        android:layout_alignRight="@+id/add_Prof_B"
-        android:layout_alignEnd="@+id/add_Prof_B" />
+        android:layout_alignEnd="@+id/search_B"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="false"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:layout_width="wrap_content"
