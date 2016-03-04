@@ -30,13 +30,12 @@ import cse110mt13.tritonprofessorraterv1.R;
 /**
  * Created by Rui Deng on 2016/3/4.
  */
-@RunWith(AndroidJUnit4.class)
-public class mainPageTest extends ActivityInstrumentationTestCase2<MainActivity>{
+public class mainPageTest2 extends ActivityInstrumentationTestCase2<MainActivity>{
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule =
             new ActivityTestRule<>(MainActivity.class);
 
-    public mainPageTest()
+    public mainPageTest2()
     {
         super(MainActivity.class);
     }
@@ -49,27 +48,21 @@ public class mainPageTest extends ActivityInstrumentationTestCase2<MainActivity>
     }
 
     @Test
-    public void testIsDisplayedandSearch()
+    public void testAddProfAndCancel()
     {
         onView(withId(R.id.listView)).check(matches(isDisplayed()));
         onView(withId(R.id.search_B)).check(matches(isDisplayed()));
         onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
-        String profname = "rist";
-        onView(withId(R.id.search_ET)).perform(typeText(profname), closeSoftKeyboard());
-        onView(withId(R.id.search_B)).perform(click());
-        onView(withId(R.id.listViewSearch_page)).check(matches(isDisplayed()));
+        onView(withId(R.id.sp_AddProf_B)).perform(click());
+        onView(withId(R.id.rating)).check(matches(isDisplayed()));
+        onView(withId(R.id.easiness)).check(matches(isDisplayed()));
+        onView(withId(R.id.clarity)).check(matches(isDisplayed()));
+        onView(withId(R.id.helpfulness)).check(matches(isDisplayed()));
+        onView(withId(R.id.ap_cancel_B)).perform(click());
+        onView(withText("Click yes to cancel!")).check(matches(isDisplayed()));
+        onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.listView)).check(matches(isDisplayed()));
         onView(withId(R.id.search_B)).check(matches(isDisplayed()));
         onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
-        onView(withId(R.id.sp_AddProf_B)).check(matches(isDisplayed()));
     }
-
-    /*@Test
-    // seems that I can't make two tests in one tester file, it will cause parse error
-    public void testSearch()
-    {
-        String profname = "rist";
-        onView(withId(R.id.search_ET)).perform(typeText(profname), closeSoftKeyboard());
-        onView(withId(R.id.search_B)).perform(click());
-        onView(withId(R.id.listViewSearch_page)).check(matches(isDisplayed()));
-    }*/
 }
