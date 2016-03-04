@@ -49,19 +49,23 @@ public class mainPageTest extends ActivityInstrumentationTestCase2<MainActivity>
     }
 
     @Test
-    public void testIsDisplayed()
+    public void testIsDisplayedandSearch()
     {
         onView(withId(R.id.listView)).check(matches(isDisplayed()));
         onView(withId(R.id.search_B)).check(matches(isDisplayed()));
         onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
-    }
-
-    @Test
-    public void testSearch()
-    {
         String profname = "rist";
-        onView(withId(R.id.search_ET)).perform(typeText(profname),closeSoftKeyboard());
+        onView(withId(R.id.search_ET)).perform(typeText(profname), closeSoftKeyboard());
         onView(withId(R.id.search_B)).perform(click());
         onView(withId(R.id.listViewSearch_page)).check(matches(isDisplayed()));
     }
+
+    /*@Test
+    public void testSearch()
+    {
+        String profname = "rist";
+        onView(withId(R.id.search_ET)).perform(typeText(profname), closeSoftKeyboard());
+        onView(withId(R.id.search_B)).perform(click());
+        onView(withId(R.id.listViewSearch_page)).check(matches(isDisplayed()));
+    }*/
 }
