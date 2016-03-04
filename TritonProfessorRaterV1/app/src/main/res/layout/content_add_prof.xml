@@ -168,18 +168,6 @@
         <RatingBar
             android:layout_width="110dp"
             android:layout_height="22dp"
-            android:id="@+id/ap_Rating"
-            android:numStars="5"
-            android:rating="1"
-            android:stepSize="1"
-            android:layout_above="@+id/ap_RatingE"
-            android:layout_toRightOf="@+id/rating"
-            android:layout_toEndOf="@+id/rating"
-            style="@style/newRatingBar"/>
-
-        <RatingBar
-            android:layout_width="110dp"
-            android:layout_height="22dp"
             android:id="@+id/ap_RatingE"
             android:numStars="5"
             android:rating="1"
