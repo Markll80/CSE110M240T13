@@ -58,6 +58,7 @@ public class mainPageTest extends ActivityInstrumentationTestCase2<MainActivity>
         String profname = "rist";
         onView(withId(R.id.search_ET)).perform(typeText(profname), closeSoftKeyboard());
         onView(withId(R.id.search_B)).perform(click());
+        onView(withText("Christine Alvarado")).check(matches(isDisplayed()));
         onView(withId(R.id.listViewSearch_page)).check(matches(isDisplayed()));
         onView(withId(R.id.search_B)).check(matches(isDisplayed()));
         onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
