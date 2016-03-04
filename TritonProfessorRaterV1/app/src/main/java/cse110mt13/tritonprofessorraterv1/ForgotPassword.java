@@ -31,8 +31,6 @@ public class ForgotPassword extends AppCompatActivity {
         setContentView(R.layout.activity_forgot_password);
         ButterKnife.inject(this);
 
-        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         _findUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

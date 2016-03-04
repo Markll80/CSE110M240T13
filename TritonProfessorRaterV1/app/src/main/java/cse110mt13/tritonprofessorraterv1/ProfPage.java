@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -129,10 +132,39 @@ public class ProfPage extends AppCompatActivity {
         });
         ProfPage.setListViewHeightBasedOnChildren(list);
 
-            //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            /*case R.id.action_refresh:
+                refresh();
+                return true;*/
+            case R.id.action_settings:
+                goSetting();
+                return true;
         }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void refresh () {
+        Intent intent = new Intent(ProfPage.this, ProfPage.class);
+        finish();
+        startActivity(intent);
+    }
+
+    public void goSetting() {
+        Intent intent = new Intent(ProfPage.this, SettingActivity.class);
+        startActivity(intent);
+    }
 
     private static void setListViewHeightBasedOnChildren(ListView listView) {
 
