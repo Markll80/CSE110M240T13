@@ -24,21 +24,21 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import android.test.ActivityInstrumentationTestCase2;
 
-import cse110mt13.tritonprofessorraterv1.LoginActivity;
+import cse110mt13.tritonprofessorraterv1.ProfPage;
 import cse110mt13.tritonprofessorraterv1.R;
 
 /**
- * Created by Rui Deng on 2016/2/20.
+ * Created by Administrator on 2016/3/4.
  */
 @RunWith(AndroidJUnit4.class)
-public class loginTest extends ActivityInstrumentationTestCase2<LoginActivity>{
+public class profPageTest extends ActivityInstrumentationTestCase2<ProfPage>{
     @Rule
-    public ActivityTestRule<LoginActivity> activityTestRule =
-            new ActivityTestRule<>(LoginActivity.class);
+    public ActivityTestRule<ProfPage> activityTestRule =
+            new ActivityTestRule<>(ProfPage.class);
 
-    public loginTest()
+    public profPageTest()
     {
-        super(LoginActivity.class);
+        super(ProfPage.class);
     }
 
     @Override
@@ -46,19 +46,5 @@ public class loginTest extends ActivityInstrumentationTestCase2<LoginActivity>{
     {
         super.setUp();
         getActivity();
-    }
-    @Test
-    public void testTypeInAndLogin()
-    {
-        String username = "admin";
-        String password = "123456";
-        onView(withId(R.id.input_email)).perform(typeText(username),closeSoftKeyboard());
-        onView(withId(R.id.input_password)).perform(typeText(password),closeSoftKeyboard());
-        onView(withId(R.id.btn_login)).perform(click());
-
-        //onView(withId(R.layout.activity_main)).check(ViewAssertions.matches(isDisplayed()));
-        onView(withId(R.id.listView)).check(matches(isDisplayed()));
-        onView(withId(R.id.search_B)).check(matches(isDisplayed()));
-        onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
     }
 }

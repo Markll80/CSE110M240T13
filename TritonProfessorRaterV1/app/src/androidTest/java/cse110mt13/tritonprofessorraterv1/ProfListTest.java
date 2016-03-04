@@ -37,25 +37,6 @@ public class ProfListTest{
         testList = new ProfList();
     }
 
-    @Test
-    public void testGetComments()
-    {
-        ArrayList<Comment> comments = testList.getComments("Qtj4d8H1ZC");
-
-        //assert comments should be based on what's on the parse database
-        assertEquals("nneGzg9mNw", comments.get(0));
-        assertEquals("fb56kmvk5s",comments.get(1));
-    }
-
-    @Test
-    public void testProfListConst()
-    {
-        ArrayList<Professor> profList = testList.professors;
-
-        //assert professors' information should be based on what's on the parse database
-        assertEquals("Prof B", profList.get(0).getName());
-        assertEquals("Prof A", profList.get(1).getName());
-    }
 }
 
 
