@@ -1,3 +1,4 @@
+
 package cse110mt13.tritonprofessorraterv1.espressoTest;
 
 import android.app.Application;
@@ -34,12 +35,12 @@ import cse110mt13.tritonprofessorraterv1.LoginActivity;
  * Created by Rui Deng on 2016/3/4.
  * must enter after logging in with stored log in information
  */
-public class mainPageTest2 extends ActivityInstrumentationTestCase2<StartHere>{
+public class searchTest2 extends ActivityInstrumentationTestCase2<StartHere>{
     @Rule
     public ActivityTestRule<StartHere> activityTestRule =
             new ActivityTestRule<>(StartHere.class);
 
-    public mainPageTest2()
+    public searchTest2()
     {
         super(StartHere.class);
     }
@@ -54,6 +55,22 @@ public class mainPageTest2 extends ActivityInstrumentationTestCase2<StartHere>{
     @Test
     public void testAddProfAndCancel()
     {
+        onView(withId(R.id.listView)).check(matches(isDisplayed()));
+        onView(withId(R.id.search_B)).check(matches(isDisplayed()));
+        onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
+        String profname = "rist";
+        onView(withId(R.id.search_ET)).perform(typeText(profname), closeSoftKeyboard());
+        onView(withId(R.id.search_B)).perform(click());
+
+        try
+        {
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e)
+        {
+
+        }
+
         onView(withId(R.id.listView)).check(matches(isDisplayed()));
         onView(withId(R.id.search_B)).check(matches(isDisplayed()));
         onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
