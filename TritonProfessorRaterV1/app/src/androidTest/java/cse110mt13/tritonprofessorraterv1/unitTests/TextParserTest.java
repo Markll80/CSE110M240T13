@@ -1,4 +1,4 @@
-package cse110mt13.tritonprofessorraterv1.noUseNormalTests;
+package cse110mt13.tritonprofessorraterv1.unitTests;
 
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;

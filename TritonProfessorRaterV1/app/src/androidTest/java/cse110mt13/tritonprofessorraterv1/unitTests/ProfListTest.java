@@ -1,4 +1,4 @@
-package cse110mt13.tritonprofessorraterv1.noUseNormalTests;
+package cse110mt13.tritonprofessorraterv1.unitTests;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
