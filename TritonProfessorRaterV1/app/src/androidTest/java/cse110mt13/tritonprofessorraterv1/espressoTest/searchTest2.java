@@ -2,6 +2,7 @@
 package cse110mt13.tritonprofessorraterv1.espressoTest;
 
 import android.app.Application;
+import android.support.test.espresso.Espresso;
 import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -71,7 +72,7 @@ public class searchTest2 extends ActivityInstrumentationTestCase2<StartHere>{
 
         }
 
-        onView(withId(R.id.listView)).check(matches(isDisplayed()));
+        onView(withId(R.id.listViewSearch_page)).check(matches(isDisplayed()));
         onView(withId(R.id.search_B)).check(matches(isDisplayed()));
         onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
         onView(withId(R.id.sp_AddProf_B)).perform(click());
@@ -89,7 +90,18 @@ public class searchTest2 extends ActivityInstrumentationTestCase2<StartHere>{
         onView(withId(R.id.easiness)).check(matches(isDisplayed()));
         onView(withId(R.id.clarity)).check(matches(isDisplayed()));
         onView(withId(R.id.helpfulness)).check(matches(isDisplayed()));
-        onView(withText("Cancel")).perform(click());
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.ap_cancel_B)).perform(scrollTo(),click());
+
+        try
+        {
+            Thread.sleep(2000);
+        }
+        catch(InterruptedException e)
+        {
+
+        }
+
         onView(withText("Click yes to cancel!")).check(matches(isDisplayed()));
         onView(withText("Yes")).perform(click());
 
