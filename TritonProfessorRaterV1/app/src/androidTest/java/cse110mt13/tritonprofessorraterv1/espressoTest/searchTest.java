@@ -88,6 +88,6 @@ public class searchTest extends ActivityInstrumentationTestCase2<StartHere>{
 
         }
 
-        onView(withText("another professor")).check(matches(isDisplayed()));
+        onView(withText("Another Professor")).check(matches(isDisplayed()));
     }
 }
