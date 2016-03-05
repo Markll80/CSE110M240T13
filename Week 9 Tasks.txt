@@ -41,19 +41,20 @@ Link:
 espresso test (Ryan)
 
 
-search & search not found page : Cherish 
+search & search not found page : Cherish (Done)
 
 button appearance  - new color : Ting?
 
-found page text Size / not found page text center : Cherish
+found page text Size / not found page text center : Cherish (Done)
 
 no change password (Done)
 
 action bar:Eric & Cherish (Done)
 
-edit comment - pop up window : Ellen?
+edit comment - pop up window : Ellen? 
+  —> Cancel/Submit button doesn’t work
 
 UI:Ellen (done)
 
 Link:
-espresso test : Ryan
+espresso test : Ryan (Done)
