@@ -246,6 +246,12 @@ public class ProfPage extends AppCompatActivity {
             return removedPresser;
         }
 
+        private void onEditPress(String commentID){
+
+            startActivity(new Intent(ProfPage.this, Pop.class));
+
+        }
+
         private void onReportPress(String commentID){
             ParseQuery<Comment> query= ParseQuery.getQuery(Comment.class);
             Comment comment = new Comment();
@@ -323,6 +329,7 @@ public class ProfPage extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     String commentID = coList.get(anotherPostion).getObjectId();
+                    onEditPress(commentID);
                 }
             });
 

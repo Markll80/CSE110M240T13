@@ -129,6 +129,10 @@
             </meta-data>
         </activity>
 
+        <activity android:name=".Pop"
+            android:theme = "@style/AppTheme.popTheme">
+        </activity>
+
     </application>
 
 </manifest>
