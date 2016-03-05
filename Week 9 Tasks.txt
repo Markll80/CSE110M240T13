@@ -39,3 +39,21 @@ UI:Ellen (done)
 Link:
 
 espresso test (Ryan)
+
+
+search & search not found page : Cherish 
+
+button appearance  - new color : Ting?
+
+found page text Size / not found page text center : Cherish
+
+no change password (Done)
+
+action bar:Eric & Cherish (Done)
+
+edit comment - pop up window : Ellen?
+
+UI:Ellen (done)
+
+Link:
+espresso test : Ryan
