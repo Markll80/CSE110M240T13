@@ -248,8 +248,12 @@ public class ProfPage extends AppCompatActivity {
 
         private void onEditPress(String commentID){
 
-            startActivity(new Intent(ProfPage.this, Pop.class));
-
+            Intent intent = null;
+            intent = new Intent(getBaseContext(), Pop.class);
+            intent.putExtra("commentID",commentID);
+            intent.putExtra("profID", profID);
+            if(intent != null)
+                startActivity(intent);
         }
 
         private void onReportPress(String commentID){
@@ -316,10 +320,9 @@ public class ProfPage extends AppCompatActivity {
                 public void onClick(View v) {
                     String commentID = coList.get(anotherPostion).getObjectId();
                     boolean decrement = onLikePress(commentID);
-                    if(decrement) {
+                    if (decrement) {
                         myNum.setText("" + (Integer.parseInt(myNum.getText().toString()) - 1));
-                    }
-                    else{
+                    } else {
                         myNum.setText("" + (Integer.parseInt(myNum.getText().toString()) + 1));
                     }
                 }
