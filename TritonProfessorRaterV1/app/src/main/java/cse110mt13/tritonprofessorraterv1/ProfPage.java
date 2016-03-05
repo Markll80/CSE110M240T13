@@ -265,7 +265,7 @@ public class ProfPage extends AppCompatActivity {
             catch(ParseException e){
                 Log.e("getCommentFromId error", e.getMessage());
             }
-            String presser  = ParseUser.getCurrentUser().toString();
+            String presser  = ParseUser.getCurrentUser().getObjectId();
             JSONArray usersReported = comment.getUsersReported();
             for(int i = 0; i < usersReported.length(); ++i){
                 try {

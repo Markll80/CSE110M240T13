@@ -2,14 +2,14 @@
 Major-
   settings page/ UI
   integrate data from CSE departments into database(if received in time)
-  Prof page - Edit function
+  Prof page - Edit function (done)
   read/write ACL when saving objects to database (Eric: should work fine now)
   Title Bar
 
   testing:
   saving/reading from database with proper cases(upper/lowercases) 
   make sure cases are consistent throughout addProf, addComment etc
-  course validation on addComment and addProf.
+  course validation on addComment and addProf. (done)
   
  addRating is breaking - occasionally (fixed)
   
