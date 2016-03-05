@@ -135,8 +135,10 @@
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button7"
+        android:textColor="#4c515f"
         android:text="@string/addRating"
         android:id="@+id/addRatingButton"
         android:layout_below="@+id/list_view_prof_comment"
