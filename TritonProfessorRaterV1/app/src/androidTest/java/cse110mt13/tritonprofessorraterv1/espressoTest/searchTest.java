@@ -32,6 +32,7 @@ import cse110mt13.tritonprofessorraterv1.*;
 
 /**
  * Created by Rui Deng on 2016/3/4.
+ * must enter after logging in with stored log in information
  */
 @RunWith(AndroidJUnit4.class)
 public class searchTest extends ActivityInstrumentationTestCase2<StartHere>{
