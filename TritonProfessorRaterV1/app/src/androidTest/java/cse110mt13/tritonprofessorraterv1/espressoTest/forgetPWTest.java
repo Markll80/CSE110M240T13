@@ -34,6 +34,7 @@ import java.lang.Thread;
 
 /**
  * Created by Rui Deng on 2016/3/4.
+ * must enter after logging in with stored log in information
  */
 @RunWith(AndroidJUnit4.class)
 public class forgetPWTest extends ActivityInstrumentationTestCase2<StartHere>{
