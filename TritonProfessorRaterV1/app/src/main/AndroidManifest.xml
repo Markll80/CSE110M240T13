@@ -89,6 +89,7 @@
         </activity>
         <activity
             android:name=".AddComment"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/title_activity_add_comment"
             android:parentActivityName=".ProfPage"
             android:windowSoftInputMode="stateHidden">
