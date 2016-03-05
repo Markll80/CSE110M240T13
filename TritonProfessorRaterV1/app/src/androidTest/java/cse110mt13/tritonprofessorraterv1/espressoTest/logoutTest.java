@@ -34,6 +34,7 @@ import static android.support.test.espresso.Espresso.openActionBarOverflowOrOpti
 
 /**
  * Created by Rui Deng on 2016/3/4.
+ * must enter after logging in with stored log in information
  */
 @RunWith(AndroidJUnit4.class)
 public class logoutTest extends ActivityInstrumentationTestCase2<StartHere>{
@@ -56,6 +57,19 @@ public class logoutTest extends ActivityInstrumentationTestCase2<StartHere>{
     @Test
     public void testLogOut() {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
-        onView(withId(R.id.action_Logout)).perform(click());
+        onView(withText("Logout")).perform(click());
+
+        try
+        {
+            Thread.sleep(2000);
+        }
+        catch(InterruptedException e)
+        {
+
+        }
+
+        onView(withId(R.id.input_email)).check(matches(isDisplayed()));
+        onView(withId(R.id.input_password)).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_login)).check(matches(isDisplayed()));
     }
 }
