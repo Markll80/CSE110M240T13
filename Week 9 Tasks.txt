@@ -1,4 +1,4 @@
-To do:
+﻿To do:
 Major-
   settings page/ UI
   integrate data from CSE departments into database(if received in time)
@@ -11,7 +11,7 @@ Major-
   make sure cases are consistent throughout addProf, addComment etc
   course validation on addComment and addProf.
   
- addRating is breaking - occasionally 
+ addRating is breaking - occasionally (fixed)
   
 Minor - 
   new default picture  (done)
@@ -34,7 +34,7 @@ no change password
 
 action bar (Cherish) -  (change <- icon to home icon, also - the button crashes the program)
 
-edit comment: pop up window 
+edit comment: pop up window (finished)
 UI:Ellen (done)
 Link:
 

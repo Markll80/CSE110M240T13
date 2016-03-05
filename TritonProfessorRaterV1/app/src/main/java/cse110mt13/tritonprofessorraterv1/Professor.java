@@ -37,7 +37,7 @@ public class Professor extends ParseObject{
     public static Professor createProf(String name, double clarity, double easiness, double helpfulness, String comment){
         Professor newProf = new Professor();
         JSONArray comments = new JSONArray();
-        newProf.setProf(name, 1, clarity, easiness, helpfulness, comments, "");
+        newProf.setProf(name.toLowerCase(), 1, clarity, easiness, helpfulness, comments, "");
         try{
             newProf.save();
         }

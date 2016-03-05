@@ -99,10 +99,13 @@ public class AddProf extends AppCompatActivity {
                     vap_Comment = apComment.getText().toString();
 
 
-                    if (!validCourse(vap_Course))
-                    { apCourseName.setError("Invalid Course Number!");}
+                    if (!validCourse(vap_Course)) {
+                        if (!vap_Course.matches(".*\\d.*")) {
+                            apCourseName.setError("Invalid Course Number!");
+                        }
+                    }
 
-                    else if (!validComment(vap_Comment))
+                    if (!validComment(vap_Comment))
                     { apComment.setError("Invalid Comment! Please enter a valid comment");}
 
 
@@ -187,7 +190,7 @@ public class AddProf extends AppCompatActivity {
         if (newComment.isEmpty() || newComment == null)
             return false;
 
-        String replace = newComment.replace(" ","");
+        String replace = newComment.replace(" ", "");
 
         int countSpace = newComment.length() - replace.length();
         Log.d("countSpace", ((Integer)countSpace).toString());
@@ -281,6 +284,16 @@ public class AddProf extends AppCompatActivity {
         vap_Course = apCourseName.getText().toString().toLowerCase();
         vap_Course = addSpace(vap_Course);
         vap_Comment = apComment.getText().toString();
+
+        if (!validCourse(vap_Course)) {
+            Course newCourse = new Course();
+            newCourse.setCourseName(vap_Course.toLowerCase());
+            try {
+                newCourse.save();
+            } catch (ParseException e) {
+                Log.e("failed to create course", e.getMessage());
+            }
+        }
 
 
         Professor newProf = Professor.createProf(ap_Prof,ap_C,ap_E,ap_H, "");

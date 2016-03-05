@@ -26,6 +26,8 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,10 +112,12 @@ public class AddComment extends AppCompatActivity {
 
 
 
-                    if (!validCourse(ac_Course))
-                        acCourseName.setError("Invalid Course Number!");
-
-                    else if (!validComment(ac_Comment))
+                    if (!validCourse(ac_Course)) {
+                        if (!ac_Course.matches(".*\\d.*")) {
+                            acCourseName.setError("Invalid Course Number!");
+                        }
+                    }
+                    if (!validComment(ac_Comment))
                         acComment.setError("Invalid Comment!");
 
 
@@ -245,6 +249,28 @@ public class AddComment extends AppCompatActivity {
         ac_C = (int) ac_RatingC.getRating();
         ac_E = (int) ac_RatingE.getRating();
         ac_H = (int) ac_RatingH.getRating();
+
+        if (!validCourse(ac_Course)) {
+            Course newCourse = new Course();
+            newCourse.setCourseName(ac_Course.toLowerCase());
+            try {
+                newCourse.save();
+            } catch (ParseException e) {
+                Log.e("failed to create course", e.getMessage());
+            }
+        }
+        ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
+        query.whereEqualTo("CourseName", ac_Course);
+        Course course = new Course();
+        try{
+            course = query.getFirst();
+        }
+        catch (ParseException e){
+            Log.e("validCourseError", e.getMessage());
+        }
+        if(!course.getProfessors().toString().contains(prof.getObjectId())) {
+            course.addProfToCourse(prof.getObjectId());
+        }
         prof.addRating(ac_C, ac_E, ac_H);
         prof.addComment(ac_Comment, TextParser.convertToUpperCase(ac_Course), ParseUser.getCurrentUser().getObjectId(), ac_C, ac_E, ac_H);
         BackToProfPage();

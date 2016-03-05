@@ -20,12 +20,18 @@ public class Course extends ParseObject{
 
     private String objectId;
     // this method initializes prof stats
-    public void setup(String courseName) {
-        put("CourseName", courseName);
+    public void setup() {
+        put("CourseName", "");
+        put("ProfTaught", new JSONArray());
     }
 
     public String getCourseName() {
         return getString("CourseName");
+    }
+
+    public void setCourseName(String newCourseName){
+        put("CourseName", newCourseName);
+        put("ProfTaught", new JSONArray());
     }
 
     public JSONArray getProfessors(){

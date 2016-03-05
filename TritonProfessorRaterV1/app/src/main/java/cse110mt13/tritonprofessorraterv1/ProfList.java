@@ -69,6 +69,7 @@ public class ProfList{
             try {
                 objects = query.find();
             } catch (ParseException e) {
+                Log.e("failed to find prof", e.getMessage());
             }
             for (Professor prof : objects) {
                 Professor newProf = new Professor();
