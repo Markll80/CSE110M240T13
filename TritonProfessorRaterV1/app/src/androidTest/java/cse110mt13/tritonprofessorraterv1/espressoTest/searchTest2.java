@@ -89,9 +89,9 @@ public class searchTest2 extends ActivityInstrumentationTestCase2<StartHere>{
         onView(withId(R.id.easiness)).check(matches(isDisplayed()));
         onView(withId(R.id.clarity)).check(matches(isDisplayed()));
         onView(withId(R.id.helpfulness)).check(matches(isDisplayed()));
-        onView(withId(R.id.ap_cancel_B)).perform(click());
+        onView(withText("Cancel")).perform(click());
         onView(withText("Click yes to cancel!")).check(matches(isDisplayed()));
-        onView(withId(android.R.id.button1)).perform(click());
+        onView(withText("Yes")).perform(click());
 
         try
         {
