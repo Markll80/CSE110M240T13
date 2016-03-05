@@ -34,6 +34,8 @@ no change password
 
 action bar (Cherish) -  (change <- icon to home icon, also - the button crashes the program)
 
-edit with new page (Ting-UI, Eric-Link)
+edit comment: pop up window 
+UI:Ellen (done)
+Link:
 
 espresso test (Ryan)
