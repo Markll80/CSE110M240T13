@@ -24,22 +24,25 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import android.test.ActivityInstrumentationTestCase2;
 
+import cse110mt13.tritonprofessorraterv1.LogIn;
+import cse110mt13.tritonprofessorraterv1.LoginActivity;
 import cse110mt13.tritonprofessorraterv1.MainActivity;
 import cse110mt13.tritonprofessorraterv1.R;
+import cse110mt13.tritonprofessorraterv1.StartHere;
 
 /**
  * Created by Rui Deng on 2016/3/4.
  * must enter this test from main activity
  */
 @RunWith(AndroidJUnit4.class)
-public class mainPageTest extends ActivityInstrumentationTestCase2<MainActivity>{
+public class mainPageTest extends ActivityInstrumentationTestCase2<StartHere>{
     @Rule
-    public ActivityTestRule<MainActivity> activityTestRule =
-            new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<StartHere> activityTestRule =
+            new ActivityTestRule<>(StartHere.class);
 
     public mainPageTest()
     {
-        super(MainActivity.class);
+        super(StartHere.class);
     }
 
     @Override
