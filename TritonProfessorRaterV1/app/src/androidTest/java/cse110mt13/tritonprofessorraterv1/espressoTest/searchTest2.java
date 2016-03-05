@@ -53,7 +53,7 @@ public class searchTest2 extends ActivityInstrumentationTestCase2<StartHere>{
     }
 
     @Test
-    public void testAddProfAndCancel()
+    public void testGoToAddProf()
     {
         onView(withId(R.id.listView)).check(matches(isDisplayed()));
         onView(withId(R.id.search_B)).check(matches(isDisplayed()));
@@ -89,9 +89,10 @@ public class searchTest2 extends ActivityInstrumentationTestCase2<StartHere>{
         onView(withId(R.id.easiness)).check(matches(isDisplayed()));
         onView(withId(R.id.clarity)).check(matches(isDisplayed()));
         onView(withId(R.id.helpfulness)).check(matches(isDisplayed()));
-        //onView(withText("Cancel")).perform(click());
-        //onView(withText("Click yes to cancel!")).check(matches(isDisplayed()));
-        onView(withId(R.id.ap_cancel_B)).perform(click());
+
+        /*onView(withId(R.id.ap_cancel_B)).perform(click());
+        onView(withText("Cancel")).perform(click());
+        onView(withText("Click yes to cancel!")).check(matches(isDisplayed()));
 
         try
         {
@@ -104,6 +105,6 @@ public class searchTest2 extends ActivityInstrumentationTestCase2<StartHere>{
         ;
         onView(withId(R.id.listView)).check(matches(isDisplayed()));
         onView(withId(R.id.search_B)).check(matches(isDisplayed()));
-        onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
+        onView(withId(R.id.search_ET)).check(matches(isDisplayed()));*/
     }
 }
