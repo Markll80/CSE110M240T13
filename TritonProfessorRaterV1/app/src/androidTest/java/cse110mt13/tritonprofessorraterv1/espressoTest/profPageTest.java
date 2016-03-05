@@ -66,5 +66,20 @@ public class profPageTest extends ActivityInstrumentationTestCase2<StartHere>{
         onView(withId(R.id.Prof_Ess)).check(matches(isDisplayed()));
         onView(withId(R.id.Prof_Hlp)).check(matches(isDisplayed()));
         onView(withId(R.id.Prof_Clt)).check(matches(isDisplayed()));
+        onView(withId(R.id.addRatingButton)).perform(click());
+
+        try
+        {
+            Thread.sleep(2000);
+        }
+        catch(InterruptedException e)
+        {
+
+        }
+
+        onView(withId(R.id.acCourseName)).check(matches(isDisplayed()));
+        onView(withId(R.id.acClarity)).check(matches(isDisplayed()));
+        onView(withId(R.id.acEasy)).check(matches(isDisplayed()));
+        onView(withId(R.id.acHelp)).check(matches(isDisplayed()));
     }
 }
