@@ -32,6 +32,7 @@ import java.lang.Thread;
 
 /**
  * Created by Rui Deng on 2016/2/20.
+ * must enter after log out or before log in
  */
 @RunWith(AndroidJUnit4.class)
 public class loginTest extends ActivityInstrumentationTestCase2<StartHere>{

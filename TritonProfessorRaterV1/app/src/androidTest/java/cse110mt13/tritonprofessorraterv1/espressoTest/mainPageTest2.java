@@ -16,6 +16,7 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import java.lang.Thread;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -26,19 +27,21 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import cse110mt13.tritonprofessorraterv1.MainActivity;
 import cse110mt13.tritonprofessorraterv1.R;
+import cse110mt13.tritonprofessorraterv1.StartHere;
+import cse110mt13.tritonprofessorraterv1.LoginActivity;
 
 /**
  * Created by Rui Deng on 2016/3/4.
- * must enter this test from main activity
+ * must enter after logging in with stored log in information
  */
-public class mainPageTest2 extends ActivityInstrumentationTestCase2<MainActivity>{
+public class mainPageTest2 extends ActivityInstrumentationTestCase2<StartHere>{
     @Rule
-    public ActivityTestRule<MainActivity> activityTestRule =
-            new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<StartHere> activityTestRule =
+            new ActivityTestRule<>(StartHere.class);
 
     public mainPageTest2()
     {
-        super(MainActivity.class);
+        super(StartHere.class);
     }
 
     @Override
@@ -55,6 +58,16 @@ public class mainPageTest2 extends ActivityInstrumentationTestCase2<MainActivity
         onView(withId(R.id.search_B)).check(matches(isDisplayed()));
         onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
         onView(withId(R.id.sp_AddProf_B)).perform(click());
+
+        try
+        {
+            Thread.sleep(2000);
+        }
+        catch(InterruptedException e)
+        {
+
+        }
+
         onView(withId(R.id.rating)).check(matches(isDisplayed()));
         onView(withId(R.id.easiness)).check(matches(isDisplayed()));
         onView(withId(R.id.clarity)).check(matches(isDisplayed()));
@@ -62,6 +75,16 @@ public class mainPageTest2 extends ActivityInstrumentationTestCase2<MainActivity
         onView(withId(R.id.ap_cancel_B)).perform(click());
         onView(withText("Click yes to cancel!")).check(matches(isDisplayed()));
         onView(withId(android.R.id.button1)).perform(click());
+
+        try
+        {
+            Thread.sleep(2000);
+        }
+        catch(InterruptedException e)
+        {
+
+        }
+        ;
         onView(withId(R.id.listView)).check(matches(isDisplayed()));
         onView(withId(R.id.search_B)).check(matches(isDisplayed()));
         onView(withId(R.id.search_ET)).check(matches(isDisplayed()));

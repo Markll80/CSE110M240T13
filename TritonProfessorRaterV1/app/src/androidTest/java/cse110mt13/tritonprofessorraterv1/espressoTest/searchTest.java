@@ -28,19 +28,20 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import cse110mt13.tritonprofessorraterv1.SearchPage;
 import cse110mt13.tritonprofessorraterv1.R;
+import cse110mt13.tritonprofessorraterv1.*;
 
 /**
  * Created by Rui Deng on 2016/3/4.
  */
 @RunWith(AndroidJUnit4.class)
-public class searchTest extends ActivityInstrumentationTestCase2<SearchPage>{
+public class searchTest extends ActivityInstrumentationTestCase2<StartHere>{
     @Rule
-    public ActivityTestRule<SearchPage> activityTestRule =
-            new ActivityTestRule<>(SearchPage.class);
+    public ActivityTestRule<StartHere> activityTestRule =
+            new ActivityTestRule<>(StartHere.class);
 
     public searchTest()
     {
-        super(SearchPage.class);
+        super(StartHere.class);
     }
 
     @Override
@@ -53,14 +54,40 @@ public class searchTest extends ActivityInstrumentationTestCase2<SearchPage>{
     @Test
     public void testSearch()
     {
+        onView(withId(R.id.listView)).check(matches(isDisplayed()));
+        onView(withId(R.id.search_B)).check(matches(isDisplayed()));
+        onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
+        String profname = "rist";
+        onView(withId(R.id.search_ET)).perform(typeText(profname), closeSoftKeyboard());
+        onView(withId(R.id.search_B)).perform(click());
+
+        try
+        {
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e)
+        {
+
+        }
+
+        onView(withText("Christine Alvarado")).check(matches(isDisplayed()));
         onView(withId(R.id.listViewSearch_page)).check(matches(isDisplayed()));
         onView(withId(R.id.search_B)).check(matches(isDisplayed()));
         onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
         onView(withId(R.id.sp_AddProf_B)).check(matches(isDisplayed()));
-        String profname = "Christine";
+        profname = "another";
         onView(withId(R.id.search_ET)).perform(typeText(profname), closeSoftKeyboard());
         onView(withId(R.id.search_B)).perform(click());
-        onView(withText("Christine Alvarado")).check(matches(isDisplayed()));
-        onData(anything()).inAdapterView(withId(R.id.listViewSearch_page)).atPosition(0).perform(click());
+
+        try
+        {
+            Thread.sleep(2000);
+        }
+        catch(InterruptedException e)
+        {
+
+        }
+
+        onView(withText("another professor")).check(matches(isDisplayed()));
     }
 }

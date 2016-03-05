@@ -24,7 +24,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import android.test.ActivityInstrumentationTestCase2;
 
-import cse110mt13.tritonprofessorraterv1.LogIn;
 import cse110mt13.tritonprofessorraterv1.LoginActivity;
 import cse110mt13.tritonprofessorraterv1.MainActivity;
 import cse110mt13.tritonprofessorraterv1.R;
@@ -32,7 +31,7 @@ import cse110mt13.tritonprofessorraterv1.StartHere;
 
 /**
  * Created by Rui Deng on 2016/3/4.
- * must enter this test from main activity
+ * must enter after logging in with stored log in information
  */
 @RunWith(AndroidJUnit4.class)
 public class mainPageTest extends ActivityInstrumentationTestCase2<StartHere>{
