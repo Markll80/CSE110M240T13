@@ -121,8 +121,9 @@
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/button7"
             android:text="@string/submit"
             android:id="@+id/ap_sumbit_B"
             android:layout_below="@+id/ap_comment_ET"
@@ -131,8 +132,9 @@
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/button7"
             android:text="@string/cancel"
             android:id="@+id/ap_cancel_B"
             android:layout_alignParentBottom="true"

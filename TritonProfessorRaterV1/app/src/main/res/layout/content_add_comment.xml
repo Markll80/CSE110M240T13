@@ -50,17 +50,19 @@
         android:typeface="serif" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
         android:text="@string/submit"
+        android:background="@drawable/button7"
         android:id="@+id/ac_Submit_B"
         android:layout_below="@+id/ac_Comment_ET"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:background="@drawable/button7"
         android:text="@string/cancel"
         android:id="@+id/ac_Cancel_B"
         android:layout_below="@+id/ac_Comment_ET"
