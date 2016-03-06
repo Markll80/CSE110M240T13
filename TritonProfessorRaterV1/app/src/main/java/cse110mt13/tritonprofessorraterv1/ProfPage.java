@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.parse.Parse;
@@ -246,13 +247,30 @@ public class ProfPage extends AppCompatActivity {
         }
 
         private void onEditPress(String commentID){
-
-            Intent intent = null;
-            intent = new Intent(getBaseContext(), Pop.class);
-            intent.putExtra("commentID",commentID);
-            intent.putExtra("profID", profID);
-            if(intent != null)
-                startActivity(intent);
+            ParseQuery<Comment> query= ParseQuery.getQuery(Comment.class);
+            Comment comment = new Comment();
+            try{
+                comment = query.get(commentID);
+            }
+            catch(ParseException e){
+                Log.e("getCommentFromId error", e.getMessage());
+            }
+            String presser  = ParseUser.getCurrentUser().getObjectId();
+            String owner = comment.getUserBelongedTo();
+            if(presser.equals(owner)) {
+                Intent intent = null;
+                intent = new Intent(getBaseContext(), Pop.class);
+                intent.putExtra("commentID", commentID);
+                intent.putExtra("profID", profID);
+                if (intent != null)
+                    startActivity(intent);
+            }
+            else{
+                Context context = getApplicationContext();
+                CharSequence message = "You must have created this comment";
+                Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+                toast.show();
+            }
         }
 
         private void onReportPress(String commentID){

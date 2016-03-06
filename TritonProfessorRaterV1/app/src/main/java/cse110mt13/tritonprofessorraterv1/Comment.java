@@ -56,6 +56,10 @@ public class Comment extends ParseObject implements Comparable{
         return getString("CourseName");
     }
 
+    public String getUserBelongedTo(){
+        return getString("UserBelongedTo");
+    }
+
     public void setCourseName(String courseName){
         put("CourseName", courseName);
     }
