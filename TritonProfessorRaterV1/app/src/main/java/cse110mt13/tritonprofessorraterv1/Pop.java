@@ -13,6 +13,8 @@ import android.widget.EditText;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
+import org.json.JSONArray;
+
 public class Pop extends AppCompatActivity {
 
     Comment toBeEdited;
@@ -68,6 +70,7 @@ public class Pop extends AppCompatActivity {
     private void onSubmitPress(){
         toBeEdited.setComment(etEditComment.getText().toString());
         toBeEdited.setNumLikes(0);
+        toBeEdited.put("UsersLiked", new JSONArray());
         try {
             toBeEdited.save();
         }
