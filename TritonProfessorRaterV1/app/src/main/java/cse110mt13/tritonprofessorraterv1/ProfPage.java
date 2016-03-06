@@ -42,9 +42,7 @@ public class ProfPage extends AppCompatActivity {
     String[] courseName;
     int[] num;
     ProfList nameList;
-    //TextView clarityTV;
-  //  TextView easinessTV;
-  //  TextView helpfullnessTV;
+
     String profID = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +52,8 @@ public class ProfPage extends AppCompatActivity {
 
       //  String profID = "";
         Intent intentBundle = getIntent();
-      //  if(intentBundle.hasExtra("profID")) {  //ProfID is stored to profID
-          final String profid2 = intentBundle.getStringExtra("profID");
-          profID = intentBundle.getStringExtra("profID");
-      //  }
+        //final String profid2 = intentBundle.getStringExtra("profID");
+        profID = intentBundle.getStringExtra("profID");
 
         TextView profName = (TextView)findViewById(R.id.Prof_name);
       /*  TextView easiness_v = (TextView)findViewById(R.id.easiness_val);
@@ -159,6 +155,7 @@ public class ProfPage extends AppCompatActivity {
 
     public void refresh () {
         Intent intent = new Intent(ProfPage.this, ProfPage.class);
+        intent.putExtra("profID", profID);
         finish();
         startActivity(intent);
     }
