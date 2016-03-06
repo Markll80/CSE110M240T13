@@ -64,6 +64,10 @@ public class Comment extends ParseObject implements Comparable{
         put("CourseName", courseName);
     }
 
+    public void setNumLikes(int set){
+        put("numLikes", set);
+    }
+
     public void putComment(String comment){
         put("comment",comment);
     }

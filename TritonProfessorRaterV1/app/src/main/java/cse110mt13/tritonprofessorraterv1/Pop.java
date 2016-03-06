@@ -67,6 +67,7 @@ public class Pop extends AppCompatActivity {
 
     private void onSubmitPress(){
         toBeEdited.setComment(etEditComment.getText().toString());
+        toBeEdited.setNumLikes(0);
         try {
             toBeEdited.save();
         }
