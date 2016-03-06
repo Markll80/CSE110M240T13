@@ -1,6 +1,8 @@
 package cse110mt13.tritonprofessorraterv1;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
@@ -307,8 +309,29 @@ public class ProfPage extends AppCompatActivity {
             reportB.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String commentID = coList.get(anotherPostion).getObjectId();
-                    onReportPress(commentID);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                    alertDialogBuilder.setTitle("Are you sure?");
+
+                    alertDialogBuilder
+                            .setMessage("Click yes to report!")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    String commentID = coList.get(anotherPostion).getObjectId();
+                                    onReportPress(commentID);
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+
+                    alertDialog.show();
+
                 }
             });
 
