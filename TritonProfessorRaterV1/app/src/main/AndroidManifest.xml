@@ -131,6 +131,7 @@
         </activity>
 
         <activity android:name=".Pop"
+            android:label="Edit Comment"
             android:theme = "@style/AppTheme.popTheme">
         </activity>
 
