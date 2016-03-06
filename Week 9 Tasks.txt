@@ -1,60 +1,20 @@
-﻿To do:
-Major-
-  settings page/ UI
-  integrate data from CSE departments into database(if received in time)
-  Prof page - Edit function (done)
-  read/write ACL when saving objects to database (Eric: should work fine now)
-  Title Bar
+﻿Remaining TODOS:
+more “sample” classes and comments  
+
+Search page – make button part of scrollview
+-	Title bar: go back, refresh, logout
+
 
   testing:
   saving/reading from database with proper cases(upper/lowercases) 
   make sure cases are consistent throughout addProf, addComment etc
-  course validation on addComment and addProf. (done)
+  course validation on addComment and addProf. (done)       
+  - On hold for more rigorous testing next week
+
   
- addRating is breaking - occasionally (fixed)
+  Wrap comment box -- maybe
   
-Minor - 
-  new default picture  (done)
-  Wrap comment box
-  logo "invisible" background   (done)
-  new background page for prof not found? (same as main page now, done)
-
-  Feel free to add additional stuff as needed
-
-
-Ask Client:
-main page - random prof? all prof? top prof(what kind of sorting)?
-alphabetical - 10 prof max (Eric: done)
-
-
-search & search not found page: add prof shouldn't pop up when tying in search box (optional fix if time allows)
-button appearance  - new color
-found page text Size / not found page text center
-no change password
-
-action bar (Cherish) -  (change <- icon to home icon, also - the button crashes the program)
-
-edit comment: pop up window (finished)
-UI:Ellen (done)
-Link:
-
-espresso test (Ryan)
-
-
-search & search not found page : Cherish (Done)
-
-button appearance  - new color : Ting?
-
-found page text Size / not found page text center : Cherish (Done)
-
-no change password (Done)
-
-action bar:Eric & Cherish (Done)
-
-edit comment - pop up window : Ellen? 
-  —> Cancel/Submit button doesn’t work
-
-UI:Ellen (done)
-
-Link:
-espresso test : Ryan (Done)
+  
+  ***************************************************************************
+  MAKE SURE EVERY FEATURE WORKS BY EXTENSIVELY TEST EACH ONE OF THEM
+  TEST THEM MANUALLY IF IT IS WHAT IT TAKES

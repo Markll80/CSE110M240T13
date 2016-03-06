@@ -35,7 +35,7 @@ import java.util.Vector;
 
 public class SearchPage extends AppCompatActivity {
     //UI--- search page
-    int[] searcImages = {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+    int[] searcImages = {R.mipmap.defaultprofile};
     Vector<String> searchNames =  new Vector<>();
     Vector<String> easiness = new Vector<>();
     Vector<String> helpfulness = new Vector<>();
@@ -44,19 +44,10 @@ public class SearchPage extends AppCompatActivity {
     ProfList profs;
     EditText etSearch;
     String search = "";
+    ProfList nameList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-/*
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(this);
-        ParseObject.registerSubclass(Professor.class);
-        ParseObject.registerSubclass(Course.class);
-        ParseObject.registerSubclass(Comment.class);
-        ParseUser.enableAutomaticUser();
-        ParseACL defaultACL = new ParseACL();
-        defaultACL.setPublicReadAccess(true);
-        ParseACL.setDefaultACL(defaultACL, true);
-*/
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -64,10 +55,9 @@ public class SearchPage extends AppCompatActivity {
         etSearch = (EditText)findViewById(R.id.search_ET);
         findViewById(R.id.search_B).setOnClickListener(onclickListener);
         findViewById(R.id.sp_AddProf_B).setOnClickListener(onclickListener);
-        //initialization for main page;
 
         Resources res = getResources();
-        final ProfList nameList = new ProfList();
+        nameList = new ProfList();
         String easy;
         String help;
         String clear;
@@ -152,10 +142,18 @@ public class SearchPage extends AppCompatActivity {
             TextView myClarity = (TextView) row.findViewById(R.id.clarity);
             myImage.setImageResource(images[0]);
             myProfNames.setText(nameArray.get(position));
-            myEasiness.setText(easyR.get(position));
-            myHelpfulness.setText(helpfulR.get(position));
-            myClarity.setText(clarityR.get(position));
 
+
+            if(nameList.professors.get(position).getNumRatings() >=1){
+                myEasiness.setText(easyR.get(position));
+                myHelpfulness.setText(helpfulR.get(position));
+                myClarity.setText(clarityR.get(position));
+            }
+            else{
+                myEasiness.setText("Easiness: N/A");
+                myHelpfulness.setText("Helpfulness: N/A");
+                myClarity.setText("Clarity: N/A");
+            }
             return row;
         }
     }
