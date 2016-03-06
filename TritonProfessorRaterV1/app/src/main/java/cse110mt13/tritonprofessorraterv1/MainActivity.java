@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         String clear;
         int counter = 0;
         for(Professor name: nameList.professors){
-           if(counter > LIST_LIMIT) break;
+           if(counter >= LIST_LIMIT) break;
             profNames.add(name.getName());
             easy = "Easiness : " + name.getEasiness();
             help = "Helpfulness : " + name.getHelpfulness();
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             easiness.add(easy);
             helpfulness.add(help);
             clarity.add(clear);
+            ++counter;
         }
 
         list= (ListView) findViewById(R.id.listView);

@@ -4,15 +4,15 @@ more “sample” classes and comments
 Search page – make button part of scrollview
 -	Title bar: go back, refresh, logout
 
+Search not found - title bar
 
-  testing:
+testing:
   saving/reading from database with proper cases(upper/lowercases) 
   make sure cases are consistent throughout addProf, addComment etc
   course validation on addComment and addProf. (done)       
   - On hold for more rigorous testing next week
 
   
-  Wrap comment box -- maybe
   
   
   ***************************************************************************
