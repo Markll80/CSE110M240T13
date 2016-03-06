@@ -10,6 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -26,6 +29,8 @@ import com.parse.ParseACL;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 */
+import com.parse.ParseUser;
+
 import java.util.Vector;
 
 public class SearchPage extends AppCompatActivity {
@@ -179,5 +184,42 @@ public class SearchPage extends AppCompatActivity {
 
     public void ForwardToAddProf(View view) {
         startActivity(new Intent(this, AddProf.class));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                refresh();
+                return true;
+            case R.id.action_Logout:
+                logout();
+                return true;
+        }
+        return false;
+        // return super.onOptionsItemSelected(item);
+    }
+
+    public void refresh () {
+        Intent intent = new Intent(SearchPage.this, SearchPage.class);
+        finish();
+        startActivity(intent);
+    }
+
+    public void logout() {
+        Intent intent = new Intent(SearchPage.this, LoginActivity.class);
+        if(ParseUser.getCurrentUser() != null) {
+            Log.d("Test123","Logging out");
+            ParseUser.logOut();
+        }
+        finish();
+        startActivity(intent);
     }
 }
