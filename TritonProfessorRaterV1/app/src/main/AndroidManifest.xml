@@ -101,7 +101,6 @@
         <activity
             android:name=".SearchNotFound"
             android:label="SearchNotFound"
-            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="adjustPan">
             <meta-data
