@@ -221,7 +221,7 @@ public class ProfPage extends AppCompatActivity {
             JSONArray usersLiked = comment.getUsersLiked();
             for(int i = 0; i < usersLiked.length(); ++i){
                 try {
-                    if (((String) usersLiked.get(i)).equals(presser)){
+                    if ((usersLiked.get(i).toString()).equals(presser)){
                         usersLiked.remove(i);
                         comment.subNumLikes();
                         removedPresser = true;
@@ -274,6 +274,7 @@ public class ProfPage extends AppCompatActivity {
         }
 
         private void onReportPress(String commentID){
+            boolean reported = false;
             ParseQuery<Comment> query= ParseQuery.getQuery(Comment.class);
             Comment comment = new Comment();
             try{
@@ -287,7 +288,12 @@ public class ProfPage extends AppCompatActivity {
             for(int i = 0; i < usersReported.length(); ++i){
                 try {
                     if (((String) usersReported.get(i)).equals(presser)){
-                        usersReported.remove(i);
+                        //usersReported.remove(i);
+                        Context context = getApplicationContext();
+                        CharSequence message = "You have already reported this comment";
+                        Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+                        toast.show();
+                        reported = true;
                         return;
                     }
                 }
@@ -295,7 +301,9 @@ public class ProfPage extends AppCompatActivity {
                     Log.e("JSONArray Error", e.getMessage());
                 }
             }
-            usersReported.put(presser);
+            if(!reported) {
+                usersReported.put(presser);
+            }
             if(usersReported.length() > NUM_USERS_REQUIRED_FOR_DELETE){
                 comment.deleteSelf();
             }
