@@ -3,9 +3,9 @@
     <string name="parse_app_id">QiinPbhiqxWFjEF7FGMM9HuCI6WdTFCaO2MRlCQW</string>
     <string name="parse_client_key">s9BPYGtxQdePN5sOtkA3g5tqPnJnQccRKu8rO0nX</string>
 
-    <string name="title_activity_add_prof">AddProf</string>
-    <string name="title_activity_search_page">SearchPage</string>
-    <string name="title_activity_add_comment">AddComment</string>
+    <string name="title_activity_add_prof">Add a Professor</string>
+    <string name="title_activity_search_page">Search</string>
+    <string name="title_activity_add_comment">Add a Rating</string>
 
     <string name="addProf">Add New Professor</string>
     <string name="addRating">Add A Rating</string>
@@ -86,6 +86,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_setting_page">SettingPage</string>
+    <string name="title_activity_setting_page">Setting Page</string>
 
 </resources>
