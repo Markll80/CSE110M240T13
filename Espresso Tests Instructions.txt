@@ -1,0 +1,57 @@
+//user for testing
+User: admin
+password: 123456
+
+Espresso Tests file location: 
+ - java/cse110mt13.tritonprofessorratev1(androidTest)/espressoTest
+ 
+ 
+Run each espressso tests individually, no all-in-one test package included
+
+LoginTest
+  -Precondition: User must be logged out, 
+     when you run the app, you should be in login page
+  
+  
+All other tests:
+  -Precondition: user must be logged in,
+     when you run the app, you should be in main page, not login page
+     
+Alternative espresso test order:
+1. Logout of the app
+2. Run loginTest
+3. Run any other test - besides logoutTest/forgetPWTest
+
+
+Breakdown of each test"
+
+LoginTest:
+  -login with admin username, check whether it transitions to main page
+LogoutTest:
+  -logout from main page, check whether it transitions to login page
+ForgetPWTest:
+  -logout from main page, click forgot_password text link, check whether
+   it transitions to forgot password page
+MainPageTest:
+  -perform search "rist", check whether professor "Christine Alvardo" is displayed
+ProfPageTest:
+  -perform search "benjamin", check whether professor "Benjamin Lawrence Ochoa"
+   is displayed, click the prof, check whether prof page pops out, then click
+   add a rating button, check whether we are in add a rating page or not.
+SearchNotFoundTest:
+  -perform search "gewjigo", check whether it transitions to no professor found page,
+   and check whether the add a new professor button is working or not by clicking it,
+   and verify UI components inside.
+   
+SearchTest and SearchTest2 is already covered in other scenarios.  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

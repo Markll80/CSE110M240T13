@@ -28,21 +28,6 @@
         android:layout_alignParentStart="true"
         android:hint="Class/Professor Name" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchString_TV"
-        android:inputType="text"
-        android:text="Random String"
-        android:textColor="#c92121"
-        android:textSize="30dp"
-        android:layout_above="@+id/textView6"
-        android:layout_alignEnd="@+id/search_B"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="false"
-        android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="40dp"
@@ -59,7 +44,7 @@
         android:id="@+id/textView7"
         android:textSize="25dp"
         android:layout_above="@+id/searchString_TV"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/add_Prof_B" />
 
     <Button
         android:layout_width="wrap_content"
@@ -67,9 +52,21 @@
         android:text="Add Professor"
         android:id="@+id/add_Prof_B"
         android:textSize="20dp"
-        android:layout_marginTop="48dp"
+        android:onClick="ForwardToAddProf"
         android:layout_below="@+id/textView6"
-        android:layout_centerHorizontal="true"
-        android:onClick="ForwardToAddProf"/>
+        android:layout_alignEnd="@+id/search_ET"
+        android:layout_marginTop="43dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/searchString_TV"
+        android:textSize="30dp"
+        android:textColor="#c92121"
+        android:gravity="center_horizontal"
+        android:layout_above="@+id/textView6"
+        android:layout_alignEnd="@+id/search_B"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

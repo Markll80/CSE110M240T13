@@ -11,6 +11,7 @@ import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.doubleClick;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -58,20 +59,23 @@ public class profPageTest extends ActivityInstrumentationTestCase2<StartHere>{
         onView(withId(R.id.listView)).check(matches(isDisplayed()));
         onView(withId(R.id.search_B)).check(matches(isDisplayed()));
         onView(withId(R.id.search_ET)).check(matches(isDisplayed()));
-        String profname = "rist";
+        String profname = "benjamin";
         onView(withId(R.id.search_ET)).perform(typeText(profname), closeSoftKeyboard());
         onView(withId(R.id.search_B)).perform(click());
         onData(anything()).inAdapterView(withId(R.id.listViewSearch_page)).atPosition(0).perform(click());
-        onView(withText("Christine Alvarado")).check(matches(isDisplayed()));
+        onView(withText("Benjamin Lawrence Ochoa")).check(matches(isDisplayed()));
         onView(withId(R.id.Prof_Ess)).check(matches(isDisplayed()));
         onView(withId(R.id.Prof_Hlp)).check(matches(isDisplayed()));
         onView(withId(R.id.Prof_Clt)).check(matches(isDisplayed()));
+       // onView(withId(R.id.list_view_prof_comment)).perform(scrollTo());
+        onView(withId(R.id.addRatingButton)).check(matches(isDisplayed()));
         onView(withId(R.id.addRatingButton)).perform(click());
 
         try
         {
             Thread.sleep(2000);
         }
+
         catch(InterruptedException e)
         {
 

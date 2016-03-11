@@ -71,12 +71,15 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void signup() {
-        Log.d(TAG, "Signup");
+        Log.d(TAG, "Signup Method");
 
         if (!validate()) {
+            Log.d(TAG, "Going into signupfailed ");
             onSignupFailed();
             return;
         }
+        Log.d(TAG, "Getting field text");
+
         _signupButton.setEnabled(false);
 /*
         final ProgressDialog progressDialog = new ProgressDialog(SignupActivity.this,
@@ -94,7 +97,7 @@ public class SignupActivity extends AppCompatActivity {
         if(currentUser != null)
             currentUser.logOut();
 
-        Log.d("SignUp", "Trying to create new user");
+      //  Log.d("SignUp", "Trying to create new user");
         ParseUser newUser = new ParseUser();
         newUser.setUsername(name);
         newUser.setEmail(email);
@@ -103,7 +106,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void done(ParseException e) {
                 if(e==null){  //signup sucessfull
-                    Log.d("SignUp", "Sign Up Successful");
+                  //  Log.d("SignUp", "Sign Up Successful");
                     onSignupSuccess();
                 }
                 else{         //sign up fail
@@ -112,7 +115,7 @@ public class SignupActivity extends AppCompatActivity {
                     if(e.getCode() == 202) //if username is taken
                         _nameText.setError("Username is taken");
 
-                    Log.d("SignUp", "Sign Up Fail: "+e.getMessage());
+                  //  Log.d("SignUp", "Sign Up Fail: "+e.getMessage());
                     onSignupFailed();
                 }
             }
@@ -158,6 +161,7 @@ public class SignupActivity extends AppCompatActivity {
             valid = false;
         } else {
             _nameText.setError(null);
+            valid = true;
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -166,6 +170,7 @@ public class SignupActivity extends AppCompatActivity {
         }
         else if(!email.endsWith("@ucsd.edu") && !email.endsWith("@gmail.ucsd.edu")){
             _emailText.setError("Enter a valid UCSD email address");
+            valid = false;
         }
         else {
             _emailText.setError(null);
@@ -177,6 +182,7 @@ public class SignupActivity extends AppCompatActivity {
         } else {
             _passwordText.setError(null);
         }
+      //  Log.d("SignUp", "Validation success:" + valid);
         return valid;
     }
 }

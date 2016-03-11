@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.parse.ParseUser;
 
@@ -21,7 +22,7 @@ public class SearchNotFound extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_not_found);
 
-        EditText searchString = (EditText)findViewById(R.id.searchString_TV);
+        TextView searchString = (TextView)findViewById(R.id.searchString_TV);
         etSearch = (EditText)findViewById(R.id.search_ET);
         /* TODO: get the string being searched, and substitute the current string */
 
